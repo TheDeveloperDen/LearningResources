@@ -85,4 +85,3 @@
                                         ;; Alternatively, You can specify you're own Jetty HTTPConfiguration
                                         ;; via the `:io.pedestal.http.jetty/http-configuration` container option.
                                         ;:io.pedestal.http.jetty/http-configuration (org.eclipse.jetty.server.HttpConfiguration.)
-                                        
