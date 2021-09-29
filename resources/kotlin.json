@@ -1,0 +1,20 @@
+{
+  "name": "Kotlin",
+  "description": "Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise.",
+  "resources": [
+    {
+      "name": "Kotlin Official Website",
+      "url": "https://kotlinlang.org/",
+      "price": null,
+      "pros": [],
+      "cons": []
+    },
+    {
+      "name": "Introduction to Kotlin (Google I/O '17)",
+      "url": "https://www.youtube.com/watch?v=X1RVYt2QKQE",
+      "price": null,
+      "pros": ["Video for visual learners"],
+      "cons": []
+    }
+  ]
+}
