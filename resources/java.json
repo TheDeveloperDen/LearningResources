@@ -1,6 +1,6 @@
 {
   "name": "Java",
-  "description": "Java is an object-oriented programming language that produces software for multiple platforms. When a programmer writes a Java application, the compiled code (known as bytecode) runs on most operating systems (OS), including Windows, Linux and Mac OS.",
+  "description": "Java is an Object Oriented language designed by James Gosling in 1995",
   "resources": [
     {
       "name": "Tutorial Spot",
