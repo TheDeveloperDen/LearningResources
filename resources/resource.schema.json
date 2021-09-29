@@ -11,7 +11,8 @@
     },
     "description": {
       "description": "A brief description of the language and its uses",
-      "type": "string"
+      "type": "string",
+      "maxLength": 256
     },
     "resources": {
       "description": "List of resources that can be used for learning / practicing the language",
