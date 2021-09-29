@@ -4,15 +4,7 @@ Crowd-sourced collation of resources for learning programming
 
 ## What this is 
 
-This repository contains a crowd-sourced compendium of curated links for learning
-various programming topics. Anyone is free to contribute, or use this data at no cost 
-(although credit is appreciated).
-
-The links are stored in a machine readable format (JSON) with a clearly defined schema,
-and we run a CDN that can be used to fetch the most up to date versions of the data at any point,
-complete with JSON indexing.
-
-This can be accessed at https://developerden.net/learning-resources
+idk
 
 ## How to contribute
 
