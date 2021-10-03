@@ -1,0 +1,58 @@
+{
+  "name": "Clojure",
+  "description": "Clojure is a dynamic functional language from the Lisp family that runs on many different platforms",
+  "resources": [
+    {
+      "name": "Clojure For The Brave And True",
+      "url": "https://www.braveclojure.com/clojure-for-the-brave-and-true/",
+      "price": null,
+      "pros": [
+        "Complete guide through most of the language",
+        "Assumes no prior knowledge of functional programming or Lisp"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Functions Explained Through Patterns",
+      "url": "http://blog.josephwilk.net/clojure/functions-explained-through-patterns.html",
+      "price": null,
+      "pros": ["Visual explanations of core Clojure functions"],
+      "cons": []
+    },
+    {
+      "name": "4clojure",
+      "url": "https://4clojure.oxal.org/",
+      "price": null,
+      "pros": ["Interactive exercises"],
+      "cons": ["No tutorial from the ground up"]
+    },
+    {
+      "name": "Clojure by Example",
+      "url": "https://github.com/inclojure-org/clojure-by-example",
+      "price": null,
+      "pros": ["Hands-on learning", "Crash Course"],
+      "cons": ["No thorough explanations for complete programming beginners"]
+    },
+    {
+      "name": "Clojure for Java Programmers",
+      "url": "https://www.youtube.com/watch?v=P76Vbsk_3J0",
+      "price": null,
+      "pros": ["Video series", "Explains the ideas behind Clojure"],
+      "cons": ["Mostly aimed at people from an OOP background"]
+    },
+    {
+      "name": "Clojure API Cheatsheet",
+      "url": "https://clojure.org/api/cheatsheet",
+      "price": null,
+      "pros": ["Overview over almost the entire standard library", "Quick reference"],
+      "cons": []
+    },
+    {
+      "name": "Clojure beginner resources",
+      "url": "https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f",
+      "price": null,
+      "pros": ["Collection of all kinds of resources to learn Clojure"],
+      "cons": []
+    }
+  ]
+}
