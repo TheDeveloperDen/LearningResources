@@ -1,0 +1,36 @@
+{
+  "name": "Rust",
+  "description": "Rust is a multi-paradigm systems language designed by Graydon Hoare in 2010",
+  "resources": [
+    {
+      "name": "The Rust Programming Language (Book)",
+      "url": "https://doc.rust-lang.org/book/",
+      "price": null,
+      "pros": [
+        "Very detailed",
+        "Frequently updated",
+        "Semi-Official"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Rust by Example",
+      "url": "https://doc.rust-lang.org/stable/rust-by-example/",
+      "price": null,
+      "pros": [
+        "Teaches concepts by example",
+        "Semi-Official"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Rust Crash Course | Traversy Media",
+      "url": "https://www.youtube.com/watch?v=zF34dRivLOw",
+      "price": null,
+      "pros": [
+        "Video series"
+      ],
+      "cons": []
+    }
+  ]
+}

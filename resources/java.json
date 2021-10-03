@@ -10,7 +10,27 @@
       "cons": []
     },
     {
-      "name": "Java Spot",
+      "name": "Alex Lee",
+      "url": "https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA",
+      "price": null,
+      "pros": [
+        "Video series",
+        "Covers a wide range of concepts"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Bro Code",
+      "url": "https://www.youtube.com/c/BroCodez",
+      "price": null,
+      "pros": [
+        "Video series",
+        "Has videos on many different languages and concepts"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Javatpoint",
       "url": "https://www.javatpoint.com/java-tutorial",
       "price": null,
       "pros": [],

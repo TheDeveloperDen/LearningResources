@@ -13,7 +13,18 @@
       "name": "Introduction to Kotlin (Google I/O '17)",
       "url": "https://www.youtube.com/watch?v=X1RVYt2QKQE",
       "price": null,
-      "pros": ["Video for visual learners"],
+      "pros": [
+        "Video for visual learners"
+      ],
+      "cons": []
+    },
+    {
+      "name": "FreeCodeCamp.org",
+      "url": "https://youtu.be/F9UC9DY-vIU",
+      "price": null,
+      "pros": [
+        "Video for visual learners"
+      ],
       "cons": []
     }
   ]
