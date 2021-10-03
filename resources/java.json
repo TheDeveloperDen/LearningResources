@@ -3,6 +3,34 @@
   "description": "Java is an Object Oriented language designed by James Gosling in 1995",
   "resources": [
     {
+      "name": "MOOC",
+      "url": "https://java-programming.mooc.fi/",
+      "price": null,
+      "pros": [
+        "Full coverage from language basics to object oriented programming",
+        "Interactive exercises"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Hyperskill",
+      "url": "https://hyperskill.org/tracks/17",
+      "price": "Free 30-day trial; $20.75 per year",
+      "pros": [
+        "Hands-on learning - you learn by creating real projects",
+        "Suited for all levels of Java/programming experience",
+        "Very interactive"
+      ],
+      "cons": ["Subscription-based model"]
+    },
+    {
+      "name": "learnxinyminutes",
+      "url": "https://learnxinyminutes.com/docs/java/",
+      "price": null,
+      "pros": ["Short read", "Quick crash course for people already familiar with other languages"],
+      "cons": ["No in-depth knowledge", "Not suitable as the primary learning resource"]
+    },
+    {
       "name": "Tutorial Spot",
       "url": "https://www.tutorialspoint.com/java/index.htm",
       "price": null,
