@@ -15,6 +15,13 @@
       "price": null,
       "pros": ["Video for visual learners"],
       "cons": []
+    },
+    {
+      "name": "FreeCodeCamp.org",
+      "url": "https://youtu.be/F9UC9DY-vIU",
+      "price": null,
+      "pros": ["Video for visual learners"],
+      "cons": []
     }
   ]
 }
