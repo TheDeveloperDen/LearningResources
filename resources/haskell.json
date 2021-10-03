@@ -1,20 +1,20 @@
 {
-    "name": "Haskell",
-    "description": "Haskell is a purely functional programming language commonly used in finance and academics",
-    "resources": [
-        {
-            "name": "Learn you a Haskell",
-            "url": "http://learnyouahaskell.com/",
-            "price": null,
-            "pros": [],
-            "cons": []
-        },
-        {
-            "name": "Functional Programming in Haskell: Supercharge Your Coding",
-            "url": "https://www.futurelearn.com/courses/functional-programming-haskell",
-            "price": null,
-            "pros": [],
-            "cons": []
-        }
-    ]
+  "name": "Haskell",
+  "description": "Haskell is a purely functional programming language commonly used in finance and academics",
+  "resources": [
+    {
+      "name": "Learn you a Haskell",
+      "url": "http://learnyouahaskell.com/",
+      "price": null,
+      "pros": [],
+      "cons": []
+    },
+    {
+      "name": "Functional Programming in Haskell: Supercharge Your Coding",
+      "url": "https://www.futurelearn.com/courses/functional-programming-haskell",
+      "price": null,
+      "pros": [],
+      "cons": []
+    }
+  ]
 }
