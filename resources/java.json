@@ -66,12 +66,12 @@
     }
     {
       "name": "Caleb Curry",
-      "url": "https://www.youtube.com/channel/UCZUyPT9DkJWmS_DzdOi7RIA"",
+      "url": "https://www.youtube.com/channel/UCZUyPT9DkJWmS_DzdOi7RIA",
       "price": null,
       "pros": [
           "Video series",
-          "Covers a vast array of languages and concepts"
+          "Covers a vast array of languages and concepts",
     ],
       "cons": []
-  ]
+    }
 }
