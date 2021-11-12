@@ -1,0 +1,17 @@
+{
+  "name": "Miscellaneous",
+  "description": "A list of resources that cover a wide range of topics, not specific to any programming language.",
+  "resources": [
+    {
+      "name": "Every link I wish I had as a beginner",
+      "url": "https://github.com/kealanparr/Every-link-I-wish-I-had-as-a-beginner",
+      "price": null,
+      "pros": [
+		"A huge collection of useful links"
+	  ],
+      "cons": [
+		"Can be overwhelming and hard to navigate"
+	  ]
+    }
+  ]
+}
