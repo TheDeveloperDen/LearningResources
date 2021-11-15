@@ -1,0 +1,42 @@
+{
+  "name": "Miscellaneous",
+  "description": "A list of resources that cover a wide range of topics, not specific to any programming language.",
+  "resources": [
+    {
+      "name": "Every link I wish I had as a beginner",
+      "url": "https://github.com/kealanparr/Every-link-I-wish-I-had-as-a-beginner",
+      "price": "Mostly free, some paid resources are included",
+      "pros": [
+		"A huge collection of useful links"
+	  ],
+      "cons": [
+		"Can be overwhelming and hard to navigate"
+	  ]
+    },
+	{
+	  "name": "Sololearn",
+	  "url": "https://www.sololearn.com/",
+	  "price": null,
+	  "pros": [
+		"Easy to use",
+		"Lots of languages to choose from"
+	  ],
+	  "cons": [
+	    "Mostly theoretical approach, not too much repetition",
+		"Doesn't cover some topics very deeply"
+	  ]
+	},
+	{
+	  "name": "LeetCode",
+	  "url": "https://leetcode.com/",
+	  "price": null,
+	  "pros": [
+	    "Fun and difficult problems to solve"
+	  ],
+	  "cons": [
+	    "Not very beginner friendly",
+		"Some content requires a paid account"
+	  ]
+	}
+  ]
+}
