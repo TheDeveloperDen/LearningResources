@@ -37,6 +37,32 @@
 	    "Not very beginner friendly",
 		"Some content requires a paid account"
 	  ]
+	},
+	{
+	  "name": "Codecademy",
+	  "url": "https://www.codecademy.com/",
+	  "price": null,
+	  "pros": [
+	    "Excellent guided learning platform",
+		"Beginner-friendly but continues into advanced content",
+		"Fully in-browser and zero setup",
+		"Very useful paid features including career track bootcamps"
+	  ],
+	  "cons": [
+		"Some content requires a paid subscription",
+		"Limited coverage of some topics (free plan)",
+		"Only select languages and frameworks available"
+	  ]
+	},
+	{
+	  "name": "Programiz",
+	  "url": "https://www.programiz.com/",
+	  "price": null,
+	  "pros": [
+	    "Extensive courses/guides for many languages and frameworks",
+		"Balanced mix of material and projects/exercises,"
+	  ],
+	  "cons": []
 	}
   ]
 }
