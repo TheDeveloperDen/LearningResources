@@ -71,4 +71,4 @@ jobs:
             docker pull ghcr.io/thedeveloperden/learningresources:master # DO NOT REMOVE THIS OR EVERYTHING WILL BREAK
             docker stop learningresources
             docker rm learningresources
-            docker run --name learningresources -d -p 127.0.0.1:8080:80 --restart unless-stopped ghcr.io/thedeveloperden/learningresources:master
+            docker run --name learningresources -d --net=net -p 8080:80 --restart unless-stopped ghcr.io/thedeveloperden/learningresources:master
