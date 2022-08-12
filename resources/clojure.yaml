@@ -1,5 +1,6 @@
 name: Clojure
 description: Clojure is a dynamic functional language from the Lisp family that runs on many different platforms
+emoji: '821823652404265001'
 resources:
   - name: Clojure For The Brave And True
     url: https://www.braveclojure.com/clojure-for-the-brave-and-true/
