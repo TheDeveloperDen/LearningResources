@@ -50,8 +50,11 @@
           "description": "URL to the resource"
         },
         "price": {
-          "type": "number",
-          "description": "The price of the resource, or null if it is free",
+          "type": [
+            "string",
+            "number"
+          ],
+          "description": "The price of the resource, if it has one. If the resource is free, leave empty",
           "pros": {
             "type": "array",
             "description": "Array of pros for using the resource, eg 'explains difficult concepts with good analogies'",
