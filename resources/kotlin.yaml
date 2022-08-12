@@ -1,5 +1,6 @@
 name: Kotlin
 description: "Kotlin is a multi-paradigm programming language created by JetBrains that runs on the JVM, JS, and Native Platforms"
+emoji: '888496555529744395'
 resources:
   - name: "Kotlin Official Website"
     url: "https://kotlinlang.org/"
@@ -10,6 +11,7 @@ resources:
     url: "https://www.youtube.com/watch?v=X1RVYt2QKQE"
     pros:
       - "Video for visual learners"
+    cons: [ ]
 
   - name: "FreeCodeCamp.org"
     url: "https://youtu.be/F9UC9DY-vIU"

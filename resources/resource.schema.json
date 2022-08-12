@@ -38,7 +38,9 @@
       "type": "object",
       "required": [
         "name",
-        "url"
+        "url",
+        "pros",
+        "cons"
       ],
       "properties": {
         "name": {
@@ -54,20 +56,20 @@
             "string",
             "number"
           ],
-          "description": "The price of the resource, if it has one. If the resource is free, leave empty",
-          "pros": {
-            "type": "array",
-            "description": "Array of pros for using the resource, eg 'explains difficult concepts with good analogies'",
-            "items": {
-              "type": "string"
-            }
-          },
-          "cons": {
-            "type": "array",
-            "description": "Array of cons for using the resource, eg 'only teaches the basics rather than more advanced concepts'",
-            "items": {
-              "type": "string"
-            }
+          "description": "The price of the resource, if it has one. If the resource is free, leave empty"
+        },
+        "pros": {
+          "type": "array",
+          "description": "Array of pros for using the resource, eg 'explains difficult concepts with good analogies'",
+          "items": {
+            "type": "string"
+          }
+        },
+        "cons": {
+          "type": "array",
+          "description": "Array of cons for using the resource, eg 'only teaches the basics rather than more advanced concepts'",
+          "items": {
+            "type": "string"
           }
         }
       }

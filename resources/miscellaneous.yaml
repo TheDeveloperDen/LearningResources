@@ -1,5 +1,6 @@
 name: Miscellaneous
 description: A list of resources that cover a wide range of topics, not specific to any programming language.
+emoji: 'gear'
 resources:
   - name: Every link I wish I had as a beginner
     url: https://github.com/kealanparr/Every-link-I-wish-I-had-as-a-beginner
