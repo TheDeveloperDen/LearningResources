@@ -1,0 +1,47 @@
+name: Miscellaneous
+description: A list of resources that cover a wide range of topics, not specific to any programming language.
+resources:
+  - name: Every link I wish I had as a beginner
+    url: https://github.com/kealanparr/Every-link-I-wish-I-had-as-a-beginner
+    price: Mostly free, some paid resources are included
+    pros:
+      - A huge collection of useful links
+    cons:
+      - Can be overwhelming and hard to navigate
+
+  - name: Sololearn
+    url: https://www.sololearn.com/
+    pros:
+      - Easy to use
+      - Lots of languages to choose from
+    cons:
+      - Doesn't teach things in a real world example
+      - Doesn't cover some topics very deeply
+
+  - name: LeetCode
+    url: https://leetcode.com/
+    pros:
+      - Fun and difficult problems to solve
+    cons:
+      - Not very beginner friendly
+      - Some content requires a paid account
+
+  - name: Codecademy
+    url: https://www.codecademy.com/
+    pros:
+      - Excellent guided learning platform
+      - Beginner-friendly but continues into advanced content
+      - Fully in-browser and zero setup
+      - Very useful paid features including career track bootcamps
+    cons:
+      - Some content requires a paid subscription
+      - Limited coverage of some topics (free plan)
+      - Only select languages and frameworks available
+
+  - name: Programiz
+    url: https://www.programiz.com/
+    pros:
+      - Extensive courses/guides for many languages and frameworks
+      - Balanced mix of material and projects/exercises,
+    cons: [ ]
+
