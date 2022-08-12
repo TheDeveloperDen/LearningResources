@@ -4,6 +4,11 @@
   "title": "Language Resources",
   "description": "Set of resources that can be used for learning programming",
   "type": "object",
+  "required": [
+    "name",
+    "description",
+    "resources"
+  ],
   "properties": {
     "name": {
       "description": "The name of the language",
@@ -14,6 +19,10 @@
       "type": "string",
       "maxLength": 256
     },
+    "emoji": {
+      "description": "A Unicode emoji symbol or discord emoji ID to represent the resource, if applicable. This should generally be ",
+      "type": "string"
+    },
     "resources": {
       "description": "List of resources that can be used for learning / practicing the language",
       "type": "array",
@@ -22,39 +31,39 @@
       },
       "minItems": 1,
       "uniqueItems": true
-    },
-    "$defs": {
-      "resource": {
-        "type": "object",
-        "required": [
-          "name",
-          "url"
-        ],
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "The official name of the resource"
+    }
+  },
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "required": [
+        "name",
+        "url"
+      ],
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The official name of the resource"
+        },
+        "url": {
+          "type": "string",
+          "description": "URL to the resource"
+        },
+        "price": {
+          "type": "number",
+          "description": "The price of the resource, or null if it is free",
+          "pros": {
+            "type": "array",
+            "description": "Array of pros for using the resource, eg 'explains difficult concepts with good analogies'",
+            "items": {
+              "type": "string"
+            }
           },
-          "url": {
-            "type": "string",
-            "description": "URL to the resource"
-          },
-          "price": {
-            "type": "number",
-            "description": "The price of the resource, or null if it is free",
-            "pros": {
-              "type": "array",
-              "description": "Array of pros for using the resource, eg 'explains difficult concepts with good analogies'",
-              "items": {
-                "type": "string"
-              }
-            },
-            "cons": {
-              "type": "array",
-              "description": "Array of cons for using the resource, eg 'only teaches the basics rather than more advanced concepts'",
-              "items": {
-                "type": "string"
-              }
+          "cons": {
+            "type": "array",
+            "description": "Array of cons for using the resource, eg 'only teaches the basics rather than more advanced concepts'",
+            "items": {
+              "type": "string"
             }
           }
         }
