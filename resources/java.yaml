@@ -1,0 +1,28 @@
+name: Java
+description: Java is an Object Oriented language designed by James Gosling in 1995
+emoji: '821822045187866625'
+resources:
+  - name: Tutorial Spot
+    url: https://www.tutorialspoint.com/java/index.htm
+    pros: [ ]
+    cons: [ ]
+
+  - name: Alex Lee
+    url: https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA
+    pros:
+      - Video series
+      - Covers a wide range of concepts
+    cons: [ ]
+
+  - name: Bro Code
+    url: https://www.youtube.com/c/BroCodez
+    pros:
+      - Video series
+      - Has videos on many different languages and concepts
+    cons: [ ]
+
+  - name: Javatpoint
+    url: https://www.javatpoint.com/java-tutorial
+    pros: [ ]
+    cons: [ ]
+
