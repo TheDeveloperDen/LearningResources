@@ -1,0 +1,58 @@
+name: Python
+description: Python is a powerful, high-level, dynamically typed, interpreted programming language. It is used in a wide range of fields, including web development, data analysis, and artificial intelligence.
+emoji: '821824146270715936'
+resources:
+- name: Codecademy
+  url: https://www.codecademy.com/learn/learn-python
+  price: free
+  pros:
+  - Interactive lessons and quizzes
+  - Hands-on experience writing Python code
+  - Introduction to key Python concepts and libraries
+  cons:
+  - May not cover more advanced topics in depth
+- name: Learn Python the Hard Way
+  url: https://learnpythonthehardway.org/
+  price: 29.99
+  pros:
+  - Comprehensive and in-depth coverage of Python
+  - Includes quizzes and exercises to test your knowledge
+  - Suitable for beginners and experienced programmers alike
+  cons:
+  - May be too challenging for some learners
+- name: Python for Everybody
+  url: https://www.py4e.com/
+  price: free
+  pros:
+  - Suitable for absolute beginners
+  - Covers key Python concepts and libraries
+  - Includes quizzes and exercises to test your knowledge
+  cons:
+  - May not cover more advanced topics in depth
+- name: Python documentation
+  url: https://docs.python.org/3/
+  price: free
+  pros:
+  - Comprehensive and up-to-date documentation
+  - Includes tutorials, guides, and reference material
+  - Suitable for beginners and experienced programmers alike
+  cons:
+  - May be too technical and dry for some learners
+- name: Python for Data Science
+  url: https://www.datacamp.com/courses/intro-to-python-for-data-science
+  price: free (with subscription)
+  pros:
+  - Focuses on using Python for data analysis and machine learning
+  - Interactive lessons and hands-on experience writing Python code
+  - Introduction to key Python libraries for data science
+  cons:
+  - May not cover more general Python concepts in depth
+- name: Python on Coursera
+  url: https://www.coursera.org/courses?query=python
+  price: varies (some courses are free, others have a fee)
+  pros:
+  - Wide variety of courses and specialization tracks
+  - Taught by experienced instructors from top universities
+  - Many courses include quizzes, projects, and certificates
+  cons:
+  - Some courses may have prerequisites or require a subscription
