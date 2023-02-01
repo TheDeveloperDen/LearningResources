@@ -12,4 +12,9 @@ resources:
     url: https://www.futurelearn.com/courses/functional-programming-haskell
     pros: [ ]
     cons: [ ]
+    
+  - name: 'Haskell: The Craft of Functional Programming'
+    url: https://simonjohnthompson.github.io/craft3e/craft3e.pdf
+    pros: [ ]
+    cons: [ ]
 
