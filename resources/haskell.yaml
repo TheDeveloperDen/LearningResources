@@ -5,7 +5,17 @@ emoji: '821823367333675058'
 resources:
   - name: Learn you a Haskell
     url: http://learnyouahaskell.com/
-    pros: [ ]
+    pros: 
+      - Good for beginners
+      - Good reputation
+    cons: [ ]
+    
+  - name: Haskell Programming from First Principles
+    url: https://haskellbook.com/
+    price: 59
+    pros: 
+      - Very good reputation
+      - Covers a very wide range of content
     cons: [ ]
 
   - name: 'Functional Programming in Haskell: Supercharge Your Coding'
