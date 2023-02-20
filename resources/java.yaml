@@ -26,3 +26,8 @@ resources:
     pros: [ ]
     cons: [ ]
 
+  - name: Mooc.fi
+    url: https://java-programming.mooc.fi/
+    pros: [ ]
+    cons: [ ]
+   
