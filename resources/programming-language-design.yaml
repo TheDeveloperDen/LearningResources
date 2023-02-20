@@ -1,0 +1,12 @@
+name: Programming Language Design
+description: Resources on language design, parsers, compilers, etc
+emoji: hammer
+resources:
+  - name: Crafting Interpreters
+    url: https://craftinginterpreters.com/
+    pros:
+      - Covers lexing, parsing, interpreting, type checking, and compiling
+      - Starts from scratch, designed for beginners
+    cons:
+      - Doesn't cover the theoretical side much
+      
