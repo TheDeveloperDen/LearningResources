@@ -27,13 +27,13 @@
       "description": "List of resources that can be used for learning / practicing the language",
       "type": "array",
       "items": {
-        "$ref": "#/$defs/resource"
+        "$ref": "#/definitions/resource"
       },
       "minItems": 1,
       "uniqueItems": true
     }
   },
-  "$defs": {
+  "definitions": {
     "resource": {
       "type": "object",
       "required": [
