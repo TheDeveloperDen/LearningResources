@@ -1,6 +1,6 @@
 name: Programming Language Design
 description: Resources on language design, parsers, compilers, etc
-emoji: hammer
+emoji: '🔨'
 resources:
   - name: Crafting Interpreters
     url: https://craftinginterpreters.com/
