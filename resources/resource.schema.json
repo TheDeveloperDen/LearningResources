@@ -20,7 +20,7 @@
       "maxLength": 256
     },
     "emoji": {
-      "description": "A Unicode emoji symbol or discord emoji ID to represent the resource, if applicable. This should generally be ",
+      "description": "A Unicode emoji symbol or discord emoji ID to represent the resource, if applicable. The emoji must be part of the main DevDen server, which isn't great design but there's not really a better way of doing it.",
       "type": "string"
     },
     "resources": {
