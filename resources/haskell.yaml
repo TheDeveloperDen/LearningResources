@@ -16,7 +16,8 @@ resources:
     pros: 
       - Very good reputation
       - Covers a very wide range of content
-    cons: [ ]
+    cons:
+      - Pricey!
     
   - name: Write Yourself a Scheme in 48 hours
     url: https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours

@@ -20,7 +20,7 @@
       "maxLength": 256
     },
     "emoji": {
-      "description": "A Unicode emoji symbol or discord emoji ID to represent the resource, if applicable. The emoji must be part of the main DevDen server, which isn't great design but there's not really a better way of doing it.",
+      "description": "A Unicode emoji glyph or Discord emoji ID to represent the resource, if applicable. The emoji must be part of the main DevDen server, which isn't great design but there's not really a better way of doing it.",
       "type": "string"
     },
     "resources": {
@@ -47,6 +47,11 @@
           "type": "string",
           "description": "The official name of the resource"
         },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the resource",
+          "maxLength": 256
+        },
         "url": {
           "type": "string",
           "description": "URL to the resource"
@@ -56,18 +61,18 @@
             "string",
             "number"
           ],
-          "description": "The price of the resource, if it has one. If the resource is free, leave empty"
+          "description": "The price of the resource, if it has one. If the resource is free, omit this field."
         },
         "pros": {
           "type": "array",
-          "description": "Array of pros for using the resource, eg 'explains difficult concepts with good analogies'",
+          "description": "Array of pros for using the resource, e.g. 'explains difficult concepts with good analogies'",
           "items": {
             "type": "string"
           }
         },
         "cons": {
           "type": "array",
-          "description": "Array of cons for using the resource, eg 'only teaches the basics rather than more advanced concepts'",
+          "description": "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
           "items": {
             "type": "string"
           }

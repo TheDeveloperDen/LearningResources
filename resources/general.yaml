@@ -2,6 +2,7 @@ name: General
 description: Things that are useful for learning any programming language, or don't fit into any other category
 resources:
   - name: Projects
+    description: A list of practical projects that anyone can solve in any programming language
     url: https://github.com/karan/Projects
     pros: []
     cons: []
