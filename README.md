@@ -17,7 +17,7 @@ at https://learningresources.developerden.org
 Simply make a PR and submit it!
 
 The format should be quite obvious from the existing files, but make sure to validate any changes under the
-[JSON Schema](/resources/resource.schema.json). If you are using VSCode, install the [YAML Extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) and this should work automatically.
+[JSON Schema](resource.schema.json). If you are using VSCode, install the [YAML Extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) and this should work automatically.
 
 GitHub will also validate any changes when you submit a PR - failing changes won't be accepted!
 
