@@ -23,4 +23,5 @@ jobs:
         uses: GrantBirki/json-yaml-validate@v1.4.0
         with:
           base_dir: resources
+          json_schema: 'resources/resource.schema.json'
           comment: "true" # enable comment mode
