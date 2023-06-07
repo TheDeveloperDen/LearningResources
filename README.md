@@ -16,7 +16,7 @@ at https://learningresources.developerden.org
 
 Simply make a PR and submit it!
 The format should be quite obvious from the existing examples, but make sure to validate any changes under the
-[JSON Schema](/resources/resource.schema.json)
+[JSON Schema](/resources/resource.schema.json). You can use a website like [this](https://www.jsonschemavalidator.net/) to do this in development, or some editors can do it automatically. GitHub should automatically check when you submit a PR. 
 
 ### Guidelines
 
