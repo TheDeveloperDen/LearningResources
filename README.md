@@ -1,10 +1,10 @@
-# LearningResources
+# Learning Resources
 
-Crowdsourced collation of resources for learning programming
+Crowd-sourced collation of resources for learning programming
 
 ## What this is
 
-This repository contains a crowdsourced compendium of curated resources for learning
+This repository contains a crowd-sourced compendium of curated resources for learning
 various programming topics. Anyone is free to contribute, or use this data at no cost (although credit is appreciated).
 
 The data is all stored in the YAML format and validated with a JSON Schema.
@@ -15,8 +15,11 @@ at https://learningresources.developerden.org
 ## How to contribute
 
 Simply make a PR and submit it!
-The format should be quite obvious from the existing examples, but make sure to validate any changes under the
-[JSON Schema](/resources/resource.schema.json). You can use a website like [this](https://www.jsonschemavalidator.net/) to do this in development, or some editors can do it automatically. GitHub should automatically check when you submit a PR. 
+
+The format should be quite obvious from the existing files, but make sure to validate any changes under the
+[JSON Schema](/resources/resource.schema.json). If you are using VSCode, install the [YAML Extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-yaml) and this should work automatically.
+
+GitHub will also validate any changes when you submit a PR - failing changes won't be accepted!
 
 ### Guidelines
 
