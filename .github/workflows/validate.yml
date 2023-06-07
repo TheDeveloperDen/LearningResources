@@ -24,4 +24,5 @@ jobs:
         with:
           base_dir: resources
           json_schema: 'resources/resource.schema.json'
+          yaml_schema: 'resources/resource.schema.json'
           comment: "true" # enable comment mode
