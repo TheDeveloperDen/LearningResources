@@ -5,7 +5,8 @@ resources:
   - name: Tutorial Spot
     url: https://www.tutorialspoint.com/java/index.htm
     pros: [ ]
-    cons: [ ]
+    cons:
+      - Slightly dated
 
   - name: Alex Lee
     url: https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA
@@ -27,7 +28,9 @@ resources:
     cons: [ ]
 
   - name: Mooc.fi
+    description: Comprehensive Java (and general programming) course provided by the University of Helsinki
     url: https://java-programming.mooc.fi/
-    pros: [ ]
+    pros:
+      - Very well respected
     cons: [ ]
    
