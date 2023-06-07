@@ -1,0 +1,7 @@
+name: General
+description: Things that are useful for learning any programming language, or don't fit into any other category
+resources:
+  - name: Projects
+    url: https://github.com/karan/Projects
+    pros: []
+    cons: []
