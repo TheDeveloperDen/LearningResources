@@ -1,0 +1,6 @@
+{
+    "yaml.schemas": {
+        // apply schema to all resources
+        "resources/resource.schema.json": "resources/*"
+    }
+}
