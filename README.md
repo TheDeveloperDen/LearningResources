@@ -10,7 +10,7 @@ various programming topics. Anyone is free to contribute, or use this data at no
 The data is all stored in the YAML format and validated with a JSON Schema.
 
 The data can be accessed with a simple REST api providing file indexing and access,
-at https://developerden.net/learning-resources
+at https://learningresources.developerden.org
 
 ## How to contribute
 
