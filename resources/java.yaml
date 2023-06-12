@@ -34,3 +34,10 @@ resources:
       - Very well respected
     cons: [ ]
    
+  - name: TheNewBoston
+    url: https://www.youtube.com/@thenewboston
+    pros:
+      - Beginner and intermediate video series
+      - Short, but a lot of videos (146 videos combined in both playlists)
+    cons:
+      - Videos may be outdated (2009 - 2012)
