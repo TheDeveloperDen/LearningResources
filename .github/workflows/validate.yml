@@ -1,7 +1,4 @@
-# This whole process is EXTREMELY dumb
-# Basically, the JSON schema validator doesn't work with YAML files - it refuses to check with the JSON schema
-# and the YAML equivalent is some extremely limited format
-# So, we convert the YAML files to JSON using a python script, then validate the JSON files against the JSON schema
+# Validates all the YAML files against the JSON schema
 
 name: Validate YAMLs against JSON Schema
 
