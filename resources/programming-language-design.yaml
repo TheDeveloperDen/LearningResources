@@ -9,4 +9,6 @@ resources:
       - Starts from scratch, designed for beginners
     cons:
       - Doesn't cover the theoretical side much
-      
+  - name: Awesome Compilers
+    url: https://github.com/aalhour/awesome-compilers
+    description: Curated list of resources for all things compilers
