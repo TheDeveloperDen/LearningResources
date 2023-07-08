@@ -12,3 +12,5 @@ resources:
   - name: Awesome Compilers
     url: https://github.com/aalhour/awesome-compilers
     description: Curated list of resources for all things compilers
+    pros: []
+    cons: []
