@@ -41,7 +41,7 @@ Once you've completed this series, you'll have a strong foundation in using Git 
 15. [Exploring GitHub's GraphQL API](15-graphql-api.md)
 16. [Exploring GitHub's REST API](16-rest-api.md)
 17. [GitHub Command-Line Tool: `hub`](17-github-cli.md)
-18. [Wrapping Up](WRAPPING_UP.md)
+18. [Wrapping Up](WRAPPING-UP.md)
 
 ## Feedback and Contributions
 
