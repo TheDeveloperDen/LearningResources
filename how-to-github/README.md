@@ -49,4 +49,5 @@ Your feedback is invaluable! If you have suggestions, improvements, or ideas for
 
 Happy learning and coding! 🎉
 
-— The GitHub Tutorial Series Team
+- [The Developer Den Team](https://github.com/TheDeveloperDen/)
+- [prime](https://github.com/PrimeTDMomega)
