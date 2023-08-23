@@ -1,0 +1,30 @@
+GitHub-Tutorial-Repository/
+│
+├── 01-introduction.md
+├── 02-setup.md
+├── 03-basic-commands.md
+├── 04-branches.md
+├── 05-pull-requests.md
+├── 06-issues.md
+├── 07-actions.md
+├── 08-collaboration.md
+├── 09-advanced-topics/
+│   ├── 01-gitignore.md
+│   ├── 02-submodules.md
+│   ├── 03-rebase.md
+│   ├── 04-merge-strategies.md
+│   └── 05-cherry-pick.md
+│
+├── 10-github-pages.md
+├── 11-code-review-guidelines.md
+├── 12-project-management.md
+├── 13-release-management.md
+├── 14-github-security.md
+│
+├── 15-git-hooks.md
+├── 16-github-apps.md
+├── 17-git-lfs.md
+├── 18-git-workflows.md
+├── 19-git-aliases.md
+│
+└── README.md
