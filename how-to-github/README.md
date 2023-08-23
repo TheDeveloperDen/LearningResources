@@ -21,10 +21,10 @@ Once you've completed this series, you'll have a strong foundation in using Git 
 
 ## Table of Contents
 
-1. [Getting Started with Git](01-getting-started.md)
-2. [Introduction to GitHub](02-introduction-to-github.md)
-3. [Creating and Cloning Repositories](03-creating-and-cloning.md)
-4. [Branching and Merging](04-branching-and-merging.md)
+1. [Getting Started with Git](01-introduction.md)
+2. [Introduction to GitHub](02-setup.md)
+3. [Creating and Cloning Repositories](03-basic-commands.md)
+4. [Branching and Merging](04-branches.md)
 5. [Pull Requests](05-pull-requests.md)
 6. [GitHUb Issues](06-issues.md)
 7. [GitHub Actions](07-actions.md)
@@ -40,8 +40,8 @@ Once you've completed this series, you'll have a strong foundation in using Git 
 14. [GitHub Security Best Practices](14-github-security.md)
 15. [Exploring GitHub's GraphQL API](15-graphql-api.md)
 16. [Exploring GitHub's REST API](16-rest-api.md)
-17. [GitHub Command-Line Tool: `hub`](17-github-hub.md)
-18. [Wrapping Up](finishing-off.md)
+17. [GitHub Command-Line Tool: `hub`](17-github-cli.md)
+18. [Wrapping Up](WRAPPING_UP.md)
 
 ## Feedback and Contributions
 
