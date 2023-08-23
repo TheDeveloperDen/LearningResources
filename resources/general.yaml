@@ -6,3 +6,9 @@ resources:
     url: https://github.com/karan/Projects
     pros: []
     cons: []
+
+ - name: FreeForDev (freefor.dev)
+   description: A list of SaaS, PaaS and IaaS offerings that have free tiers of interest to devops and infradev
+   url: https://github.com/ripienaar/free-for-dev
+   pros: [Simplicity of Development Stack]
+   cons: [Very Big Repository]
