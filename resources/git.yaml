@@ -1,0 +1,9 @@
+name: Git
+description: "An end to end guide to learn Markdown"
+emoji: '🐱'
+resources:
+  - name: "How to GitHub"
+    url: "https://github.com/PrimeTDMomega/how-to-github"
+    pros: [ ]
+    cons:
+      - "Lot of Reading"
