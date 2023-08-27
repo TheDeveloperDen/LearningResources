@@ -1,0 +1,15 @@
+name: Markdown
+description: "Markdown is a lightweight markup language used for formatting text, often used to create documents and web content with simple formatting elements."
+emoji: '⬇'
+resources:
+  - name: "Markdown Guide"
+    url: "https://www.markdownguide.org/"
+    pros: [ ]
+    cons:
+      - "Lot of Reading"
+
+  - name: "How to Markdown"
+    url: "https://github.com/PrimeTDMomega/how-to-markdown"
+    pros: [ ]
+    cons:
+      - "Lot of Reading"
