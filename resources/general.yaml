@@ -1,6 +1,11 @@
 name: General
 description: Things that are useful for learning any programming language, or don't fit into any other category
 resources:
+  - name: The Missing Semester of Your CS Education
+    description: Covers the often overlooked subjects in practical CS - shells, editors, debugging, etc
+    url: https://missing.csail.mit.edu/
+    pros: [ Created by MIT, 'Covers subjects that most tutorials might ignore, making it a great supplementary resource']
+    cons: []
   - name: Projects
     description: A list of practical projects that anyone can solve in any programming language
     url: https://github.com/karan/Projects
