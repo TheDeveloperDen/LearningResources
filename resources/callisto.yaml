@@ -1,0 +1,18 @@
+name: Callisto
+description: Callisto is a concatenative low-level programming language designed by John Mesyeti Smith in March 2024
+emoji: '821822658169536542'
+resources:
+  - name: Callisto documentation
+    url: https://callisto.mesyeti.uk/docs
+    pros:
+      - made by the creator of callisto
+      - thorough explanation
+      - useful if you know the basics of stack based programming
+    cons: []
+  - name: Callisto tour
+    url: https://callisto.mesyeti.uk/tour
+    pros:
+      - made by the creator callisto
+      - explains the basics of stack based programming so you can easily get started with callisto
+    cons:
+      - nowhere near finished
