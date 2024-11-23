@@ -1,0 +1,63 @@
+name: PHP  
+description: PHP is a widely-used, open-source, server-side scripting language designed for web development. It is particularly suitable for creating dynamic and interactive websites.  
+emoji: '🐘'  
+resources:  
+- name: PHP Manual  
+  url: https://www.php.net/manual/en/  
+  price: free  
+  pros:  
+  - Comprehensive and up-to-date documentation  
+  - Includes tutorials, guides, and reference material  
+  - Suitable for beginners and experienced developers alike  
+  cons:  
+  - May be too technical and dry for some learners  
+
+- name: W3Schools PHP Tutorial  
+  url: https://www.w3schools.com/php/  
+  price: free  
+  pros:  
+  - Beginner-friendly and easy to navigate  
+  - Includes interactive examples and a "Try it Yourself" feature  
+  - Covers essential PHP concepts and syntax  
+  cons:  
+  - May lack depth on advanced topics  
+
+- name: Codecademy PHP Course  
+  url: https://www.codecademy.com/learn/learn-php  
+  price: free (with subscription for full access)  
+  pros:  
+  - Interactive lessons and quizzes  
+  - Hands-on experience writing PHP code  
+  - Covers modern PHP features and best practices  
+  cons:  
+  - Full access requires a subscription  
+
+- name: Laracasts PHP Basics  
+  url: https://laracasts.com/series/php-for-beginners  
+  price: $15/month subscription  
+  pros:  
+  - Video tutorials by experienced developers  
+  - Covers beginner to intermediate PHP topics  
+  - Focus on practical, real-world applications  
+  cons:  
+  - Requires a subscription  
+
+- name: PHP The Right Way  
+  url: https://phptherightway.com/  
+  price: free  
+  pros:  
+  - Community-driven guide to modern PHP practices  
+  - Covers best practices, tools, and resources  
+  - Regularly updated  
+  cons:  
+  - Assumes basic familiarity with PHP  
+
+- name: Udemy PHP Courses  
+  url: https://www.udemy.com/topic/php/  
+  price: varies (usually $10–$20 during sales)  
+  pros:  
+  - Wide variety of courses for all skill levels  
+  - Affordable and often discounted  
+  - Lifetime access to purchased courses  
+  cons:  
+  - Quality may vary between courses  
