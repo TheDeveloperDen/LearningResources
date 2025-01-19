@@ -1,0 +1,43 @@
+name: SQL  
+description: SQL (Structured Query Language) is a standard programming language for managing and manipulating databases.
+emoji: '💾'  
+resources:  
+  - name: SQL Tutorial by W3Schools  
+    url: https://www.w3schools.com/sql/  
+    price: free  
+    pros:  
+      - Beginner-friendly and easy to understand  
+      - Interactive "Try it Yourself" feature for practicing SQL  
+      - Covers essential SQL commands and concepts  
+    cons:  
+      - Lacks depth for advanced SQL topics  
+
+  - name: SQL Manual by PostgreSQL (or Other RDBMS)  
+    url: https://www.postgresql.org/docs/  
+    price: free  
+    pros:  
+      - Official and comprehensive documentation  
+      - Includes advanced topics and features specific to PostgreSQL  
+      - Reliable and up-to-date  
+    cons:  
+      - Can be technical and dense for beginners  
+
+  - name: Khan Academy SQL Course  
+    url: https://www.khanacademy.org/computing/computer-programming/sql  
+    price: free  
+    pros:  
+      - Excellent for beginners  
+      - Video tutorials combined with interactive exercises  
+      - Covers practical examples and common use cases  
+    cons:  
+      - Focused more on basic and intermediate concepts  
+
+  - name: Codecademy Learn SQL Course  
+    url: https://www.codecademy.com/learn/learn-sql  
+    price: free (with subscription for full access)  
+    pros:  
+      - Hands-on, interactive lessons and quizzes  
+      - Beginner to intermediate SQL concepts covered  
+      - Provides experience with real-world database scenarios  
+    cons:  
+      - Full access requires a subscription  
