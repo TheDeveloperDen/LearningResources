@@ -4,6 +4,8 @@ emoji: '821824283965128774'
 resources:
   - name: The Rust Programming Language (Book)
     url: https://doc.rust-lang.org/book/
+    pricing:
+      model: "Free"
     pros:
       - Very detailed
       - Frequently updated
@@ -12,6 +14,8 @@ resources:
 
   - name: Rust by Example
     url: https://doc.rust-lang.org/stable/rust-by-example/
+    pricing:
+      model: "Free"
     pros:
       - Teaches concepts by example
       - Semi-Official
@@ -19,6 +23,8 @@ resources:
 
   - name: Rust Crash Course | Traversy Media
     url: https://www.youtube.com/watch?v=zF34dRivLOw
+    pricing:
+      model: "Free"
     pros:
       - Video series
     cons: [ ]

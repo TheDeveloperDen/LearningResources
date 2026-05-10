@@ -4,6 +4,8 @@ emoji: '🔨'
 resources:
   - name: Crafting Interpreters
     url: https://craftinginterpreters.com/
+    pricing:
+      model: "Free"
     pros:
       - Covers lexing, parsing, interpreting, type checking, and compiling
       - Starts from scratch, designed for beginners
@@ -12,5 +14,7 @@ resources:
   - name: Awesome Compilers
     url: https://github.com/aalhour/awesome-compilers
     description: Curated list of resources for all things compilers
+    pricing:
+      model: "Free"
     pros: []
     cons: []

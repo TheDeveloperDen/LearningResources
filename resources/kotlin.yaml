@@ -4,17 +4,23 @@ emoji: '888496555529744395'
 resources:
   - name: "Kotlin Official Website"
     url: "https://kotlinlang.org/"
+    pricing:
+      model: "Free"
     pros: [ ]
     cons: [ ]
 
   - name: "Introduction to Kotlin (Google I/O '17)"
     url: "https://www.youtube.com/watch?v=X1RVYt2QKQE"
+    pricing:
+      model: "Free"
     pros:
       - "Video for visual learners"
     cons: [ ]
 
   - name: "FreeCodeCamp.org"
     url: "https://youtu.be/F9UC9DY-vIU"
+    pricing:
+      model: "Free"
     pros:
       - "Video for visual learners"
     cons: [ ]

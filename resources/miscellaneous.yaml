@@ -4,7 +4,8 @@ emoji: '⚙️'
 resources:
   - name: Every link I wish I had as a beginner
     url: https://github.com/kealanparr/Every-link-I-wish-I-had-as-a-beginner
-    price: Mostly free, some paid resources are included
+    pricing:
+      model: "Free"
     pros:
       - A huge collection of useful links
     cons:
@@ -12,6 +13,8 @@ resources:
 
   - name: Sololearn
     url: https://www.sololearn.com/
+    pricing:
+      model: "Freemium"
     pros:
       - Easy to use
       - Lots of languages to choose from
@@ -21,6 +24,8 @@ resources:
 
   - name: LeetCode
     url: https://leetcode.com/
+    pricing:
+      model: "Freemium"
     pros:
       - Fun and difficult problems to solve
     cons:
@@ -29,6 +34,8 @@ resources:
 
   - name: Codecademy
     url: https://www.codecademy.com/
+    pricing:
+      model: "Freemium"
     pros:
       - Excellent guided learning platform
       - Beginner-friendly but continues into advanced content
@@ -41,6 +48,8 @@ resources:
 
   - name: Programiz
     url: https://www.programiz.com/
+    pricing:
+      model: "Freemium"
     pros:
       - Extensive courses/guides for many languages and frameworks
       - Balanced mix of material and projects/exercises,

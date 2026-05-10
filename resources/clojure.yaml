@@ -4,6 +4,8 @@ emoji: '821823652404265001'
 resources:
   - name: Clojure For The Brave And True
     url: https://www.braveclojure.com/clojure-for-the-brave-and-true/
+    pricing:
+      model: 'Free'
     pros:
       - Complete guide through most of the language
       - Assumes no prior knowledge of functional programming or Lisp
@@ -11,12 +13,16 @@ resources:
 
   - name: Functions Explained Through Patterns
     url: http://blog.josephwilk.net/clojure/functions-explained-through-patterns.html
+    pricing:
+      model: 'Free'
     pros:
       - Visual explanations of core Clojure functions
     cons: [ ]
 
   - name: 4clojure
     url: https://4clojure.oxal.org/
+    pricing:
+      model: 'Free'
     pros:
       - Interactive exercises
     cons:
@@ -24,6 +30,8 @@ resources:
 
   - name: Clojure by Example
     url: https://github.com/inclojure-org/clojure-by-example
+    pricing:
+      model: 'Free'
     pros:
       - Hands-on learning
       - Crash Course
@@ -32,6 +40,8 @@ resources:
 
   - name: Clojure for Java Programmers
     url: https://www.youtube.com/watch?v=P76Vbsk_3J0
+    pricing:
+      model: 'Free'
     pros:
       - Video series
       - Explains the ideas behind Clojure
@@ -40,6 +50,8 @@ resources:
 
   - name: Clojure API Cheatsheet
     url: https://clojure.org/api/cheatsheet
+    pricing:
+      model: 'Free'
     pros:
       - Overview over almost the entire standard library
       - Quick reference
@@ -47,6 +59,8 @@ resources:
 
   - name: Clojure beginner resources
     url: https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f
+    pricing:
+      model: 'Free'
     pros:
       - Collection of all kinds of resources to learn Clojure
     cons: [ ]

@@ -4,12 +4,16 @@ emoji: '821822045187866625'
 resources:
   - name: Tutorial Spot
     url: https://www.tutorialspoint.com/java/index.htm
+    pricing:
+      model: "Free"
     pros: [ ]
     cons:
       - Slightly dated
 
   - name: Alex Lee
     url: https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA
+    pricing:
+      model: "Free"
     pros:
       - Video series
       - Covers a wide range of concepts
@@ -17,6 +21,8 @@ resources:
 
   - name: Bro Code
     url: https://www.youtube.com/c/BroCodez
+    pricing:
+      model: "Free"
     pros:
       - Video series
       - Has videos on many different languages and concepts
@@ -24,18 +30,22 @@ resources:
 
   - name: Javatpoint
     url: https://www.javatpoint.com/java-tutorial
-    pros: [ ]
-    cons: [ ]
+    pricing:
+      model: "Free"
+  
 
   - name: Mooc.fi
     description: Comprehensive Java (and general programming) course provided by the University of Helsinki
     url: https://java-programming.mooc.fi/
+    pricing:
+      model: "Free"
     pros:
       - Very well respected
-    cons: [ ]
    
   - name: TheNewBoston
     url: https://www.youtube.com/@thenewboston
+    pricing:
+      model: "Free"
     pros:
       - Beginner and intermediate video series
       - Short, but a lot of videos (146 videos combined in both playlists)

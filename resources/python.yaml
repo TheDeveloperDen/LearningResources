@@ -4,7 +4,8 @@ emoji: '821824146270715936'
 resources:
 - name: Codecademy
   url: https://www.codecademy.com/learn/learn-python
-  price: free
+  pricing:
+      model: "Free"
   pros:
   - Interactive lessons and quizzes
   - Hands-on experience writing Python code
@@ -13,7 +14,9 @@ resources:
   - May not cover more advanced topics in depth
 - name: Learn Python the Hard Way
   url: https://learnpythonthehardway.org/
-  price: 29.99
+  pricing:
+      model: "One Time"
+      amount: 29.00
   pros:
   - Comprehensive and in-depth coverage of Python
   - Includes quizzes and exercises to test your knowledge
@@ -22,7 +25,8 @@ resources:
   - May be too challenging for some learners
 - name: Python for Everybody
   url: https://www.py4e.com/
-  price: free
+  pricing:
+      model: "Free"
   pros:
   - Suitable for absolute beginners
   - Covers key Python concepts and libraries
@@ -31,7 +35,8 @@ resources:
   - May not cover more advanced topics in depth
 - name: Python documentation
   url: https://docs.python.org/3/
-  price: free
+  pricing:
+      model: "Free"
   pros:
   - Comprehensive and up-to-date documentation
   - Includes tutorials, guides, and reference material
@@ -40,7 +45,8 @@ resources:
   - May be too technical and dry for some learners
 - name: Python for Data Science
   url: https://www.datacamp.com/courses/intro-to-python-for-data-science
-  price: free (with subscription)
+  pricing:
+      model: "Freemium"
   pros:
   - Focuses on using Python for data analysis and machine learning
   - Interactive lessons and hands-on experience writing Python code
@@ -49,7 +55,8 @@ resources:
   - May not cover more general Python concepts in depth
 - name: Python on Coursera
   url: https://www.coursera.org/courses?query=python
-  price: varies (some courses are free, others have a fee)
+  pricing:
+      model: "Freemium"
   pros:
   - Wide variety of courses and specialization tracks
   - Taught by experienced instructors from top universities
