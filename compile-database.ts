@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { readdir } from "node:fs/promises";
-import { MetaSchema, ResourceSchema, type Meta, type Resource } from ".";
+import { DatabaseSchema, MetaSchema, ResourceSchema, type Database, type Meta, type Resource } from ".";
 import { YAML } from "bun";
 
 type DatabaseMetadata = {
@@ -19,7 +19,7 @@ async function buildDatabase() {
     const database = {
         metadata: [] as DatabaseMetadata[],
         resources: [] as Resource[]
-    };
+    } satisfies Database;
     let hasErrors = false;
 
     for (const file of allMetaFiles.filter(f => f.endsWith(".yaml"))) {
@@ -70,6 +70,14 @@ async function buildDatabase() {
 
     if (hasErrors) {
         console.error("Build failed due to validation errors.");
+        process.exit(1);
+    }
+
+    // verify the entire database against the schema before writing
+    const finalResult = DatabaseSchema.safeParse(database);
+    if (!finalResult.success) {
+        console.error("Final Database Validation Error:");
+        console.error(finalResult.error.issues);
         process.exit(1);
     }
 
