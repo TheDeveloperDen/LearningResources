@@ -1,0 +1,49 @@
+name: Auto-Generate Files
+
+on:
+    push:
+        branches: [master]
+        paths:
+            - "metadata/**/*.yaml"
+            - "resources/**/*.yaml"
+            - "index.ts"
+            - "compile-database.ts"
+    pull_request:
+        paths:
+            - "metadata/**/*.yaml"
+            - "resources/**/*.yaml"
+            - "index.ts"
+            - "compile-database.ts"
+
+jobs:
+    generate-and-commit:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+
+        steps:
+            - name: Checkout repository
+              uses: actions/checkout@v6
+              with:
+                  ref: ${{ github.head_ref }}
+
+            - name: Setup Bun
+              uses: oven-sh/setup-bun@v2.2.0
+              with:
+                  bun-version: latest
+
+            - name: Install dependencies
+              run: bun install
+
+            - name: Run Generators
+              run: |
+                  bun run gen-database
+                  bun run gen-schemas
+
+            - name: Commit and Push Changes
+              uses: stefanzweifel/git-auto-commit-action@v5
+              with:
+                  commit_message: "chore: auto-update generated schemas and database"
+                  file_pattern: "*.schema.json database.json src/*.elm"
+                  commit_user_name: "github-actions[bot]"
+                  commit_user_email: "github-actions[bot]@users.noreply.github.com"
