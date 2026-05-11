@@ -11,7 +11,7 @@
 		"validate-resources": "ajv validate -s resource.schema.jsonc -d 'resources/**/*.yaml' --spec=draft2020 -c ajv-formats",
 		"validate-metadata": "ajv validate -s metadata.schema.jsonc -d 'metadata/**/*.yaml' --spec=draft2020 -c ajv-formats",
 		"validate-database": "touch database.json && ajv validate -s database.schema.jsonc -d database.json --spec=draft2020 -c ajv-formats",
-		"validate": "bun run gen-schemas && bun run validate-resources && bun run validate-metadata && bun run validate-database",
+		"validate": "bun run gen-schemas && bun run validate-resources && bun run validate-metadata && bun run validate-database"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
