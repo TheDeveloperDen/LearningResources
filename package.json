@@ -4,10 +4,15 @@
 	"type": "module",
 	"private": true,
 	"scripts": {
-		"gen-schema": "bun run index.ts  > resource.schema.json"
+		"gen-resource-schema": "bun run index.ts --schema resource > resource.schema.jsonc",
+		"gen-meta-schema": "bun run index.ts --schema metadata > metadata.schema.jsonc",
+		"gen-schemas": "bun run gen-resource-schema && bun run gen-meta-schema",
+		"validate-resources": "ajv validate -s resource.schema.jsonc -d 'resources/**/*.yaml' --spec=draft2020 -c ajv-formats"
 	},
 	"devDependencies": {
-		"@types/bun": "latest"
+		"@types/bun": "latest",
+		"ajv-cli": "^5.0.0",
+		"ajv-formats": "^3.0.1"
 	},
 	"peerDependencies": {
 		"typescript": "^5"

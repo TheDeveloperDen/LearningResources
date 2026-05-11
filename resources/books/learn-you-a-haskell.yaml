@@ -1,0 +1,11 @@
+name: Learn You a Haskell
+type: [Book]
+url: http://learnyouahaskell.com/
+pricing:
+  model: Free
+teaches:
+  - haskell
+pros:
+  - Good for beginners
+  - Good reputation
+cons: []

@@ -1,5 +1,25 @@
+import path from "path";
 import { parseArgs } from "util";
 import { z } from "zod";
+import fs from "node:fs";
+
+
+const topicsDir = path.join(__dirname, "./metadata/topics");
+const languagesDir = path.join(__dirname, "./metadata/languages");
+
+const validTopics = fs.readdirSync(topicsDir).map(f => f.replace(".yaml", ""));
+const validLanguages = fs.readdirSync(languagesDir).map(f => f.replace(".yaml", ""));
+
+const allValidTags = [...validTopics, ...validLanguages];
+
+if (allValidTags.length === 0) {
+    throw new Error("No metadata entities found!");
+}
+
+const EntityTagEnum = z.enum([
+    allValidTags[0],
+    ...allValidTags.slice(1)
+] as [string, ...string[]]);
 
 /**
  * The Pricing of a Resource, which can either be Free/Freemium or Paid (Subscription/One Time)
@@ -73,6 +93,10 @@ export const ResourceCategorySchema = z
     ])
     .describe("The category of the resource");
 
+const ResourceTypeSchema = z.enum(["Video", "Article", "Interactive Tutorial", "Book", "Course"]).describe(
+    "The type of the resource",
+);
+
 const ResourceSchema = z.object({
     name: z.string().describe("The official name of the resource"),
     description: z
@@ -81,6 +105,8 @@ const ResourceSchema = z.object({
         .optional()
         .describe("A brief description of the resource"),
     url: z.url().describe("URL to the resource"),
+    type: z.array(ResourceTypeSchema).min(1, "Must specify at least one resource type").describe("The type(s) of the resource, e.g. 'Video', 'Book', 'Course', etc."),
+    teaches: z.array(EntityTagEnum).min(1, "Must teach at least one topic").describe("The topics that this resource teaches."),
     pricing: PricingSchema,
     pros: z
         .array(z.string())
@@ -96,16 +122,6 @@ const ResourceSchema = z.object({
         ),
 });
 
-export const LanguageResourceSchema = z
-    .object({
-        resources: z
-            .array(ResourceSchema)
-            .min(1)
-            .describe(
-                "List of resources that can be used for learning / practicing the language",
-            ),
-    })
-    .describe("Set of resources that can be used for learning programming");
 
 export const MetaSchema = z.object({
     name: z
@@ -149,6 +165,9 @@ let schema: z.ZodObject;
 switch (values.schema?.toLowerCase()) {
     case "metadata":
         schema = MetaSchema;
+        break;
+    case "resource":
+        schema = ResourceSchema;
         break;
     default:
         console.error(`Unknown schema: ${values.schema}`);
