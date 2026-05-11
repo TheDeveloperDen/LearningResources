@@ -41,7 +41,7 @@ jobs:
                   bun run gen-schemas
 
             - name: Commit and Push Changes
-              uses: stefanzweifel/git-auto-commit-action@v5
+              uses: stefanzweifel/git-auto-commit-action@v7
               with:
                   commit_message: "chore: auto-update generated schemas and database"
                   file_pattern: "*.schema.json database.json src/*.elm"
