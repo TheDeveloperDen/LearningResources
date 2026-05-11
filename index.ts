@@ -3,48 +3,114 @@ import { z } from "zod";
 /**
  * The Pricing of a Resource, which can either be Free/Freemium or Paid (Subscription/One Time)
  */
-const PricingSchema = z.union([
-    z.object({
-        model: z.enum(["Free", "Freemium"]).describe(
-            "The Free(mium) Pricing Model of this resource. 'Free' should be used for resources where 100% (or close) of the content is free. 'Freemium' describes a pricing model where the core content is available for free, but features paid extensions. If the resource has a freemium model but the free portion is very limited, consider using 'Paid' instead and providing an estimated price for the full version. "
-        ),
-    }).strict(),
+const PricingSchema = z
+    .union([
+        z
+            .object({
+                model: z
+                    .enum(["Free", "Freemium"])
+                    .describe(
+                        "The Free(mium) Pricing Model of this resource. 'Free' should be used for resources where 100% (or close) of the content is free. 'Freemium' describes a pricing model where the core content is available for free, but features paid extensions. If the resource has a freemium model but the free portion is very limited, consider using 'Paid' instead and providing an estimated price for the full version. ",
+                    ),
+            })
+            .strict(),
 
+        z.object({
+            model: z
+                .enum(["Subscription", "One Time"])
+                .describe(
+                    "The Paid Pricing Model of this resource. 'Subscription' means the resource is paid on a recurring basis (e.g. monthly or yearly), while 'One Time' means the resource is paid with a single upfront payment. If the price varies or is not fixed, provide a close approximation. Note that the subscription renewal cycle is not specified, so if the price has different renewal cycles, provide the most common or default one (usually monthly).",
+                ),
+            amount: z
+                .number()
+                .gt(0)
+                .describe("The price of this resource, in US Dollars."),
+        }),
+    ])
+    .describe("Details about the cost of the resource.");
+
+export const LanguageDomainSchema = z.enum([
+    "Web Development",
+    "Data Science",
+    "Mobile Development",
+    "Game Development",
+    "Systems Programming",
+    "Scripting",
+    "General Purpose"
+]).describe("A domain that a programming language may be used in.");
+
+export const ProgrammingParadigmSchema = z.enum([
+    "Object-Oriented Programming",
+    "Functional Programming",
+    "Procedural Programming",
+    "Logic Programming"
+]).describe("A programming paradigm.");
+
+export const ResourceTypeSchema = z.discriminatedUnion("type", [
     z.object({
-        model: z.enum(["Subscription", "One Time"]).describe(
-            "The Paid Pricing Model of this resource. 'Subscription' means the resource is paid on a recurring basis (e.g. monthly or yearly), while 'One Time' means the resource is paid with a single upfront payment. If the price varies or is not fixed, provide a close approximation. Note that the subscription renewal cycle is not specified, so if the price has different renewal cycles, provide the most common or default one (usually monthly)."
-        ),
-        amount: z.number().gt(0)
-            .describe("The price of this resource, in US Dollars."),
-    })
-]).describe("Details about the cost of the resource.");
+        type: z.literal("Language"),
+        domains: z.array(LanguageDomainSchema).describe("The domain(s) that the programming language is commonly used in, or best suited for."),
+        paradigms: z.array(ProgrammingParadigmSchema).describe("The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."),
+    }),
+    z.object({
+        type: z.literal("Platform")
+    }).describe(
+        "A platform used to learn programming, which may teach a variety of languages and concepts."
+    )
+]).describe("The type of the resource set")
 
 
 const ResourceSchema = z.object({
     name: z.string().describe("The official name of the resource"),
-    description: z.string().max(256).optional().describe("A brief description of the resource"),
-    url: z.string().url().describe("URL to the resource"),
+    description: z
+        .string()
+        .max(256)
+        .optional()
+        .describe("A brief description of the resource"),
+    url: z.url().describe("URL to the resource"),
     pricing: PricingSchema,
-    pros: z.array(z.string()).optional().describe(
-        "Array of pros for using the resource, e.g. 'explains difficult concepts with good analogies'"
-    ),
-    cons: z.array(z.string()).optional().describe(
-        "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'"
-    ),
+    pros: z
+        .array(z.string())
+        .optional()
+        .describe(
+            "Array of pros for using the resource, e.g. 'explains difficult concepts with good analogies'",
+        ),
+    cons: z
+        .array(z.string())
+        .optional()
+        .describe(
+            "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
+        ),
 });
 
-export const LanguageResourceSchema = z.object({
-    name: z.string().describe("The name of the language"),
-    description: z.string().max(256).describe("A brief description of the language and its uses"),
-    emoji: z.string().optional().describe(
-        "A Unicode emoji glyph to represent the resource, if applicable. If there is no suitable (Unicode) emoji, omit this field. Consumers may choose to ignore this field, or replace it with a custom image."
-    ),
-    resources: z.array(ResourceSchema)
-        .min(1)
-        .describe("List of resources that can be used for learning / practicing the language"),
-}).describe("Set of resources that can be used for learning programming");
 
+export const LanguageResourceSchema = z
+    .object({
+        name: z.string().describe("The name of the language"),
+        meta: ResourceTypeSchema,
+        description: z
+            .string()
+            .max(256)
+            .describe("A brief description of the language and its uses"),
+        emoji: z
+            .string()
+            .optional()
+            .describe(
+                "A Unicode emoji glyph to represent the resource, if applicable. If there is no suitable (Unicode) emoji, omit this field. Consumers may choose to ignore this field, or replace it with a custom image.",
+            ),
+        resources: z
+            .array(ResourceSchema)
+            .min(1)
+            .describe(
+                "List of resources that can be used for learning / practicing the language",
+            ),
+    })
+    .describe("Set of resources that can be used for learning programming");
 
 export type Pricing = z.infer<typeof PricingSchema>;
 export type Resource = z.infer<typeof ResourceSchema>;
 export type LanguageResource = z.infer<typeof LanguageResourceSchema>;
+
+
+console.log('// Generated by index.ts - DO NOT EDIT THIS FILE DIRECTLY')
+console.log(JSON.stringify(z.toJSONSchema(LanguageResourceSchema, {}), null, 2));

@@ -1,5 +1,7 @@
 name: General
 description: Things that are useful for learning any programming language, or don't fit into any other category
+meta:
+  type: 'Platform'
 resources:
   - name: The Missing Semester of Your CS Education
     description: Covers the often overlooked subjects in practical CS - shells, editors, debugging, etc

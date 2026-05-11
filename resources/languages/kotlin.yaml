@@ -1,13 +1,21 @@
 name: Kotlin
 description: "Kotlin is a multi-paradigm programming language created by JetBrains that runs on the JVM, JS, and Native Platforms"
-emoji: '888496555529744395'
+emoji: "888496555529744395"
+meta:
+  type: "Language"
+  domains:
+    - "Mobile Development"
+  paradigms:
+    - "Object-Oriented Programming"
+    - "Functional Programming"
+    - "Procedural Programming"
 resources:
   - name: "Kotlin Official Website"
     url: "https://kotlinlang.org/"
     pricing:
       model: "Free"
-    pros: [ ]
-    cons: [ ]
+    pros: []
+    cons: []
 
   - name: "Introduction to Kotlin (Google I/O '17)"
     url: "https://www.youtube.com/watch?v=X1RVYt2QKQE"
@@ -15,7 +23,7 @@ resources:
       model: "Free"
     pros:
       - "Video for visual learners"
-    cons: [ ]
+    cons: []
 
   - name: "FreeCodeCamp.org"
     url: "https://youtu.be/F9UC9DY-vIU"
@@ -23,4 +31,4 @@ resources:
       model: "Free"
     pros:
       - "Video for visual learners"
-    cons: [ ]
+    cons: []

@@ -1,6 +1,11 @@
 name: Java
 description: Java is an Object Oriented language designed by James Gosling in 1995
 emoji: '821822045187866625'
+meta:
+  type: 'Language'
+  domains: []
+  paradigms: 
+  - 'Object-Oriented Programming'
 resources:
   - name: Tutorial Spot
     url: https://www.tutorialspoint.com/java/index.htm
