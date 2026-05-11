@@ -9,18 +9,21 @@ on:
 
 permissions:
   contents: read
-  pull-requests: write # enable write permissions for pull request comments
 
 jobs:
-  verify-yaml:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v6
 
-      - name: Validate JSON
-        uses: GrantBirki/json-yaml-validate@v5.0.0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2.2.0
         with:
-          base_dir: resources
-          json_schema: "resource.schema.jsonc"
-          yaml_as_json: "true" # enable YAML to JSON conversion
-          comment: "true" # enable comment mode
+          bun-version: latest
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Run validation suite
+        run: bun run validate
