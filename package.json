@@ -7,7 +7,7 @@
 		"gen-resource-schema": "bun run index.ts --schema resource > resource.schema.jsonc",
 		"gen-meta-schema": "bun run index.ts --schema metadata > metadata.schema.jsonc",
 		"gen-database-schema": "bun run index.ts --schema database > database.schema.jsonc",
-		"gen-database": "bun run index.ts > database.json",
+		"gen-database": "bun run compile-database.ts > database.json",
 		"gen-schemas": "bun run gen-resource-schema && bun run gen-meta-schema && bun run gen-database-schema",
 		"validate-resources": "ajv validate -s resource.schema.jsonc -d 'resources/**/*.yaml' --spec=draft2020 -c ajv-formats",
 		"validate-metadata": "ajv validate -s metadata.schema.jsonc -d 'metadata/**/*.yaml' --spec=draft2020 -c ajv-formats",
