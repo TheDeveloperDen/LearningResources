@@ -4,8 +4,6 @@ name: Validate YAMLs against JSON Schema
 
 on:
   push:
-    branches:
-      - master
   pull_request:
   workflow_dispatch:
 
@@ -23,6 +21,6 @@ jobs:
         uses: GrantBirki/json-yaml-validate@v1.5.0
         with:
           base_dir: resources
-          json_schema: "resource.schema.json"
+          json_schema: "resource.schema.jsonc"
           yaml_as_json: "true" # enable YAML to JSON conversion
           comment: "true" # enable comment mode
