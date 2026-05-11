@@ -120,7 +120,7 @@ export const ResourceSchema = z.object({
         .describe(
             "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
         ),
-});
+}).strict();
 
 
 export const MetaSchema = z.object({
@@ -146,16 +146,16 @@ export const MetaSchema = z.object({
             "The domain(s) that the entity is commonly used in, or best suited for.",
         ),
     category: ResourceCategorySchema,
-});
+}).strict();
 
 export const CompiledMetaSchema = MetaSchema.extend({
   id: z.string().describe("The unique identifier of the entity"),
-});
+}).strict();
 
 export const DatabaseSchema = z.object({
   metadata: z.array(CompiledMetaSchema).describe("List of all entities in the system"),
   resources: z.array(ResourceSchema).describe("List of all learning resources"),
-});
+}).strict();
 
 export type Meta = z.infer<typeof MetaSchema>;
 export type Resource = z.infer<typeof ResourceSchema>;
