@@ -1,0 +1,12 @@
+name: Clojure by Example
+type: [Article]
+url: https://github.com/inclojure-org/clojure-by-example
+pricing:
+  model: Free
+teaches:
+  - clojure
+pros:
+  - Hands-on learning
+  - Crash Course
+cons:
+  - No thorough explanations for complete programming beginners

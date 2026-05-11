@@ -1,0 +1,13 @@
+name: Python on Coursera
+type: [Course]
+url: https://www.coursera.org/courses?query=python
+pricing:
+  model: Freemium
+teaches:
+  - python
+pros:
+  - Wide variety of courses and specialization tracks
+  - Taught by experienced instructors from top universities
+  - Many courses include quizzes, projects, and certificates
+cons:
+  - Some courses may have prerequisites or require a subscription

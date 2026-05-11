@@ -1,0 +1,9 @@
+name: "Haskell: The Craft of Functional Programming"
+type: [Book]
+url: https://simonjohnthompson.github.io/craft3e/craft3e.pdf
+pricing:
+  model: Free
+teaches:
+  - haskell
+pros: []
+cons: []

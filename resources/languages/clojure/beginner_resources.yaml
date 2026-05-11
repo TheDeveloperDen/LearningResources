@@ -1,0 +1,10 @@
+name: Clojure beginner resources
+type: [Article]
+url: https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f
+pricing:
+  model: Free
+teaches:
+  - clojure
+pros:
+  - Collection of all kinds of resources to learn Clojure
+cons: []

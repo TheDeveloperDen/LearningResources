@@ -1,0 +1,10 @@
+name: FreeCodeCamp.org
+type: [Video]
+url: https://youtu.be/F9UC9DY-vIU
+pricing:
+  model: Free
+teaches:
+  - kotlin
+pros:
+  - Video for visual learners
+cons: []

@@ -1,0 +1,12 @@
+name: The Rust Programming Language (Book)
+type: [Book]
+url: https://doc.rust-lang.org/book/
+pricing:
+  model: Free
+teaches:
+  - rust
+pros:
+  - Very detailed
+  - Frequently updated
+  - Semi-Official
+cons: []

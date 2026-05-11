@@ -1,0 +1,14 @@
+name: Learn Python the Hard Way
+type: [Book]
+url: https://learnpythonthehardway.org/
+pricing:
+  model: "One Time"
+  amount: 29
+teaches:
+  - python
+pros:
+  - Comprehensive and in-depth coverage of Python
+  - Includes quizzes and exercises to test your knowledge
+  - Suitable for beginners and experienced programmers alike
+cons:
+  - May be too challenging for some learners

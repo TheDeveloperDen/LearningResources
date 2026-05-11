@@ -1,0 +1,11 @@
+name: Clojure API Cheatsheet
+type: [Article]
+url: https://clojure.org/api/cheatsheet
+pricing:
+  model: Free
+teaches:
+  - clojure
+pros:
+  - Overview over almost the entire standard library
+  - Quick reference
+cons: []

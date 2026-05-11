@@ -1,0 +1,10 @@
+name: Functions Explained Through Patterns
+type: [Article]
+url: http://blog.josephwilk.net/clojure/functions-explained-through-patterns.html
+pricing:
+  model: Free
+teaches:
+  - clojure
+pros:
+  - Visual explanations of core Clojure functions
+cons: []

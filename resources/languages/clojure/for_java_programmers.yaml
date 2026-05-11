@@ -1,0 +1,12 @@
+name: Clojure for Java Programmers
+type: [Video]
+url: https://www.youtube.com/watch?v=P76Vbsk_3J0
+pricing:
+  model: Free
+teaches:
+  - clojure
+pros:
+  - Video series
+  - Explains the ideas behind Clojure
+cons:
+  - Mostly aimed at people from an OOP background

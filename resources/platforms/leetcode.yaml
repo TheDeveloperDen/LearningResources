@@ -1,0 +1,12 @@
+name: LeetCode
+type: [Interactive Tutorial]
+url: https://leetcode.com/
+pricing:
+  model: Freemium
+teaches:
+  - general
+pros:
+  - Fun and difficult problems to solve
+cons:
+  - Not very beginner friendly
+  - Some content requires a paid account

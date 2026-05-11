@@ -1,0 +1,10 @@
+name: PHP
+description: PHP is a widely-used, open-source, server-side scripting language designed for web development. It is particularly suitable for creating dynamic and interactive websites.
+domains:
+  - "Web Development"
+category:
+  type: "Language"
+  paradigms:
+    - "Procedural Programming"
+    - "Object-Oriented Programming"
+    - "Functional Programming"

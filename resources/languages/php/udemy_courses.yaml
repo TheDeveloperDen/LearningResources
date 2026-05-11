@@ -1,0 +1,14 @@
+name: Udemy PHP Courses
+type: [Course]
+url: https://www.udemy.com/topic/php/
+pricing:
+  model: "One Time"
+  amount: 29.99
+teaches:
+  - php
+pros:
+  - Wide variety of courses for all skill levels
+  - Affordable and often discounted
+  - Lifetime access to purchased courses
+cons:
+  - Quality may vary between courses

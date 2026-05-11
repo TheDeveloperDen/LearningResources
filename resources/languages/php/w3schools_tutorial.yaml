@@ -1,0 +1,13 @@
+name: W3Schools PHP Tutorial
+type: [Interactive Tutorial]
+url: https://www.w3schools.com/php/
+pricing:
+  model: Free
+teaches:
+  - php
+pros:
+  - Beginner-friendly and easy to navigate
+  - Includes interactive examples and a "Try it Yourself" feature
+  - Covers essential PHP concepts and syntax
+cons:
+  - May lack depth on advanced topics

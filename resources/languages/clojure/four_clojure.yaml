@@ -1,0 +1,11 @@
+name: 4clojure
+type: [Interactive Tutorial]
+url: https://4clojure.oxal.org/
+pricing:
+  model: Free
+teaches:
+  - clojure
+pros:
+  - Interactive exercises
+cons:
+  - No tutorial from the ground up

@@ -1,0 +1,13 @@
+name: Python for Data Science
+type: [Course]
+url: https://www.datacamp.com/courses/intro-to-python-for-data-science
+pricing:
+  model: Freemium
+teaches:
+  - python
+pros:
+  - Focuses on using Python for data analysis and machine learning
+  - Interactive lessons and hands-on experience writing Python code
+  - Introduction to key Python libraries for data science
+cons:
+  - May not cover more general Python concepts in depth

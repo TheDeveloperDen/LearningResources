@@ -39,7 +39,17 @@
       "items": {
         "type": "string",
         "enum": [
+          "general",
+          "programming-language-design",
           "git",
+          "clojure",
+          "cpp",
+          "java",
+          "rust",
+          "sql",
+          "php",
+          "python",
+          "kotlin",
           "haskell"
         ]
       },

@@ -1,0 +1,11 @@
+name: Haskell Programming from First Principles
+type: [Book]
+url: https://haskellbook.com/
+pricing:
+  model: "One Time"
+  amount: 59
+teaches:
+  - haskell
+pros:
+  - Very good reputation
+  - Covers a very wide range of content

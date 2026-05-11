@@ -1,0 +1,11 @@
+name: Alex Lee
+type: [Video]
+url: https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA
+pricing:
+  model: Free
+teaches:
+  - java
+pros:
+  - Video series
+  - Covers a wide range of concepts
+cons: []

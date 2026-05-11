@@ -1,0 +1,10 @@
+name: Mooc.fi
+description: Comprehensive Java (and general programming) course provided by the University of Helsinki
+type: [Course]
+url: https://java-programming.mooc.fi/
+pricing:
+  model: Free
+teaches:
+  - java
+pros:
+  - Very well respected
