@@ -197,5 +197,7 @@ function main() {
     console.log(JSON.stringify(z.toJSONSchema(schema, {}), null, 2));
 }
 
-main();
+if (import.meta.main) {
+    main();
+}
 
