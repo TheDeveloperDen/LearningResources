@@ -14,6 +14,7 @@ on:
             - "resources/**/*.yaml"
             - "index.ts"
             - "compile-database.ts"
+    workflow_dispatch:
 
 jobs:
     generate-and-commit:
