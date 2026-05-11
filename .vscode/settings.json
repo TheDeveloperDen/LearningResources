@@ -1,7 +1,7 @@
 {
 	"yaml.schemas": {
-		"resource.schema.jsonc": "resources/**/*.yaml",
-		"metadata.schema.jsonc": "metadata/**/*.yaml",
-    "database.schema.jsonc": "database.json"
+		"resource.schema.json": "resources/**/*.yaml",
+		"metadata.schema.json": "metadata/**/*.yaml",
+    "database.schema.json": "database.json"
 	}
 }

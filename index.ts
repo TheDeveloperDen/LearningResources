@@ -194,8 +194,9 @@ function main() {
             process.exit(1);
     }
 
-    console.log(header);
-    console.log(JSON.stringify(z.toJSONSchema(schema, {}), null, 2));
+    const jsonSchema = z.toJSONSchema(schema, {});
+    jsonSchema.$comment = header;
+    console.log(JSON.stringify(jsonSchema, null, 2));
 }
 
 if (import.meta.main) {
