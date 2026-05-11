@@ -7,8 +7,9 @@ import fs from "node:fs";
 const topicsDir = path.join(__dirname, "./metadata/topics");
 const languagesDir = path.join(__dirname, "./metadata/languages");
 
-const validTopics = fs.readdirSync(topicsDir).map(f => f.replace(".yaml", ""));
-const validLanguages = fs.readdirSync(languagesDir).map(f => f.replace(".yaml", ""));
+export const fileNameToId = (fileName: string) => path.basename(fileName, ".yaml");
+const validTopics = fs.readdirSync(topicsDir).map(fileNameToId);
+const validLanguages = fs.readdirSync(languagesDir).map(fileNameToId);
 
 const allValidTags = [...validTopics, ...validLanguages];
 

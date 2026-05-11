@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import { readdir } from "node:fs/promises";
-import { DatabaseSchema, MetaSchema, ResourceSchema, type Database, type Meta, type Resource } from ".";
+import { DatabaseSchema, fileNameToId, MetaSchema, ResourceSchema, type Database, type Meta, type Resource } from ".";
 import { YAML } from "bun";
 
 type DatabaseMetadata = {
@@ -26,7 +26,7 @@ async function buildDatabase() {
         const filePath = path.join(metaDir, file);
         const fileContent = await fs.promises.readFile(filePath, "utf-8");
 
-        const entityId = path.basename(file, ".yaml");
+        const entityId = fileNameToId(file);
 
         const data = YAML.parse(fileContent);
         const result = MetaSchema.safeParse(data);
