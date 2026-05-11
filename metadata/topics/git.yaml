@@ -1,0 +1,10 @@
+name: Git
+description: A distributed version control system for tracking changes in source code during software development.
+emoji: 🔀
+category:
+  type: "Tool"
+domains:
+  - DevOps
+
+# beginner-friendliness: 3
+# related-entities: [ "GitHub", "Bash"]
