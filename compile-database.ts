@@ -13,8 +13,8 @@ async function buildDatabase() {
     const metaDir = path.join(__dirname, "./metadata");
     const resourcesDir = path.join(__dirname, "./resources");
 
-    const allMetaFiles = await readdir(metaDir, { recursive: true, });
-    const allResourceFiles = await readdir(resourcesDir, { recursive: true, });
+    const allMetaFiles = (await readdir(metaDir, { recursive: true, })).toSorted();
+    const allResourceFiles = (await readdir(resourcesDir, { recursive: true, })).toSorted();
 
     const database = {
         metadata: [] as DatabaseMetadata[],

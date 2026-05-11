@@ -31,6 +31,19 @@
       }
     },
     {
+      "id": "haskell",
+      "name": "Haskell",
+      "description": "Haskell is a purely functional programming language commonly used in finance and academics",
+      "emoji": "821823367333675058",
+      "domains": [],
+      "category": {
+        "type": "Language",
+        "paradigms": [
+          "Functional Programming"
+        ]
+      }
+    },
+    {
       "id": "java",
       "name": "Java",
       "description": "Java is an Object Oriented language designed by James Gosling in 1995",
@@ -44,31 +57,20 @@
       }
     },
     {
-      "id": "rust",
-      "name": "Rust",
-      "description": "Rust is a multi-paradigm systems language designed by Graydon Hoare in 2010",
-      "emoji": "821824283965128774",
+      "id": "kotlin",
+      "name": "Kotlin",
+      "description": "Kotlin is a multi-paradigm programming language created by JetBrains that runs on the JVM, JS, and Native Platforms",
+      "emoji": "888496555529744395",
       "domains": [
-        "Systems Programming",
-        "Web Development",
-        "Game Development"
+        "Mobile Development"
       ],
       "category": {
         "type": "Language",
         "paradigms": [
-          "Procedural Programming",
-          "Functional Programming"
+          "Object-Oriented Programming",
+          "Functional Programming",
+          "Procedural Programming"
         ]
-      }
-    },
-    {
-      "id": "sql",
-      "name": "SQL",
-      "description": "SQL (Structured Query Language) is a standard programming language for managing and manipulating databases.",
-      "domains": [],
-      "category": {
-        "type": "Language",
-        "paradigms": []
       }
     },
     {
@@ -106,48 +108,37 @@
       }
     },
     {
-      "id": "kotlin",
-      "name": "Kotlin",
-      "description": "Kotlin is a multi-paradigm programming language created by JetBrains that runs on the JVM, JS, and Native Platforms",
-      "emoji": "888496555529744395",
+      "id": "rust",
+      "name": "Rust",
+      "description": "Rust is a multi-paradigm systems language designed by Graydon Hoare in 2010",
+      "emoji": "821824283965128774",
       "domains": [
-        "Mobile Development"
+        "Systems Programming",
+        "Web Development",
+        "Game Development"
       ],
       "category": {
         "type": "Language",
         "paradigms": [
-          "Object-Oriented Programming",
-          "Functional Programming",
-          "Procedural Programming"
+          "Procedural Programming",
+          "Functional Programming"
         ]
       }
     },
     {
-      "id": "haskell",
-      "name": "Haskell",
-      "description": "Haskell is a purely functional programming language commonly used in finance and academics",
-      "emoji": "821823367333675058",
+      "id": "sql",
+      "name": "SQL",
+      "description": "SQL (Structured Query Language) is a standard programming language for managing and manipulating databases.",
       "domains": [],
       "category": {
         "type": "Language",
-        "paradigms": [
-          "Functional Programming"
-        ]
+        "paradigms": []
       }
     },
     {
       "id": "general",
       "name": "General",
       "description": "Resources that are broadly useful for learning programming, regardless of language.",
-      "domains": [],
-      "category": {
-        "type": "Platform"
-      }
-    },
-    {
-      "id": "programming-language-design",
-      "name": "Programming Language Design",
-      "description": "Resources on language design, parsers, compilers, and related concepts.",
       "domains": [],
       "category": {
         "type": "Platform"
@@ -164,111 +155,18 @@
       "category": {
         "type": "Tool"
       }
+    },
+    {
+      "id": "programming-language-design",
+      "name": "Programming Language Design",
+      "description": "Resources on language design, parsers, compilers, and related concepts.",
+      "domains": [],
+      "category": {
+        "type": "Platform"
+      }
     }
   ],
   "resources": [
-    {
-      "name": "Programiz",
-      "url": "https://www.programiz.com/",
-      "type": [
-        "Interactive Tutorial"
-      ],
-      "teaches": [
-        "general"
-      ],
-      "pricing": {
-        "model": "Freemium"
-      },
-      "pros": [
-        "Extensive courses/guides for many languages and frameworks",
-        "Balanced mix of material and projects/exercises"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Every link I wish I had as a beginner",
-      "url": "https://github.com/kealanparr/Every-link-I-wish-I-had-as-a-beginner",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "general"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "A huge collection of useful links"
-      ],
-      "cons": [
-        "Can be overwhelming and hard to navigate"
-      ]
-    },
-    {
-      "name": "Codecademy",
-      "url": "https://www.codecademy.com/",
-      "type": [
-        "Interactive Tutorial"
-      ],
-      "teaches": [
-        "general"
-      ],
-      "pricing": {
-        "model": "Freemium"
-      },
-      "pros": [
-        "Excellent guided learning platform",
-        "Beginner-friendly but continues into advanced content",
-        "Fully in-browser and zero setup",
-        "Very useful paid features including career track bootcamps"
-      ],
-      "cons": [
-        "Some content requires a paid subscription",
-        "Limited coverage of some topics (free plan)",
-        "Only select languages and frameworks available"
-      ]
-    },
-    {
-      "name": "Sololearn",
-      "url": "https://www.sololearn.com/",
-      "type": [
-        "Interactive Tutorial"
-      ],
-      "teaches": [
-        "general"
-      ],
-      "pricing": {
-        "model": "Freemium"
-      },
-      "pros": [
-        "Easy to use",
-        "Lots of languages to choose from"
-      ],
-      "cons": [
-        "Doesn't teach things in a real world example",
-        "Doesn't cover some topics very deeply"
-      ]
-    },
-    {
-      "name": "LeetCode",
-      "url": "https://leetcode.com/",
-      "type": [
-        "Interactive Tutorial"
-      ],
-      "teaches": [
-        "general"
-      ],
-      "pricing": {
-        "model": "Freemium"
-      },
-      "pros": [
-        "Fun and difficult problems to solve"
-      ],
-      "cons": [
-        "Not very beginner friendly",
-        "Some content requires a paid account"
-      ]
-    },
     {
       "name": "Learn You a Haskell",
       "url": "http://learnyouahaskell.com/",
@@ -288,68 +186,223 @@
       "cons": []
     },
     {
-      "name": "Projects",
-      "description": "A list of practical projects that anyone can solve in any programming language",
-      "url": "https://github.com/karan/Projects",
+      "name": "Clojure API Cheatsheet",
+      "url": "https://clojure.org/api/cheatsheet",
       "type": [
         "Article"
       ],
       "teaches": [
-        "general"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [],
-      "cons": []
-    },
-    {
-      "name": "The Missing Semester of Your CS Education",
-      "description": "Covers the often overlooked subjects in practical CS - shells, editors, debugging, etc",
-      "url": "https://missing.csail.mit.edu/",
-      "type": [
-        "Course"
-      ],
-      "teaches": [
-        "general"
+        "clojure"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Created by MIT",
-        "Covers subjects that most tutorials might ignore, making it a great supplementary resource"
+        "Overview over almost the entire standard library",
+        "Quick reference"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Clojure beginner resources",
+      "url": "https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "clojure"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Collection of all kinds of resources to learn Clojure"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Clojure by Example",
+      "url": "https://github.com/inclojure-org/clojure-by-example",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "clojure"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Hands-on learning",
+        "Crash Course"
+      ],
+      "cons": [
+        "No thorough explanations for complete programming beginners"
       ]
     },
     {
-      "name": "Crafting Interpreters",
-      "url": "https://craftinginterpreters.com/",
+      "name": "Clojure for Java Programmers",
+      "url": "https://www.youtube.com/watch?v=P76Vbsk_3J0",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "clojure"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Video series",
+        "Explains the ideas behind Clojure"
+      ],
+      "cons": [
+        "Mostly aimed at people from an OOP background"
+      ]
+    },
+    {
+      "name": "Clojure For The Brave And True",
+      "url": "https://www.braveclojure.com/clojure-for-the-brave-and-true/",
       "type": [
         "Book"
       ],
       "teaches": [
-        "programming-language-design"
+        "clojure"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Covers lexing, parsing, interpreting, type checking, and compiling",
-        "Starts from scratch, designed for beginners"
+        "Complete guide through most of the language",
+        "Assumes no prior knowledge of functional programming or Lisp"
+      ],
+      "cons": []
+    },
+    {
+      "name": "4clojure",
+      "url": "https://4clojure.oxal.org/",
+      "type": [
+        "Interactive Tutorial"
+      ],
+      "teaches": [
+        "clojure"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Interactive exercises"
       ],
       "cons": [
-        "Doesn't cover the theoretical side much"
+        "No tutorial from the ground up"
       ]
     },
     {
-      "name": "Awesome Compilers",
-      "description": "Curated list of resources for all things compilers",
-      "url": "https://github.com/aalhour/awesome-compilers",
+      "name": "Functions Explained Through Patterns",
+      "url": "http://blog.josephwilk.net/clojure/functions-explained-through-patterns.html",
       "type": [
         "Article"
       ],
       "teaches": [
-        "programming-language-design"
+        "clojure"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Visual explanations of core Clojure functions"
+      ],
+      "cons": []
+    },
+    {
+      "name": "C++ Core Guidelines",
+      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "cpp"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Collection of best practices for most aspects of the language",
+        "Bite-sized titled entries, making it easy to navigate",
+        "Contains examples to take as guide"
+      ],
+      "cons": [
+        "Requires some prior understanding of the language"
+      ]
+    },
+    {
+      "name": "cppreference.com",
+      "url": "https://en.cppreference.com/",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "cpp"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Documentation about the entirety of the language and the standard library",
+        "Apt for everyone in the learning spectrum, from beginners to advanced users"
+      ],
+      "cons": [
+        "The site can become confusing and overwhelming to navigate"
+      ]
+    },
+    {
+      "name": "Modernes C++",
+      "url": "https://www.modernescpp.com/",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "cpp"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Large series of blog posts about often less taught APIs and best practices",
+        "Very detailed explanations with explicit examples",
+        "Posts about new features less frequently found on the internet"
+      ],
+      "cons": [
+        "Requires intermediate-advanced knowledge of the language and its feature-set"
+      ]
+    },
+    {
+      "name": "C++ - Video Playlist",
+      "url": "https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "cpp"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Teaches a large portion of the language's workings for best usage",
+        "Thorough explanations",
+        "Useful for absolute beginners as well as intermediate level"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Haskell: The Craft of Functional Programming",
+      "url": "https://simonjohnthompson.github.io/craft3e/craft3e.pdf",
+      "type": [
+        "Book"
+      ],
+      "teaches": [
+        "haskell"
       ],
       "pricing": {
         "model": "Free"
@@ -358,66 +411,354 @@
       "cons": []
     },
     {
-      "name": "Python for Data Science",
-      "url": "https://www.datacamp.com/courses/intro-to-python-for-data-science",
+      "name": "Functional Programming in Haskell: Supercharge Your Coding",
+      "url": "https://www.futurelearn.com/courses/functional-programming-haskell",
       "type": [
         "Course"
       ],
       "teaches": [
-        "python"
+        "haskell"
       ],
       "pricing": {
-        "model": "Freemium"
+        "model": "Free"
       },
-      "pros": [
-        "Focuses on using Python for data analysis and machine learning",
-        "Interactive lessons and hands-on experience writing Python code",
-        "Introduction to key Python libraries for data science"
-      ],
+      "pros": [],
       "cons": [
-        "May not cover more general Python concepts in depth"
+        "May be a waitlist to get access"
       ]
     },
     {
-      "name": "Python on Coursera",
-      "url": "https://www.coursera.org/courses?query=python",
+      "name": "Haskell Programming from First Principles",
+      "url": "https://haskellbook.com/",
       "type": [
-        "Course"
+        "Book"
       ],
       "teaches": [
-        "python"
+        "haskell"
       ],
       "pricing": {
-        "model": "Freemium"
+        "model": "One Time",
+        "amount": 59
       },
       "pros": [
-        "Wide variety of courses and specialization tracks",
-        "Taught by experienced instructors from top universities",
-        "Many courses include quizzes, projects, and certificates"
-      ],
-      "cons": [
-        "Some courses may have prerequisites or require a subscription"
+        "Very good reputation",
+        "Covers a very wide range of content"
       ]
     },
     {
-      "name": "Python for Everybody",
-      "url": "https://www.py4e.com/",
+      "name": "Haskell Wikibooks",
+      "url": "https://en.wikibooks.org/wiki/Haskell",
       "type": [
-        "Course"
+        "Book"
       ],
       "teaches": [
-        "python"
+        "haskell"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Suitable for absolute beginners",
-        "Covers key Python concepts and libraries",
-        "Includes quizzes and exercises to test your knowledge"
+        "Wide range of content",
+        "Explains most things fairly simply"
       ],
       "cons": [
-        "May not cover more advanced topics in depth"
+        "Some information may be outdated"
+      ]
+    },
+    {
+      "name": "Write Yourself a Scheme in 48 hours",
+      "url": "https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours",
+      "type": [
+        "Book"
+      ],
+      "teaches": [
+        "haskell"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Designed for beginners",
+        "Learn by making a real project (creating your own small programming language)"
+      ],
+      "cons": [
+        "Moves quite quickly"
+      ]
+    },
+    {
+      "name": "Alex Lee",
+      "url": "https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "java"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Video series",
+        "Covers a wide range of concepts"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Bro Code",
+      "url": "https://www.youtube.com/c/BroCodez",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "java"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Video series",
+        "Has videos on many different languages and concepts"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Javatpoint",
+      "url": "https://www.javatpoint.com/java-tutorial",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "java"
+      ],
+      "pricing": {
+        "model": "Free"
+      }
+    },
+    {
+      "name": "Mooc.fi",
+      "description": "Comprehensive Java (and general programming) course provided by the University of Helsinki",
+      "url": "https://java-programming.mooc.fi/",
+      "type": [
+        "Course"
+      ],
+      "teaches": [
+        "java"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Very well respected"
+      ]
+    },
+    {
+      "name": "TheNewBoston",
+      "url": "https://www.youtube.com/@thenewboston",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "java"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Beginner and intermediate video series",
+        "Short, but a lot of videos (146 videos combined in both playlists)"
+      ],
+      "cons": [
+        "Videos may be outdated (2009 - 2012)"
+      ]
+    },
+    {
+      "name": "Tutorial Spot",
+      "url": "https://www.tutorialspoint.com/java/index.htm",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "java"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [],
+      "cons": [
+        "Slightly dated"
+      ]
+    },
+    {
+      "name": "FreeCodeCamp.org",
+      "url": "https://youtu.be/F9UC9DY-vIU",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "kotlin"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Video for visual learners"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Introduction to Kotlin (Google I/O '17)",
+      "url": "https://www.youtube.com/watch?v=X1RVYt2QKQE",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "kotlin"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Video for visual learners"
+      ],
+      "cons": []
+    },
+    {
+      "name": "Kotlin Official Website",
+      "url": "https://kotlinlang.org/",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "kotlin"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [],
+      "cons": []
+    },
+    {
+      "name": "Codecademy PHP Course",
+      "url": "https://www.codecademy.com/learn/learn-php",
+      "type": [
+        "Interactive Tutorial"
+      ],
+      "teaches": [
+        "php"
+      ],
+      "pricing": {
+        "model": "Freemium"
+      },
+      "pros": [
+        "Interactive lessons and quizzes",
+        "Hands-on experience writing PHP code",
+        "Covers modern PHP features and best practices"
+      ],
+      "cons": [
+        "Full access requires a subscription"
+      ]
+    },
+    {
+      "name": "Laracasts PHP Basics",
+      "url": "https://laracasts.com/series/php-for-beginners",
+      "type": [
+        "Video"
+      ],
+      "teaches": [
+        "php"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Video tutorials by experienced developers",
+        "Covers beginner to intermediate PHP topics",
+        "Focus on practical, real-world applications"
+      ]
+    },
+    {
+      "name": "PHP Manual",
+      "url": "https://www.php.net/manual/en/",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "php"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Comprehensive and up-to-date documentation",
+        "Includes tutorials, guides, and reference material",
+        "Suitable for beginners and experienced developers alike"
+      ],
+      "cons": [
+        "May be too technical and dry for some learners"
+      ]
+    },
+    {
+      "name": "PHP The Right Way",
+      "url": "https://phptherightway.com/",
+      "type": [
+        "Article"
+      ],
+      "teaches": [
+        "php"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Community-driven guide to modern PHP practices",
+        "Covers best practices, tools, and resources",
+        "Regularly updated"
+      ],
+      "cons": [
+        "Assumes basic familiarity with PHP"
+      ]
+    },
+    {
+      "name": "Udemy PHP Courses",
+      "url": "https://www.udemy.com/topic/php/",
+      "type": [
+        "Course"
+      ],
+      "teaches": [
+        "php"
+      ],
+      "pricing": {
+        "model": "One Time",
+        "amount": 29.99
+      },
+      "pros": [
+        "Wide variety of courses for all skill levels",
+        "Affordable and often discounted",
+        "Lifetime access to purchased courses"
+      ],
+      "cons": [
+        "Quality may vary between courses"
+      ]
+    },
+    {
+      "name": "W3Schools PHP Tutorial",
+      "url": "https://www.w3schools.com/php/",
+      "type": [
+        "Interactive Tutorial"
+      ],
+      "teaches": [
+        "php"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Beginner-friendly and easy to navigate",
+        "Includes interactive examples and a \"Try it Yourself\" feature",
+        "Covers essential PHP concepts and syntax"
+      ],
+      "cons": [
+        "May lack depth on advanced topics"
       ]
     },
     {
@@ -485,6 +826,69 @@
       ]
     },
     {
+      "name": "Python for Data Science",
+      "url": "https://www.datacamp.com/courses/intro-to-python-for-data-science",
+      "type": [
+        "Course"
+      ],
+      "teaches": [
+        "python"
+      ],
+      "pricing": {
+        "model": "Freemium"
+      },
+      "pros": [
+        "Focuses on using Python for data analysis and machine learning",
+        "Interactive lessons and hands-on experience writing Python code",
+        "Introduction to key Python libraries for data science"
+      ],
+      "cons": [
+        "May not cover more general Python concepts in depth"
+      ]
+    },
+    {
+      "name": "Python for Everybody",
+      "url": "https://www.py4e.com/",
+      "type": [
+        "Course"
+      ],
+      "teaches": [
+        "python"
+      ],
+      "pricing": {
+        "model": "Free"
+      },
+      "pros": [
+        "Suitable for absolute beginners",
+        "Covers key Python concepts and libraries",
+        "Includes quizzes and exercises to test your knowledge"
+      ],
+      "cons": [
+        "May not cover more advanced topics in depth"
+      ]
+    },
+    {
+      "name": "Python on Coursera",
+      "url": "https://www.coursera.org/courses?query=python",
+      "type": [
+        "Course"
+      ],
+      "teaches": [
+        "python"
+      ],
+      "pricing": {
+        "model": "Freemium"
+      },
+      "pros": [
+        "Wide variety of courses and specialization tracks",
+        "Taught by experienced instructors from top universities",
+        "Many courses include quizzes, projects, and certificates"
+      ],
+      "cons": [
+        "Some courses may have prerequisites or require a subscription"
+      ]
+    },
+    {
       "name": "The Rust Programming Language (Book)",
       "url": "https://doc.rust-lang.org/book/",
       "type": [
@@ -500,23 +904,6 @@
         "Very detailed",
         "Frequently updated",
         "Semi-Official"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Rust Crash Course | Traversy Media",
-      "url": "https://www.youtube.com/watch?v=zF34dRivLOw",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "rust"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Video series"
       ],
       "cons": []
     },
@@ -539,132 +926,25 @@
       "cons": []
     },
     {
-      "name": "PHP The Right Way",
-      "url": "https://phptherightway.com/",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "php"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Community-driven guide to modern PHP practices",
-        "Covers best practices, tools, and resources",
-        "Regularly updated"
-      ],
-      "cons": [
-        "Assumes basic familiarity with PHP"
-      ]
-    },
-    {
-      "name": "Laracasts PHP Basics",
-      "url": "https://laracasts.com/series/php-for-beginners",
+      "name": "Rust Crash Course | Traversy Media",
+      "url": "https://www.youtube.com/watch?v=zF34dRivLOw",
       "type": [
         "Video"
       ],
       "teaches": [
-        "php"
+        "rust"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Video tutorials by experienced developers",
-        "Covers beginner to intermediate PHP topics",
-        "Focus on practical, real-world applications"
-      ]
+        "Video series"
+      ],
+      "cons": []
     },
     {
-      "name": "W3Schools PHP Tutorial",
-      "url": "https://www.w3schools.com/php/",
-      "type": [
-        "Interactive Tutorial"
-      ],
-      "teaches": [
-        "php"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Beginner-friendly and easy to navigate",
-        "Includes interactive examples and a \"Try it Yourself\" feature",
-        "Covers essential PHP concepts and syntax"
-      ],
-      "cons": [
-        "May lack depth on advanced topics"
-      ]
-    },
-    {
-      "name": "PHP Manual",
-      "url": "https://www.php.net/manual/en/",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "php"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Comprehensive and up-to-date documentation",
-        "Includes tutorials, guides, and reference material",
-        "Suitable for beginners and experienced developers alike"
-      ],
-      "cons": [
-        "May be too technical and dry for some learners"
-      ]
-    },
-    {
-      "name": "Udemy PHP Courses",
-      "url": "https://www.udemy.com/topic/php/",
-      "type": [
-        "Course"
-      ],
-      "teaches": [
-        "php"
-      ],
-      "pricing": {
-        "model": "One Time",
-        "amount": 29.99
-      },
-      "pros": [
-        "Wide variety of courses for all skill levels",
-        "Affordable and often discounted",
-        "Lifetime access to purchased courses"
-      ],
-      "cons": [
-        "Quality may vary between courses"
-      ]
-    },
-    {
-      "name": "Codecademy PHP Course",
-      "url": "https://www.codecademy.com/learn/learn-php",
-      "type": [
-        "Interactive Tutorial"
-      ],
-      "teaches": [
-        "php"
-      ],
-      "pricing": {
-        "model": "Freemium"
-      },
-      "pros": [
-        "Interactive lessons and quizzes",
-        "Hands-on experience writing PHP code",
-        "Covers modern PHP features and best practices"
-      ],
-      "cons": [
-        "Full access requires a subscription"
-      ]
-    },
-    {
-      "name": "SQL Tutorial by W3Schools",
-      "url": "https://www.w3schools.com/sql/",
+      "name": "Codecademy Learn SQL Course",
+      "url": "https://www.codecademy.com/learn/learn-sql",
       "type": [
         "Interactive Tutorial"
       ],
@@ -672,15 +952,15 @@
         "sql"
       ],
       "pricing": {
-        "model": "Free"
+        "model": "Freemium"
       },
       "pros": [
-        "Beginner-friendly and easy to understand",
-        "Interactive \"Try it Yourself\" feature for practicing SQL",
-        "Covers essential SQL commands and concepts"
+        "Hands-on, interactive lessons and quizzes",
+        "Beginner to intermediate SQL concepts covered",
+        "Provides experience with real-world database scenarios"
       ],
       "cons": [
-        "Lacks depth for advanced SQL topics"
+        "Full access requires a subscription"
       ]
     },
     {
@@ -705,27 +985,6 @@
       ]
     },
     {
-      "name": "Codecademy Learn SQL Course",
-      "url": "https://www.codecademy.com/learn/learn-sql",
-      "type": [
-        "Interactive Tutorial"
-      ],
-      "teaches": [
-        "sql"
-      ],
-      "pricing": {
-        "model": "Freemium"
-      },
-      "pros": [
-        "Hands-on, interactive lessons and quizzes",
-        "Beginner to intermediate SQL concepts covered",
-        "Provides experience with real-world database scenarios"
-      ],
-      "cons": [
-        "Full access requires a subscription"
-      ]
-    },
-    {
       "name": "SQL Manual by PostgreSQL (or Other RDBMS)",
       "url": "https://www.postgresql.org/docs/",
       "type": [
@@ -747,343 +1006,171 @@
       ]
     },
     {
-      "name": "4clojure",
-      "url": "https://4clojure.oxal.org/",
+      "name": "SQL Tutorial by W3Schools",
+      "url": "https://www.w3schools.com/sql/",
       "type": [
         "Interactive Tutorial"
       ],
       "teaches": [
-        "clojure"
+        "sql"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Interactive exercises"
+        "Beginner-friendly and easy to understand",
+        "Interactive \"Try it Yourself\" feature for practicing SQL",
+        "Covers essential SQL commands and concepts"
       ],
       "cons": [
-        "No tutorial from the ground up"
+        "Lacks depth for advanced SQL topics"
       ]
     },
     {
-      "name": "Clojure API Cheatsheet",
-      "url": "https://clojure.org/api/cheatsheet",
+      "name": "Codecademy",
+      "url": "https://www.codecademy.com/",
+      "type": [
+        "Interactive Tutorial"
+      ],
+      "teaches": [
+        "general"
+      ],
+      "pricing": {
+        "model": "Freemium"
+      },
+      "pros": [
+        "Excellent guided learning platform",
+        "Beginner-friendly but continues into advanced content",
+        "Fully in-browser and zero setup",
+        "Very useful paid features including career track bootcamps"
+      ],
+      "cons": [
+        "Some content requires a paid subscription",
+        "Limited coverage of some topics (free plan)",
+        "Only select languages and frameworks available"
+      ]
+    },
+    {
+      "name": "Every link I wish I had as a beginner",
+      "url": "https://github.com/kealanparr/Every-link-I-wish-I-had-as-a-beginner",
       "type": [
         "Article"
       ],
       "teaches": [
-        "clojure"
+        "general"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Overview over almost the entire standard library",
-        "Quick reference"
+        "A huge collection of useful links"
+      ],
+      "cons": [
+        "Can be overwhelming and hard to navigate"
+      ]
+    },
+    {
+      "name": "LeetCode",
+      "url": "https://leetcode.com/",
+      "type": [
+        "Interactive Tutorial"
+      ],
+      "teaches": [
+        "general"
+      ],
+      "pricing": {
+        "model": "Freemium"
+      },
+      "pros": [
+        "Fun and difficult problems to solve"
+      ],
+      "cons": [
+        "Not very beginner friendly",
+        "Some content requires a paid account"
+      ]
+    },
+    {
+      "name": "Programiz",
+      "url": "https://www.programiz.com/",
+      "type": [
+        "Interactive Tutorial"
+      ],
+      "teaches": [
+        "general"
+      ],
+      "pricing": {
+        "model": "Freemium"
+      },
+      "pros": [
+        "Extensive courses/guides for many languages and frameworks",
+        "Balanced mix of material and projects/exercises"
       ],
       "cons": []
     },
     {
-      "name": "Clojure beginner resources",
-      "url": "https://gist.github.com/yogthos/be323be0361c589570a6da4ccc85f58f",
+      "name": "Sololearn",
+      "url": "https://www.sololearn.com/",
       "type": [
-        "Article"
+        "Interactive Tutorial"
       ],
       "teaches": [
-        "clojure"
+        "general"
       ],
       "pricing": {
-        "model": "Free"
+        "model": "Freemium"
       },
       "pros": [
-        "Collection of all kinds of resources to learn Clojure"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Functions Explained Through Patterns",
-      "url": "http://blog.josephwilk.net/clojure/functions-explained-through-patterns.html",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "clojure"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Visual explanations of core Clojure functions"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Clojure For The Brave And True",
-      "url": "https://www.braveclojure.com/clojure-for-the-brave-and-true/",
-      "type": [
-        "Book"
-      ],
-      "teaches": [
-        "clojure"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Complete guide through most of the language",
-        "Assumes no prior knowledge of functional programming or Lisp"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Clojure for Java Programmers",
-      "url": "https://www.youtube.com/watch?v=P76Vbsk_3J0",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "clojure"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Video series",
-        "Explains the ideas behind Clojure"
+        "Easy to use",
+        "Lots of languages to choose from"
       ],
       "cons": [
-        "Mostly aimed at people from an OOP background"
+        "Doesn't teach things in a real world example",
+        "Doesn't cover some topics very deeply"
       ]
     },
     {
-      "name": "Clojure by Example",
-      "url": "https://github.com/inclojure-org/clojure-by-example",
+      "name": "Projects",
+      "description": "A list of practical projects that anyone can solve in any programming language",
+      "url": "https://github.com/karan/Projects",
       "type": [
         "Article"
       ],
       "teaches": [
-        "clojure"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Hands-on learning",
-        "Crash Course"
-      ],
-      "cons": [
-        "No thorough explanations for complete programming beginners"
-      ]
-    },
-    {
-      "name": "C++ - Video Playlist",
-      "url": "https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "cpp"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Teaches a large portion of the language's workings for best usage",
-        "Thorough explanations",
-        "Useful for absolute beginners as well as intermediate level"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Modernes C++",
-      "url": "https://www.modernescpp.com/",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "cpp"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Large series of blog posts about often less taught APIs and best practices",
-        "Very detailed explanations with explicit examples",
-        "Posts about new features less frequently found on the internet"
-      ],
-      "cons": [
-        "Requires intermediate-advanced knowledge of the language and its feature-set"
-      ]
-    },
-    {
-      "name": "C++ Core Guidelines",
-      "url": "https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "cpp"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Collection of best practices for most aspects of the language",
-        "Bite-sized titled entries, making it easy to navigate",
-        "Contains examples to take as guide"
-      ],
-      "cons": [
-        "Requires some prior understanding of the language"
-      ]
-    },
-    {
-      "name": "cppreference.com",
-      "url": "https://en.cppreference.com/",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "cpp"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Documentation about the entirety of the language and the standard library",
-        "Apt for everyone in the learning spectrum, from beginners to advanced users"
-      ],
-      "cons": [
-        "The site can become confusing and overwhelming to navigate"
-      ]
-    },
-    {
-      "name": "TheNewBoston",
-      "url": "https://www.youtube.com/@thenewboston",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "java"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Beginner and intermediate video series",
-        "Short, but a lot of videos (146 videos combined in both playlists)"
-      ],
-      "cons": [
-        "Videos may be outdated (2009 - 2012)"
-      ]
-    },
-    {
-      "name": "Tutorial Spot",
-      "url": "https://www.tutorialspoint.com/java/index.htm",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "java"
+        "general"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [],
-      "cons": [
-        "Slightly dated"
-      ]
-    },
-    {
-      "name": "Bro Code",
-      "url": "https://www.youtube.com/c/BroCodez",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "java"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Video series",
-        "Has videos on many different languages and concepts"
-      ],
       "cons": []
     },
     {
-      "name": "Mooc.fi",
-      "description": "Comprehensive Java (and general programming) course provided by the University of Helsinki",
-      "url": "https://java-programming.mooc.fi/",
+      "name": "The Missing Semester of Your CS Education",
+      "description": "Covers the often overlooked subjects in practical CS - shells, editors, debugging, etc",
+      "url": "https://missing.csail.mit.edu/",
       "type": [
         "Course"
       ],
       "teaches": [
-        "java"
+        "general"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Very well respected"
+        "Created by MIT",
+        "Covers subjects that most tutorials might ignore, making it a great supplementary resource"
       ]
     },
     {
-      "name": "Alex Lee",
-      "url": "https://www.youtube.com/channel/UC_fFL5jgoCOrwAVoM_fBYwA",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "java"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Video series",
-        "Covers a wide range of concepts"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Javatpoint",
-      "url": "https://www.javatpoint.com/java-tutorial",
+      "name": "Awesome Compilers",
+      "description": "Curated list of resources for all things compilers",
+      "url": "https://github.com/aalhour/awesome-compilers",
       "type": [
         "Article"
       ],
       "teaches": [
-        "java"
-      ],
-      "pricing": {
-        "model": "Free"
-      }
-    },
-    {
-      "name": "Introduction to Kotlin (Google I/O '17)",
-      "url": "https://www.youtube.com/watch?v=X1RVYt2QKQE",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "kotlin"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Video for visual learners"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Kotlin Official Website",
-      "url": "https://kotlinlang.org/",
-      "type": [
-        "Article"
-      ],
-      "teaches": [
-        "kotlin"
+        "programming-language-design"
       ],
       "pricing": {
         "model": "Free"
@@ -1092,111 +1179,24 @@
       "cons": []
     },
     {
-      "name": "FreeCodeCamp.org",
-      "url": "https://youtu.be/F9UC9DY-vIU",
-      "type": [
-        "Video"
-      ],
-      "teaches": [
-        "kotlin"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Video for visual learners"
-      ],
-      "cons": []
-    },
-    {
-      "name": "Functional Programming in Haskell: Supercharge Your Coding",
-      "url": "https://www.futurelearn.com/courses/functional-programming-haskell",
-      "type": [
-        "Course"
-      ],
-      "teaches": [
-        "haskell"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [],
-      "cons": [
-        "May be a waitlist to get access"
-      ]
-    },
-    {
-      "name": "Haskell Wikibooks",
-      "url": "https://en.wikibooks.org/wiki/Haskell",
+      "name": "Crafting Interpreters",
+      "url": "https://craftinginterpreters.com/",
       "type": [
         "Book"
       ],
       "teaches": [
-        "haskell"
+        "programming-language-design"
       ],
       "pricing": {
         "model": "Free"
       },
       "pros": [
-        "Wide range of content",
-        "Explains most things fairly simply"
+        "Covers lexing, parsing, interpreting, type checking, and compiling",
+        "Starts from scratch, designed for beginners"
       ],
       "cons": [
-        "Some information may be outdated"
+        "Doesn't cover the theoretical side much"
       ]
-    },
-    {
-      "name": "Write Yourself a Scheme in 48 hours",
-      "url": "https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours",
-      "type": [
-        "Book"
-      ],
-      "teaches": [
-        "haskell"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [
-        "Designed for beginners",
-        "Learn by making a real project (creating your own small programming language)"
-      ],
-      "cons": [
-        "Moves quite quickly"
-      ]
-    },
-    {
-      "name": "Haskell Programming from First Principles",
-      "url": "https://haskellbook.com/",
-      "type": [
-        "Book"
-      ],
-      "teaches": [
-        "haskell"
-      ],
-      "pricing": {
-        "model": "One Time",
-        "amount": 59
-      },
-      "pros": [
-        "Very good reputation",
-        "Covers a very wide range of content"
-      ]
-    },
-    {
-      "name": "Haskell: The Craft of Functional Programming",
-      "url": "https://simonjohnthompson.github.io/craft3e/craft3e.pdf",
-      "type": [
-        "Book"
-      ],
-      "teaches": [
-        "haskell"
-      ],
-      "pricing": {
-        "model": "Free"
-      },
-      "pros": [],
-      "cons": []
     }
   ]
 }
