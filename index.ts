@@ -186,8 +186,9 @@ function main() {
         case "database":
             schema = DatabaseSchema;
             break;
-        case undefined: // passed with no arguments, bit of a hack since this file is also used as a library
-            return;
+        case undefined:
+            console.error("No schema specified. Use --schema to specify which schema to generate (e.g. --schema resource)");
+            process.exit(1);
         default:
             console.error(`Unknown schema: ${values.schema}`);
             process.exit(1);
