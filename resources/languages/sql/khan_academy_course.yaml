@@ -1,0 +1,13 @@
+name: Khan Academy SQL Course
+type: [Course]
+url: https://www.khanacademy.org/computing/computer-programming/sql
+pricing:
+  model: Free
+teaches:
+  - sql
+pros:
+  - Excellent for beginners
+  - Video tutorials combined with interactive exercises
+  - Covers practical examples and common use cases
+cons:
+  - Focused more on basic and intermediate concepts

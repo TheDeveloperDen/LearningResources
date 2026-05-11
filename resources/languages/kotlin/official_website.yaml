@@ -1,0 +1,9 @@
+name: Kotlin Official Website
+type: [Article]
+url: https://kotlinlang.org/
+pricing:
+  model: Free
+teaches:
+  - kotlin
+pros: []
+cons: []

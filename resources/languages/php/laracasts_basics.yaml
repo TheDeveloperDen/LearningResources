@@ -1,0 +1,11 @@
+name: Laracasts PHP Basics
+type: [Video]
+url: https://laracasts.com/series/php-for-beginners
+pricing:
+  model: Free
+teaches:
+  - php
+pros:
+  - Video tutorials by experienced developers
+  - Covers beginner to intermediate PHP topics
+  - Focus on practical, real-world applications

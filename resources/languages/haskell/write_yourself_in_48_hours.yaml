@@ -1,0 +1,12 @@
+name: Write Yourself a Scheme in 48 hours
+type: [Book]
+url: https://en.wikibooks.org/wiki/Write_Yourself_a_Scheme_in_48_Hours
+pricing:
+  model: Free
+teaches:
+  - haskell
+pros:
+  - Designed for beginners
+  - Learn by making a real project (creating your own small programming language)
+cons:
+  - Moves quite quickly

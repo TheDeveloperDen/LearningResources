@@ -1,0 +1,13 @@
+name: PHP Manual
+type: [Article]
+url: https://www.php.net/manual/en/
+pricing:
+  model: Free
+teaches:
+  - php
+pros:
+  - Comprehensive and up-to-date documentation
+  - Includes tutorials, guides, and reference material
+  - Suitable for beginners and experienced developers alike
+cons:
+  - May be too technical and dry for some learners

@@ -1,0 +1,11 @@
+name: Bro Code
+type: [Video]
+url: https://www.youtube.com/c/BroCodez
+pricing:
+  model: Free
+teaches:
+  - java
+pros:
+  - Video series
+  - Has videos on many different languages and concepts
+cons: []

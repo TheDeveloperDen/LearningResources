@@ -1,0 +1,11 @@
+name: Clojure For The Brave And True
+type: [Book]
+url: https://www.braveclojure.com/clojure-for-the-brave-and-true/
+pricing:
+  model: Free
+teaches:
+  - clojure
+pros:
+  - Complete guide through most of the language
+  - Assumes no prior knowledge of functional programming or Lisp
+cons: []

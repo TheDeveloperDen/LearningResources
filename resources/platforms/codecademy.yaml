@@ -1,0 +1,16 @@
+name: Codecademy
+type: [Interactive Tutorial]
+url: https://www.codecademy.com/
+pricing:
+  model: Freemium
+teaches:
+  - general
+pros:
+  - Excellent guided learning platform
+  - Beginner-friendly but continues into advanced content
+  - Fully in-browser and zero setup
+  - Very useful paid features including career track bootcamps
+cons:
+  - Some content requires a paid subscription
+  - Limited coverage of some topics (free plan)
+  - Only select languages and frameworks available

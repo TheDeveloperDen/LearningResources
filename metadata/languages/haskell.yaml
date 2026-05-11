@@ -1,0 +1,8 @@
+name: Haskell
+description: Haskell is a purely functional programming language commonly used in finance and academics
+emoji: "821823367333675058"
+domains: []
+category:
+  type: "Language"
+  paradigms:
+    - "Functional Programming"

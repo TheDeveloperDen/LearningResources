@@ -1,0 +1,13 @@
+name: Modernes C++
+type: [Article]
+url: https://www.modernescpp.com/
+pricing:
+  model: Free
+teaches:
+  - cpp
+pros:
+  - Large series of blog posts about often less taught APIs and best practices
+  - Very detailed explanations with explicit examples
+  - Posts about new features less frequently found on the internet
+cons:
+  - Requires intermediate-advanced knowledge of the language and its feature-set

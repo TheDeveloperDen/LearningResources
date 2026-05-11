@@ -1,0 +1,13 @@
+name: SQL Manual by PostgreSQL (or Other RDBMS)
+type: [Article]
+url: https://www.postgresql.org/docs/
+pricing:
+  model: Free
+teaches:
+  - sql
+pros:
+  - Official and comprehensive documentation
+  - Includes advanced topics and features specific to PostgreSQL
+  - Reliable and up-to-date
+cons:
+  - Can be technical and dense for beginners

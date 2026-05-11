@@ -1,0 +1,12 @@
+name: C++ - Video Playlist
+type: [Video]
+url: https://www.youtube.com/playlist?list=PLlrATfBNZ98dudnM48yfGUldqGD0S4FFb
+pricing:
+  model: Free
+teaches:
+  - cpp
+pros:
+  - Teaches a large portion of the language's workings for best usage
+  - Thorough explanations
+  - Useful for absolute beginners as well as intermediate level
+cons: []

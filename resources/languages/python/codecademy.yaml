@@ -1,0 +1,13 @@
+name: Codecademy
+type: [Interactive Tutorial]
+url: https://www.codecademy.com/learn/learn-python
+pricing:
+  model: Free
+teaches:
+  - python
+pros:
+  - Interactive lessons and quizzes
+  - Hands-on experience writing Python code
+  - Introduction to key Python concepts and libraries
+cons:
+  - May not cover more advanced topics in depth

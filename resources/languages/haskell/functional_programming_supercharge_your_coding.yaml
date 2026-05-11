@@ -1,0 +1,10 @@
+name: "Functional Programming in Haskell: Supercharge Your Coding"
+type: [Course]
+url: https://www.futurelearn.com/courses/functional-programming-haskell
+pricing:
+  model: Free
+teaches:
+  - haskell
+pros: []
+cons:
+  - May be a waitlist to get access

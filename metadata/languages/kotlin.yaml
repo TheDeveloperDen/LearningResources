@@ -1,0 +1,11 @@
+name: Kotlin
+description: Kotlin is a multi-paradigm programming language created by JetBrains that runs on the JVM, JS, and Native Platforms
+emoji: "888496555529744395"
+domains:
+  - "Mobile Development"
+category:
+  type: "Language"
+  paradigms:
+    - "Object-Oriented Programming"
+    - "Functional Programming"
+    - "Procedural Programming"

@@ -1,0 +1,11 @@
+name: The Missing Semester of Your CS Education
+description: Covers the often overlooked subjects in practical CS - shells, editors, debugging, etc
+type: [Course]
+url: https://missing.csail.mit.edu/
+pricing:
+  model: Free
+teaches:
+  - general
+pros:
+  - Created by MIT
+  - Covers subjects that most tutorials might ignore, making it a great supplementary resource

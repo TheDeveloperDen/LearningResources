@@ -1,0 +1,13 @@
+name: SQL Tutorial by W3Schools
+type: [Interactive Tutorial]
+url: https://www.w3schools.com/sql/
+pricing:
+  model: Free
+teaches:
+  - sql
+pros:
+  - Beginner-friendly and easy to understand
+  - Interactive "Try it Yourself" feature for practicing SQL
+  - Covers essential SQL commands and concepts
+cons:
+  - Lacks depth for advanced SQL topics

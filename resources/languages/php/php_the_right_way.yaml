@@ -1,0 +1,13 @@
+name: PHP The Right Way
+type: [Article]
+url: https://phptherightway.com/
+pricing:
+  model: Free
+teaches:
+  - php
+pros:
+  - Community-driven guide to modern PHP practices
+  - Covers best practices, tools, and resources
+  - Regularly updated
+cons:
+  - Assumes basic familiarity with PHP

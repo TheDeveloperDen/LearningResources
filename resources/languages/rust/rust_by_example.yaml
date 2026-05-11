@@ -1,0 +1,11 @@
+name: Rust by Example
+type: [Book]
+url: https://doc.rust-lang.org/stable/rust-by-example/
+pricing:
+  model: Free
+teaches:
+  - rust
+pros:
+  - Teaches concepts by example
+  - Semi-Official
+cons: []

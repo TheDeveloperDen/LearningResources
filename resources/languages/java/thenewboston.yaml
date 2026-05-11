@@ -1,0 +1,12 @@
+name: TheNewBoston
+type: [Video]
+url: https://www.youtube.com/@thenewboston
+pricing:
+  model: Free
+teaches:
+  - java
+pros:
+  - Beginner and intermediate video series
+  - Short, but a lot of videos (146 videos combined in both playlists)
+cons:
+  - Videos may be outdated (2009 - 2012)

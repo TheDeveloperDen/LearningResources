@@ -1,0 +1,11 @@
+name: Programiz
+type: [Interactive Tutorial]
+url: https://www.programiz.com/
+pricing:
+  model: Freemium
+teaches:
+  - general
+pros:
+  - Extensive courses/guides for many languages and frameworks
+  - Balanced mix of material and projects/exercises
+cons: []

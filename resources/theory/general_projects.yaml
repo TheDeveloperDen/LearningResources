@@ -1,0 +1,10 @@
+name: Projects
+description: A list of practical projects that anyone can solve in any programming language
+type: [Article]
+url: https://github.com/karan/Projects
+pricing:
+  model: Free
+teaches:
+  - general
+pros: []
+cons: []

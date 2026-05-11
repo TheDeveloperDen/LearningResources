@@ -1,0 +1,8 @@
+name: Clojure
+description: Clojure is a dynamic functional language from the Lisp family that runs on many different platforms
+emoji: "821823652404265001"
+domains: []
+category:
+  type: "Language"
+  paradigms:
+    - "Functional Programming"

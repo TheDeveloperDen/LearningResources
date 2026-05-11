@@ -1,0 +1,12 @@
+name: Haskell Wikibooks
+type: [Book]
+url: https://en.wikibooks.org/wiki/Haskell
+pricing:
+  model: Free
+teaches:
+  - haskell
+pros:
+  - Wide range of content
+  - Explains most things fairly simply
+cons:
+  - Some information may be outdated

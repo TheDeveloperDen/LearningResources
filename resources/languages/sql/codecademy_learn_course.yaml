@@ -1,0 +1,13 @@
+name: Codecademy Learn SQL Course
+type: [Interactive Tutorial]
+url: https://www.codecademy.com/learn/learn-sql
+pricing:
+  model: Freemium
+teaches:
+  - sql
+pros:
+  - Hands-on, interactive lessons and quizzes
+  - Beginner to intermediate SQL concepts covered
+  - Provides experience with real-world database scenarios
+cons:
+  - Full access requires a subscription

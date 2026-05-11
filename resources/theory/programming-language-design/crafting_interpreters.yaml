@@ -1,0 +1,12 @@
+name: Crafting Interpreters
+type: [Book]
+url: https://craftinginterpreters.com/
+pricing:
+  model: Free
+teaches:
+  - programming-language-design
+pros:
+  - Covers lexing, parsing, interpreting, type checking, and compiling
+  - Starts from scratch, designed for beginners
+cons:
+  - Doesn't cover the theoretical side much

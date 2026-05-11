@@ -1,0 +1,13 @@
+name: C++ Core Guidelines
+type: [Article]
+url: https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines
+pricing:
+  model: Free
+teaches:
+  - cpp
+pros:
+  - Collection of best practices for most aspects of the language
+  - Bite-sized titled entries, making it easy to navigate
+  - Contains examples to take as guide
+cons:
+  - Requires some prior understanding of the language

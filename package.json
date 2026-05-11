@@ -1,0 +1,28 @@
+{
+	"name": "learningresources",
+	"module": "index.ts",
+	"type": "module",
+	"private": true,
+	"scripts": {
+		"gen-resource-schema": "bun run index.ts --schema resource > resource.schema.jsonc",
+		"gen-meta-schema": "bun run index.ts --schema metadata > metadata.schema.jsonc",
+		"gen-database-schema": "bun run index.ts --schema database > database.schema.jsonc",
+		"gen-database": "bun run compile-database.ts",
+		"gen-schemas": "bun run gen-resource-schema && bun run gen-meta-schema && bun run gen-database-schema",
+		"validate-resources": "ajv validate -s resource.schema.jsonc -d 'resources/**/*.yaml' --spec=draft2020 -c ajv-formats",
+		"validate-metadata": "ajv validate -s metadata.schema.jsonc -d 'metadata/**/*.yaml' --spec=draft2020 -c ajv-formats",
+		"validate-database": "bun run gen-database && ajv validate -s database.schema.jsonc -d database.json --spec=draft2020 -c ajv-formats",
+		"validate": "bun run gen-schemas && bun run validate-resources && bun run validate-metadata && bun run validate-database"
+	},
+	"devDependencies": {
+		"@types/bun": "latest",
+		"ajv-cli": "^5.0.0",
+		"ajv-formats": "^3.0.1"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"dependencies": {
+		"zod": "^4.4.3"
+	}
+}

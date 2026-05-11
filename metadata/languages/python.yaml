@@ -1,0 +1,12 @@
+name: Python
+description: Python is a powerful, high-level, dynamically typed, interpreted programming language. It is used in a wide range of fields, including web development, data analysis, and artificial intelligence.
+emoji: "821824146270715936"
+domains:
+  - "Web Development"
+  - "Data Science"
+  - "Scripting"
+category:
+  type: "Language"
+  paradigms:
+    - "Object-Oriented Programming"
+    - "Procedural Programming"

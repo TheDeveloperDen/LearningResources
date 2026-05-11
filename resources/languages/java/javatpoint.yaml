@@ -1,0 +1,7 @@
+name: Javatpoint
+type: [Article]
+url: https://www.javatpoint.com/java-tutorial
+pricing:
+  model: Free
+teaches:
+  - java

@@ -1,0 +1,13 @@
+name: Sololearn
+type: [Interactive Tutorial]
+url: https://www.sololearn.com/
+pricing:
+  model: Freemium
+teaches:
+  - general
+pros:
+  - Easy to use
+  - Lots of languages to choose from
+cons:
+  - Doesn't teach things in a real world example
+  - Doesn't cover some topics very deeply

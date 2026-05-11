@@ -1,0 +1,13 @@
+name: Python for Everybody
+type: [Course]
+url: https://www.py4e.com/
+pricing:
+  model: Free
+teaches:
+  - python
+pros:
+  - Suitable for absolute beginners
+  - Covers key Python concepts and libraries
+  - Includes quizzes and exercises to test your knowledge
+cons:
+  - May not cover more advanced topics in depth

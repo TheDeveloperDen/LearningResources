@@ -1,6 +1,7 @@
 {
-    "yaml.schemas": {
-        // apply schema to all resources
-        "resource.schema.json": "resources/*.yaml"
-    }
+	"yaml.schemas": {
+		"resource.schema.jsonc": "resources/**/*.yaml",
+		"metadata.schema.jsonc": "metadata/**/*.yaml",
+    "database.schema.jsonc": "database.json"
+	}
 }

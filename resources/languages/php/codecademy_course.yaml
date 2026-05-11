@@ -1,0 +1,13 @@
+name: Codecademy PHP Course
+type: [Interactive Tutorial]
+url: https://www.codecademy.com/learn/learn-php
+pricing:
+  model: Freemium
+teaches:
+  - php
+pros:
+  - Interactive lessons and quizzes
+  - Hands-on experience writing PHP code
+  - Covers modern PHP features and best practices
+cons:
+  - Full access requires a subscription
