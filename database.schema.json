@@ -91,6 +91,28 @@
         "DevOps"
       ]
     },
+    "CategoryLanguage": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "Language"
+        },
+        "paradigms": {
+          "type": "array",
+          "items": {
+            "description": "A programming paradigm.",
+            "$ref": "#/$defs/ProgrammingParadigm"
+          },
+          "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
+        }
+      },
+      "required": [
+        "type",
+        "paradigms"
+      ],
+      "additionalProperties": false
+    },
     "ProgrammingParadigm": {
       "type": "string",
       "enum": [
@@ -100,56 +122,43 @@
         "Logic Programming"
       ]
     },
+    "CategoryPlatform": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "Platform"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "CategoryTool": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "const": "Tool"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "additionalProperties": false
+    },
     "ResourceCategory": {
       "oneOf": [
         {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "const": "Language"
-            },
-            "paradigms": {
-              "type": "array",
-              "items": {
-                "description": "A programming paradigm.",
-                "$ref": "#/$defs/ProgrammingParadigm"
-              },
-              "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
-            }
-          },
-          "required": [
-            "type",
-            "paradigms"
-          ],
-          "additionalProperties": false
+          "$ref": "#/$defs/CategoryLanguage"
         },
         {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "const": "Platform"
-            }
-          },
-          "required": [
-            "type"
-          ],
-          "additionalProperties": false,
-          "description": "A platform used to learn programming, which may teach a variety of languages and concepts."
+          "description": "A platform used to learn programming, which may teach a variety of languages and concepts.",
+          "$ref": "#/$defs/CategoryPlatform"
         },
         {
-          "type": "object",
-          "properties": {
-            "type": {
-              "type": "string",
-              "const": "Tool"
-            }
-          },
-          "required": [
-            "type"
-          ],
-          "additionalProperties": false
+          "$ref": "#/$defs/CategoryTool"
         }
       ]
     },

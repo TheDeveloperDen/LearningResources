@@ -106,6 +106,34 @@
           "DevOps"
         ]
       },
+      "CategoryLanguage": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Language"
+            ]
+          },
+          "paradigms": {
+            "type": "array",
+            "items": {
+              "description": "A programming paradigm.",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/ProgrammingParadigm"
+                }
+              ]
+            },
+            "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
+          }
+        },
+        "required": [
+          "type",
+          "paradigms"
+        ],
+        "additionalProperties": false
+      },
       "ProgrammingParadigm": {
         "type": "string",
         "enum": [
@@ -115,66 +143,51 @@
           "Logic Programming"
         ]
       },
+      "CategoryPlatform": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Platform"
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
+      "CategoryTool": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": [
+              "Tool"
+            ]
+          }
+        },
+        "required": [
+          "type"
+        ],
+        "additionalProperties": false
+      },
       "ResourceCategory": {
         "oneOf": [
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "Language"
-                ]
-              },
-              "paradigms": {
-                "type": "array",
-                "items": {
-                  "description": "A programming paradigm.",
-                  "allOf": [
-                    {
-                      "$ref": "#/definitions/ProgrammingParadigm"
-                    }
-                  ]
-                },
-                "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
-              }
-            },
-            "required": [
-              "type",
-              "paradigms"
-            ],
-            "additionalProperties": false
+            "$ref": "#/definitions/CategoryLanguage"
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "Platform"
-                ]
+            "description": "A platform used to learn programming, which may teach a variety of languages and concepts.",
+            "allOf": [
+              {
+                "$ref": "#/definitions/CategoryPlatform"
               }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false,
-            "description": "A platform used to learn programming, which may teach a variety of languages and concepts."
+            ]
           },
           {
-            "type": "object",
-            "properties": {
-              "type": {
-                "type": "string",
-                "enum": [
-                  "Tool"
-                ]
-              }
-            },
-            "required": [
-              "type"
-            ],
-            "additionalProperties": false
+            "$ref": "#/definitions/CategoryTool"
           }
         ]
       },
