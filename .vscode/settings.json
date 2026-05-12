@@ -2,6 +2,6 @@
 	"yaml.schemas": {
 		"resource.schema.json": "resources/**/*.yaml",
 		"metadata.schema.json": "metadata/**/*.yaml",
-    "database.schema.json": "database.json"
+		"database.schema.json": "database.json"
 	}
 }

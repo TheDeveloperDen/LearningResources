@@ -14,7 +14,8 @@
 		"validate-resources": "ajv validate -s resource.schema.json -d 'resources/**/*.yaml' --spec=draft2020 -c ajv-formats",
 		"validate-metadata": "ajv validate -s metadata.schema.json -d 'metadata/**/*.yaml' --spec=draft2020 -c ajv-formats",
 		"validate-database": "bun run gen-database && ajv validate -s database.schema.json -d database.json --spec=draft2020 -c ajv-formats",
-		"validate": "bun run gen-schemas && bun run validate-resources && bun run validate-metadata && bun run validate-database"
+		"validate": "bun run gen-schemas && bun run validate-resources && bun run validate-metadata && bun run validate-database",
+		"lint": "bunx @biomejs/biome check --write"
 	},
 	"devDependencies": {
 		"@types/bun": "latest",
@@ -25,7 +26,6 @@
 		"typescript": "^5 || ^6.0.0"
 	},
 	"dependencies": {
-		"@asteasolutions/zod-to-openapi": "^8.5.0",
 		"zod": "^4.4.3"
 	}
 }
