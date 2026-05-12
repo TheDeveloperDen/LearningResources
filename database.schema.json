@@ -201,7 +201,8 @@
                 "required": [
                   "model"
                 ],
-                "additionalProperties": false
+                "additionalProperties": false,
+                "description": "FreeFreemiumPricing"
               },
               {
                 "type": "object",
@@ -224,7 +225,8 @@
                   "model",
                   "amount"
                 ],
-                "additionalProperties": false
+                "additionalProperties": false,
+                "title": "PaidPricing"
               }
             ],
             "description": "Details about the cost of the resource."
