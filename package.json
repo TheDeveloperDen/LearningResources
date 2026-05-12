@@ -8,7 +8,9 @@
 		"gen-meta-schema": "bun run index.ts --schema metadata > metadata.schema.json",
 		"gen-database-schema": "bun run index.ts --schema database > database.schema.json",
 		"gen-database": "bun run compile-database.ts",
-		"gen-schemas": "bun run gen-resource-schema && bun run gen-meta-schema && bun run gen-database-schema",
+		"gen-json-schemas": "bun run gen-resource-schema && bun run gen-meta-schema && bun run gen-database-schema",
+		"gen-openapi-schema": "bun run index.ts --schema openapi > openapi.schema.json",
+		"gen-schemas": "bun run gen-json-schemas && bun run gen-openapi-schema",
 		"validate-resources": "ajv validate -s resource.schema.json -d 'resources/**/*.yaml' --spec=draft2020 -c ajv-formats",
 		"validate-metadata": "ajv validate -s metadata.schema.json -d 'metadata/**/*.yaml' --spec=draft2020 -c ajv-formats",
 		"validate-database": "bun run gen-database && ajv validate -s database.schema.json -d database.json --spec=draft2020 -c ajv-formats",
@@ -23,6 +25,7 @@
 		"typescript": "^5 || ^6.0.0"
 	},
 	"dependencies": {
+		"@asteasolutions/zod-to-openapi": "^8.5.0",
 		"zod": "^4.4.3"
 	}
 }

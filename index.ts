@@ -2,7 +2,13 @@ import path from "path";
 import { parseArgs } from "util";
 import { z } from "zod";
 import fs from "node:fs";
+import {
+    extendZodWithOpenApi,
+    OpenAPIRegistry,
+    OpenApiGeneratorV3,
+} from "@asteasolutions/zod-to-openapi";
 
+extendZodWithOpenApi(z);
 
 const topicsDir = path.join(__dirname, "./metadata/topics");
 const languagesDir = path.join(__dirname, "./metadata/languages");
@@ -53,7 +59,7 @@ const PricingSchema = z
                 .number()
                 .gt(0)
                 .describe("The price of this resource, in US Dollars."),
-        }).describe("PaidPricing"),
+        }).meta({ title: "PaidPricing" }),
 
     ])
     .describe("Details about the cost of the resource.");
@@ -186,8 +192,31 @@ function main() {
         allowPositionals: true,
     });
 
+    const schemaArg = values.schema?.toLowerCase();
+    if (schemaArg === "openapi") {
+        const registry = new OpenAPIRegistry();
+        registry.register("EntityTag", EntityTagEnum);
+        registry.register("Pricing", PricingSchema);
+        registry.register("ResourceCategory", ResourceCategorySchema);
+        registry.register("CompiledMeta", CompiledMetaSchema);
+        registry.register("Resource", ResourceSchema);
+        registry.register("Database", DatabaseSchema);
+        const generator = new OpenApiGeneratorV3(registry.definitions);
+        const document = generator.generateDocument({
+            openapi: "3.0.0",
+            info: {
+                version: "1.0.0",
+                title: "Learning Resources Database Schema",
+                description: header,
+            },
+        });
+
+        console.log(JSON.stringify(document, null, 2));
+        process.exit(0);
+    }
+
     let schema: z.ZodObject;
-    switch (values.schema?.toLowerCase()) {
+    switch (schemaArg) {
         case "metadata":
             schema = MetaSchema;
             break;
