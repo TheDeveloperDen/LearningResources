@@ -150,7 +150,7 @@ export const MetaSchema = z.object({
 }).strict();
 
 export const CompiledMetaSchema = MetaSchema.extend({
-  id: z.string().describe("The unique identifier of the entity"),
+  id: EntityTagEnum.describe("The unique identifier of the entity"),
 }).strict();
 
 export const DatabaseSchema = z.object({
