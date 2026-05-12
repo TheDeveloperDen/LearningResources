@@ -99,6 +99,20 @@
           },
           "id": {
             "type": "string",
+            "enum": [
+              "general",
+              "programming-language-design",
+              "git",
+              "python",
+              "rust",
+              "sql",
+              "cpp",
+              "clojure",
+              "php",
+              "kotlin",
+              "java",
+              "haskell"
+            ],
             "description": "The unique identifier of the entity"
           }
         },
