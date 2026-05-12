@@ -41,14 +41,14 @@
           "general",
           "programming-language-design",
           "git",
-          "clojure",
-          "cpp",
-          "java",
+          "python",
           "rust",
           "sql",
+          "cpp",
+          "clojure",
           "php",
-          "python",
           "kotlin",
+          "java",
           "haskell"
         ]
       },
