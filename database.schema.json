@@ -5,99 +5,182 @@
     "metadata": {
       "type": "array",
       "items": {
-        "type": "object",
-        "properties": {
-          "name": {
+        "$ref": "#/$defs/CompiledMeta"
+      },
+      "description": "List of all entities in the system"
+    },
+    "resources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Resource"
+      },
+      "description": "List of all learning resources"
+    }
+  },
+  "required": [
+    "metadata",
+    "resources"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "CompiledMeta": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The name of the language, tool, etc being described by this metadata."
+        },
+        "description": {
+          "type": "string",
+          "description": "A brief description of the language, tool, etc being described by this metadata."
+        },
+        "emoji": {
+          "description": "A Unicode emoji glyph to represent the entity, if applicable. If there is no suitable (Unicode) emoji, omit this field. Consumers may choose to ignore this field, or replace it with a custom image.",
+          "type": "string"
+        },
+        "domains": {
+          "type": "array",
+          "items": {
             "type": "string",
-            "description": "The name of the language, tool, etc being described by this metadata."
-          },
-          "description": {
-            "type": "string",
-            "description": "A brief description of the language, tool, etc being described by this metadata."
-          },
-          "emoji": {
-            "description": "A Unicode emoji glyph to represent the entity, if applicable. If there is no suitable (Unicode) emoji, omit this field. Consumers may choose to ignore this field, or replace it with a custom image.",
-            "type": "string"
-          },
-          "domains": {
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "Web Development",
-                "Data Science",
-                "Mobile Development",
-                "Game Development",
-                "Systems Programming",
-                "Scripting",
-                "General Purpose",
-                "DevOps"
-              ],
-              "description": "A domain that a programming language may be used in."
-            },
-            "description": "The domain(s) that the entity is commonly used in, or best suited for."
-          },
-          "category": {
-            "oneOf": [
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Language"
-                  },
-                  "paradigms": {
-                    "type": "array",
-                    "items": {
-                      "type": "string",
-                      "enum": [
-                        "Object-Oriented Programming",
-                        "Functional Programming",
-                        "Procedural Programming",
-                        "Logic Programming"
-                      ],
-                      "description": "A programming paradigm."
-                    },
-                    "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
-                  }
-                },
-                "required": [
-                  "type",
-                  "paradigms"
-                ],
-                "additionalProperties": false
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Platform"
-                  }
-                },
-                "required": [
-                  "type"
-                ],
-                "additionalProperties": false,
-                "description": "A platform used to learn programming, which may teach a variety of languages and concepts."
-              },
-              {
-                "type": "object",
-                "properties": {
-                  "type": {
-                    "type": "string",
-                    "const": "Tool"
-                  }
-                },
-                "required": [
-                  "type"
-                ],
-                "additionalProperties": false
-              }
+            "enum": [
+              "Web Development",
+              "Data Science",
+              "Mobile Development",
+              "Game Development",
+              "Systems Programming",
+              "Scripting",
+              "General Purpose",
+              "DevOps"
             ],
-            "description": "The category of the resource"
+            "description": "A domain that a programming language may be used in."
           },
-          "id": {
+          "description": "The domain(s) that the entity is commonly used in, or best suited for."
+        },
+        "category": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "Language"
+                },
+                "paradigms": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "enum": [
+                      "Object-Oriented Programming",
+                      "Functional Programming",
+                      "Procedural Programming",
+                      "Logic Programming"
+                    ],
+                    "description": "A programming paradigm."
+                  },
+                  "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
+                }
+              },
+              "required": [
+                "type",
+                "paradigms"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "Platform"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false,
+              "description": "A platform used to learn programming, which may teach a variety of languages and concepts."
+            },
+            {
+              "type": "object",
+              "properties": {
+                "type": {
+                  "type": "string",
+                  "const": "Tool"
+                }
+              },
+              "required": [
+                "type"
+              ],
+              "additionalProperties": false
+            }
+          ],
+          "description": "The category of the resource"
+        },
+        "id": {
+          "type": "string",
+          "enum": [
+            "general",
+            "programming-language-design",
+            "git",
+            "python",
+            "rust",
+            "sql",
+            "cpp",
+            "clojure",
+            "php",
+            "kotlin",
+            "java",
+            "haskell"
+          ],
+          "description": "The unique identifier of the entity"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "domains",
+        "category",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "Resource": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "The official name of the resource"
+        },
+        "description": {
+          "description": "A brief description of the resource",
+          "type": "string",
+          "maxLength": 256
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to the resource"
+        },
+        "type": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "Video",
+              "Article",
+              "Interactive Tutorial",
+              "Book",
+              "Course"
+            ],
+            "description": "The type of the resource"
+          },
+          "description": "The type(s) of the resource, e.g. 'Video', 'Book', 'Course', etc."
+        },
+        "teaches": {
+          "minItems": 1,
+          "type": "array",
+          "items": {
             "type": "string",
             "enum": [
               "general",
@@ -112,115 +195,38 @@
               "kotlin",
               "java",
               "haskell"
-            ],
-            "description": "The unique identifier of the entity"
+            ]
+          },
+          "description": "The topics that this resource teaches."
+        },
+        "pricing": {
+          "description": "Details about the cost of the resource.",
+          "$ref": "#/$defs/Pricing"
+        },
+        "pros": {
+          "description": "Array of pros for using the resource, e.g. 'explains difficult concepts with good analogies'",
+          "type": "array",
+          "items": {
+            "type": "string"
           }
         },
-        "required": [
-          "name",
-          "description",
-          "domains",
-          "category",
-          "id"
-        ],
-        "additionalProperties": false
+        "cons": {
+          "description": "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
       },
-      "description": "List of all entities in the system"
+      "required": [
+        "name",
+        "url",
+        "type",
+        "teaches",
+        "pricing"
+      ],
+      "additionalProperties": false
     },
-    "resources": {
-      "type": "array",
-      "items": {
-        "type": "object",
-        "properties": {
-          "name": {
-            "type": "string",
-            "description": "The official name of the resource"
-          },
-          "description": {
-            "description": "A brief description of the resource",
-            "type": "string",
-            "maxLength": 256
-          },
-          "url": {
-            "type": "string",
-            "format": "uri",
-            "description": "URL to the resource"
-          },
-          "type": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "Video",
-                "Article",
-                "Interactive Tutorial",
-                "Book",
-                "Course"
-              ],
-              "description": "The type of the resource"
-            },
-            "description": "The type(s) of the resource, e.g. 'Video', 'Book', 'Course', etc."
-          },
-          "teaches": {
-            "minItems": 1,
-            "type": "array",
-            "items": {
-              "type": "string",
-              "enum": [
-                "general",
-                "programming-language-design",
-                "git",
-                "python",
-                "rust",
-                "sql",
-                "cpp",
-                "clojure",
-                "php",
-                "kotlin",
-                "java",
-                "haskell"
-              ]
-            },
-            "description": "The topics that this resource teaches."
-          },
-          "pricing": {
-            "description": "Details about the cost of the resource.",
-            "$ref": "#/$defs/Pricing"
-          },
-          "pros": {
-            "description": "Array of pros for using the resource, e.g. 'explains difficult concepts with good analogies'",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          },
-          "cons": {
-            "description": "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
-            "type": "array",
-            "items": {
-              "type": "string"
-            }
-          }
-        },
-        "required": [
-          "name",
-          "url",
-          "type",
-          "teaches",
-          "pricing"
-        ],
-        "additionalProperties": false
-      },
-      "description": "List of all learning resources"
-    }
-  },
-  "required": [
-    "metadata",
-    "resources"
-  ],
-  "additionalProperties": false,
-  "$defs": {
     "FreePricing": {
       "type": "object",
       "properties": {
