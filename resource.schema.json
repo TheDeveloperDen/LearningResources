@@ -55,7 +55,7 @@
       "description": "The topics that this resource teaches."
     },
     "pricing": {
-      "anyOf": [
+      "oneOf": [
         {
           "type": "object",
           "properties": {
