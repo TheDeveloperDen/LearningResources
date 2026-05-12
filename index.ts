@@ -34,34 +34,36 @@ const EntityTagEnum = z.enum([
     ...allValidTags.slice(1)
 ] as [string, ...string[]]);
 
+
+const PaidPricingSchema = z.strictObject({
+    model: z
+        .enum(["Subscription", "One Time"])
+        .describe(
+            "The Paid Pricing Model of this resource. 'Subscription' means the resource is paid on a recurring basis (e.g. monthly or yearly), while 'One Time' means the resource is paid with a single upfront payment. If the price varies or is not fixed, provide a close approximation. Note that the subscription renewal cycle is not specified, so if the price has different renewal cycles, provide the most common or default one (usually monthly).",
+        ),
+    amount: z
+        .number()
+        .gt(0)
+        .describe("The price of this resource, in US Dollars."),
+}).meta({ id: "PaidPricing" });
+
+const FreePricingSchema = z.strictObject({
+    model: z
+        .enum(["Free", "Freemium"])
+        .describe(
+            "The Free(mium) Pricing Model of this resource. 'Free' should be used for resources where 100% (or close) of the content is free. 'Freemium' describes a pricing model where the core content is available for free, but features paid extensions. If the resource has a freemium model but the free portion is very limited, consider using 'Paid' instead and providing an estimated price for the full version. ",
+        ),
+}).meta({ id: "FreePricing" });
+
 /**
  * The Pricing of a Resource, which can either be Free/Freemium or Paid (Subscription/One Time)
  */
 const PricingSchema = z
     .discriminatedUnion("model", [
-        z
-            .strictObject({
-                model: z
-                    .enum(["Free", "Freemium"])
-                    .describe(
-                        "The Free(mium) Pricing Model of this resource. 'Free' should be used for resources where 100% (or close) of the content is free. 'Freemium' describes a pricing model where the core content is available for free, but features paid extensions. If the resource has a freemium model but the free portion is very limited, consider using 'Paid' instead and providing an estimated price for the full version. ",
-                    ),
-            })
-            .describe("FreeFreemiumPricing"),
-
-        z.strictObject({
-            model: z
-                .enum(["Subscription", "One Time"])
-                .describe(
-                    "The Paid Pricing Model of this resource. 'Subscription' means the resource is paid on a recurring basis (e.g. monthly or yearly), while 'One Time' means the resource is paid with a single upfront payment. If the price varies or is not fixed, provide a close approximation. Note that the subscription renewal cycle is not specified, so if the price has different renewal cycles, provide the most common or default one (usually monthly).",
-                ),
-            amount: z
-                .number()
-                .gt(0)
-                .describe("The price of this resource, in US Dollars."),
-        }).meta({ title: "PaidPricing" }),
-
+        FreePricingSchema,
+        PaidPricingSchema,
     ])
+    .meta({ id: "Pricing" })
     .describe("Details about the cost of the resource.");
 
 export const LanguageDomainSchema = z
@@ -234,7 +236,7 @@ function main() {
             process.exit(1);
     }
 
-    const jsonSchema = z.toJSONSchema(schema, {});
+    const jsonSchema = z.toJSONSchema(schema, { reused: "inline", });
     jsonSchema.$comment = header;
     console.log(JSON.stringify(jsonSchema, null, 2));
 }
