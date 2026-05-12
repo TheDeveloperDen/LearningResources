@@ -112,7 +112,7 @@ const ResourceTypeSchema = z
 	.describe("The type of the resource");
 
 export const ResourceSchema = z
-	.object({
+	.strictObject({
 		name: z.string().describe("The official name of the resource"),
 		description: z
 			.string()
@@ -144,10 +144,10 @@ export const ResourceSchema = z
 				"Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
 			),
 	})
-	.strict();
+	.meta({ id: "Resource" });
 
 export const MetaSchema = z
-	.object({
+	.strictObject({
 		name: z
 			.string()
 			.describe(
@@ -171,14 +171,14 @@ export const MetaSchema = z
 			),
 		category: ResourceCategorySchema,
 	})
-	.strict();
+	.meta({ id: "Meta" });
 
 export const CompiledMetaSchema = MetaSchema.extend({
 	id: EntityTagEnum.describe("The unique identifier of the entity"),
-}).strict();
+}).meta({ id: "CompiledMeta" });
 
 export const DatabaseSchema = z
-	.object({
+	.strictObject({
 		metadata: z
 			.array(CompiledMetaSchema)
 			.describe("List of all entities in the system"),
@@ -186,7 +186,7 @@ export const DatabaseSchema = z
 			.array(ResourceSchema)
 			.describe("List of all learning resources"),
 	})
-	.strict();
+	.meta({ id: "Database" });
 
 export type Meta = z.infer<typeof MetaSchema>;
 export type Resource = z.infer<typeof ResourceSchema>;
