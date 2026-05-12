@@ -34,16 +34,16 @@ const EntityTagEnum = z.enum([
 const PricingSchema = z
     .discriminatedUnion("model", [
         z
-            .object({
+            .strictObject({
                 model: z
                     .enum(["Free", "Freemium"])
                     .describe(
                         "The Free(mium) Pricing Model of this resource. 'Free' should be used for resources where 100% (or close) of the content is free. 'Freemium' describes a pricing model where the core content is available for free, but features paid extensions. If the resource has a freemium model but the free portion is very limited, consider using 'Paid' instead and providing an estimated price for the full version. ",
                     ),
             })
-            .strict(),
+            .describe("FreeFreemiumPricing"),
 
-        z.object({
+        z.strictObject({
             model: z
                 .enum(["Subscription", "One Time"])
                 .describe(
@@ -53,7 +53,8 @@ const PricingSchema = z
                 .number()
                 .gt(0)
                 .describe("The price of this resource, in US Dollars."),
-        }).strict(),
+        }).describe("PaidPricing"),
+
     ])
     .describe("Details about the cost of the resource.");
 
