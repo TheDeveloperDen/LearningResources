@@ -41,80 +41,14 @@
         "domains": {
           "type": "array",
           "items": {
-            "type": "string",
-            "enum": [
-              "Web Development",
-              "Data Science",
-              "Mobile Development",
-              "Game Development",
-              "Systems Programming",
-              "Scripting",
-              "General Purpose",
-              "DevOps"
-            ],
-            "description": "A domain that a programming language may be used in."
+            "description": "A domain that a programming language may be used in.",
+            "$ref": "#/$defs/LanguageDomain"
           },
           "description": "The domain(s) that the entity is commonly used in, or best suited for."
         },
         "category": {
-          "oneOf": [
-            {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "Language"
-                },
-                "paradigms": {
-                  "type": "array",
-                  "items": {
-                    "type": "string",
-                    "enum": [
-                      "Object-Oriented Programming",
-                      "Functional Programming",
-                      "Procedural Programming",
-                      "Logic Programming"
-                    ],
-                    "description": "A programming paradigm."
-                  },
-                  "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
-                }
-              },
-              "required": [
-                "type",
-                "paradigms"
-              ],
-              "additionalProperties": false
-            },
-            {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "Platform"
-                }
-              },
-              "required": [
-                "type"
-              ],
-              "additionalProperties": false,
-              "description": "A platform used to learn programming, which may teach a variety of languages and concepts."
-            },
-            {
-              "type": "object",
-              "properties": {
-                "type": {
-                  "type": "string",
-                  "const": "Tool"
-                }
-              },
-              "required": [
-                "type"
-              ],
-              "additionalProperties": false
-            }
-          ],
-          "description": "The category of the resource"
+          "description": "The category of the resource",
+          "$ref": "#/$defs/ResourceCategory"
         },
         "id": {
           "type": "string",
@@ -143,6 +77,81 @@
         "id"
       ],
       "additionalProperties": false
+    },
+    "LanguageDomain": {
+      "type": "string",
+      "enum": [
+        "Web Development",
+        "Data Science",
+        "Mobile Development",
+        "Game Development",
+        "Systems Programming",
+        "Scripting",
+        "General Purpose",
+        "DevOps"
+      ]
+    },
+    "ProgrammingParadigm": {
+      "type": "string",
+      "enum": [
+        "Object-Oriented Programming",
+        "Functional Programming",
+        "Procedural Programming",
+        "Logic Programming"
+      ]
+    },
+    "ResourceCategory": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "Language"
+            },
+            "paradigms": {
+              "type": "array",
+              "items": {
+                "description": "A programming paradigm.",
+                "$ref": "#/$defs/ProgrammingParadigm"
+              },
+              "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
+            }
+          },
+          "required": [
+            "type",
+            "paradigms"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "Platform"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false,
+          "description": "A platform used to learn programming, which may teach a variety of languages and concepts."
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "type": "string",
+              "const": "Tool"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        }
+      ]
     },
     "Resource": {
       "type": "object",
