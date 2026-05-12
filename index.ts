@@ -8,8 +8,14 @@ const topicsDir = path.join(__dirname, "./metadata/topics");
 const languagesDir = path.join(__dirname, "./metadata/languages");
 
 export const fileNameToId = (fileName: string) => path.basename(fileName, ".yaml");
-const validTopics = fs.readdirSync(topicsDir).map(fileNameToId);
-const validLanguages = fs.readdirSync(languagesDir).map(fileNameToId);
+
+const validTopics = fs.readdirSync(topicsDir, { recursive: true })
+    .filter(f => typeof f === 'string' && f.endsWith(".yaml"))
+    .map(f => fileNameToId(f as string));
+
+const validLanguages = fs.readdirSync(languagesDir, { recursive: true })
+    .filter(f => typeof f === 'string' && f.endsWith(".yaml"))
+    .map(f => fileNameToId(f as string))
 
 const allValidTags = [...validTopics, ...validLanguages];
 
@@ -26,7 +32,7 @@ const EntityTagEnum = z.enum([
  * The Pricing of a Resource, which can either be Free/Freemium or Paid (Subscription/One Time)
  */
 const PricingSchema = z
-    .union([
+    .discriminatedUnion("model", [
         z
             .object({
                 model: z
@@ -47,7 +53,7 @@ const PricingSchema = z
                 .number()
                 .gt(0)
                 .describe("The price of this resource, in US Dollars."),
-        }),
+        }).strict(),
     ])
     .describe("Details about the cost of the resource.");
 
@@ -107,7 +113,10 @@ export const ResourceSchema = z.object({
         .describe("A brief description of the resource"),
     url: z.url().describe("URL to the resource"),
     type: z.array(ResourceTypeSchema).min(1, "Must specify at least one resource type").describe("The type(s) of the resource, e.g. 'Video', 'Book', 'Course', etc."),
-    teaches: z.array(EntityTagEnum).min(1, "Must teach at least one topic").describe("The topics that this resource teaches."),
+    teaches: z.array(EntityTagEnum)
+        .min(1, "Must teach at least one topic")
+
+        .describe("The topics that this resource teaches."),
     pricing: PricingSchema,
     pros: z
         .array(z.string())
@@ -150,12 +159,12 @@ export const MetaSchema = z.object({
 }).strict();
 
 export const CompiledMetaSchema = MetaSchema.extend({
-  id: EntityTagEnum.describe("The unique identifier of the entity"),
+    id: EntityTagEnum.describe("The unique identifier of the entity"),
 }).strict();
 
 export const DatabaseSchema = z.object({
-  metadata: z.array(CompiledMetaSchema).describe("List of all entities in the system"),
-  resources: z.array(ResourceSchema).describe("List of all learning resources"),
+    metadata: z.array(CompiledMetaSchema).describe("List of all entities in the system"),
+    resources: z.array(ResourceSchema).describe("List of all learning resources"),
 }).strict();
 
 export type Meta = z.infer<typeof MetaSchema>;
