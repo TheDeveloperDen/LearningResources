@@ -7,6 +7,315 @@
   },
   "paths": {},
   "components": {
-    "schemas": {}
+    "type": "object",
+    "properties": {
+      "metadata": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/CompiledMeta"
+        },
+        "description": "List of all entities in the system"
+      },
+      "resources": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Resource"
+        },
+        "description": "List of all learning resources"
+      }
+    },
+    "required": [
+      "metadata",
+      "resources"
+    ],
+    "additionalProperties": false,
+    "definitions": {
+      "CompiledMeta": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the language, tool, etc being described by this metadata."
+          },
+          "description": {
+            "type": "string",
+            "description": "A brief description of the language, tool, etc being described by this metadata."
+          },
+          "emoji": {
+            "description": "A Unicode emoji glyph to represent the entity, if applicable. If there is no suitable (Unicode) emoji, omit this field. Consumers may choose to ignore this field, or replace it with a custom image.",
+            "type": "string"
+          },
+          "domains": {
+            "type": "array",
+            "items": {
+              "description": "A domain that a programming language may be used in.",
+              "allOf": [
+                {
+                  "$ref": "#/definitions/LanguageDomain"
+                }
+              ]
+            },
+            "description": "The domain(s) that the entity is commonly used in, or best suited for."
+          },
+          "category": {
+            "description": "The category of the resource",
+            "allOf": [
+              {
+                "$ref": "#/definitions/ResourceCategory"
+              }
+            ]
+          },
+          "id": {
+            "type": "string",
+            "enum": [
+              "general",
+              "programming-language-design",
+              "git",
+              "clojure",
+              "cpp",
+              "java",
+              "rust",
+              "sql",
+              "php",
+              "python",
+              "kotlin",
+              "haskell"
+            ],
+            "description": "The unique identifier of the entity"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "domains",
+          "category",
+          "id"
+        ],
+        "additionalProperties": false
+      },
+      "LanguageDomain": {
+        "type": "string",
+        "enum": [
+          "Web Development",
+          "Data Science",
+          "Mobile Development",
+          "Game Development",
+          "Systems Programming",
+          "Scripting",
+          "General Purpose",
+          "DevOps"
+        ]
+      },
+      "ProgrammingParadigm": {
+        "type": "string",
+        "enum": [
+          "Object-Oriented Programming",
+          "Functional Programming",
+          "Procedural Programming",
+          "Logic Programming"
+        ]
+      },
+      "ResourceCategory": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Language"
+                ]
+              },
+              "paradigms": {
+                "type": "array",
+                "items": {
+                  "description": "A programming paradigm.",
+                  "allOf": [
+                    {
+                      "$ref": "#/definitions/ProgrammingParadigm"
+                    }
+                  ]
+                },
+                "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
+              }
+            },
+            "required": [
+              "type",
+              "paradigms"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Platform"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false,
+            "description": "A platform used to learn programming, which may teach a variety of languages and concepts."
+          },
+          {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "enum": [
+                  "Tool"
+                ]
+              }
+            },
+            "required": [
+              "type"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "Resource": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The official name of the resource"
+          },
+          "description": {
+            "description": "A brief description of the resource",
+            "type": "string",
+            "maxLength": 256
+          },
+          "url": {
+            "type": "string",
+            "format": "uri",
+            "description": "URL to the resource"
+          },
+          "type": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "Video",
+                "Article",
+                "Interactive Tutorial",
+                "Book",
+                "Course"
+              ],
+              "description": "The type of the resource"
+            },
+            "description": "The type(s) of the resource, e.g. 'Video', 'Book', 'Course', etc."
+          },
+          "teaches": {
+            "minItems": 1,
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "general",
+                "programming-language-design",
+                "git",
+                "clojure",
+                "cpp",
+                "java",
+                "rust",
+                "sql",
+                "php",
+                "python",
+                "kotlin",
+                "haskell"
+              ]
+            },
+            "description": "The topics that this resource teaches."
+          },
+          "pricing": {
+            "description": "Details about the cost of the resource.",
+            "allOf": [
+              {
+                "$ref": "#/definitions/Pricing"
+              }
+            ]
+          },
+          "pros": {
+            "description": "Array of pros for using the resource, e.g. 'explains difficult concepts with good analogies'",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cons": {
+            "description": "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "url",
+          "type",
+          "teaches",
+          "pricing"
+        ],
+        "additionalProperties": false
+      },
+      "FreePricing": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "enum": [
+              "Free",
+              "Freemium"
+            ],
+            "description": "The Free(mium) Pricing Model of this resource. 'Free' should be used for resources where 100% (or close) of the content is free. 'Freemium' describes a pricing model where the core content is available for free, but features paid extensions. If the resource has a freemium model but the free portion is very limited, consider using 'Paid' instead and providing an estimated price for the full version. "
+          }
+        },
+        "required": [
+          "model"
+        ],
+        "additionalProperties": false
+      },
+      "PaidPricing": {
+        "type": "object",
+        "properties": {
+          "model": {
+            "type": "string",
+            "enum": [
+              "Subscription",
+              "One Time"
+            ],
+            "description": "The Paid Pricing Model of this resource. 'Subscription' means the resource is paid on a recurring basis (e.g. monthly or yearly), while 'One Time' means the resource is paid with a single upfront payment. If the price varies or is not fixed, provide a close approximation. Note that the subscription renewal cycle is not specified, so if the price has different renewal cycles, provide the most common or default one (usually monthly)."
+          },
+          "amount": {
+            "type": "number",
+            "minimum": 0,
+            "exclusiveMinimum": true,
+            "description": "The price of this resource, in US Dollars."
+          }
+        },
+        "required": [
+          "model",
+          "amount"
+        ],
+        "additionalProperties": false
+      },
+      "Pricing": {
+        "oneOf": [
+          {
+            "$ref": "#/definitions/FreePricing"
+          },
+          {
+            "$ref": "#/definitions/PaidPricing"
+          }
+        ]
+      }
+    }
   }
 }

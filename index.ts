@@ -224,7 +224,7 @@ function main() {
             },
             paths: {},
 
-            components: jsonSchema.components || { schemas: {} }
+            components: jsonSchema
         };
         console.log(JSON.stringify(openApiDocument, null, 2));
         process.exit(0);
