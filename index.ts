@@ -96,15 +96,15 @@ export const ResourceCategorySchema = z
                 .describe(
                     "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc.",
                 ),
-        }),
+        }).meta({ id: "CategoryLanguage" }),
         z.object({
             type: z.literal("Platform"),
-        }).describe(
+        }).meta({ id: "CategoryPlatform" }).describe(
             "A platform used to learn programming, which may teach a variety of languages and concepts.",
         ),
         z.object({
             type: z.literal("Tool"),
-        }),
+        }).meta({ id: "CategoryTool" }),
     ])
     .meta({ id: "ResourceCategory" })
     .describe("The category of the resource");
