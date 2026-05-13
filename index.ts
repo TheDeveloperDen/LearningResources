@@ -2,7 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import { parseArgs } from "node:util";
 import { z } from "zod";
-import { createDocument } from 'zod-openapi';
+import {
+    extendZodWithOpenApi,
+    OpenAPIRegistry,
+    OpenApiGeneratorV3
+} from "@asteasolutions/zod-to-openapi";
+extendZodWithOpenApi(z);
+
+const registry = new OpenAPIRegistry();
 
 const topicsDir = path.join(__dirname, "./metadata/topics");
 const languagesDir = path.join(__dirname, "./metadata/languages");
@@ -20,18 +27,18 @@ const validLanguages = fs
     .filter((f) => typeof f === "string" && f.endsWith(".yaml"))
     .map((f) => fileNameToId(f as string));
 
-const allValidTags = [...validTopics, ...validLanguages];
+const allValidTags = [...validTopics, ...validLanguages].toSorted();
 
 if (allValidTags.length === 0) {
     throw new Error("No metadata entities found!");
 }
 
-const EntityTagEnum = z.enum([allValidTags[0], ...allValidTags.slice(1)] as [
+const EntityTagEnum = registry.register("EntityTag", z.enum([allValidTags[0], ...allValidTags.slice(1)] as [
     string,
     ...string[],
-]);
+]));
 
-const PaidPricingSchema = z
+const PaidPricingSchema = registry.register("PaidPricing", z
     .strictObject({
         model: z
             .enum(["Subscription", "One Time"])
@@ -43,9 +50,9 @@ const PaidPricingSchema = z
             .gt(0)
             .describe("The price of this resource, in US Dollars."),
     })
-    .meta({ id: "PaidPricing" });
+    .meta({ id: "PaidPricing" }));
 
-const FreePricingSchema = z
+const FreePricingSchema = registry.register("FreePricing", z
     .strictObject({
         model: z
             .enum(["Free", "Freemium"])
@@ -53,17 +60,17 @@ const FreePricingSchema = z
                 "The Free(mium) Pricing Model of this resource. 'Free' should be used for resources where 100% (or close) of the content is free. 'Freemium' describes a pricing model where the core content is available for free, but features paid extensions. If the resource has a freemium model but the free portion is very limited, consider using 'Paid' instead and providing an estimated price for the full version. ",
             ),
     })
-    .meta({ id: "FreePricing" });
+    .meta({ id: "FreePricing" }));
 
 /**
  * The Pricing of a Resource, which can either be Free/Freemium or Paid (Subscription/One Time)
  */
-const PricingSchema = z
+const PricingSchema = registry.register("Pricing", z
     .discriminatedUnion("model", [FreePricingSchema, PaidPricingSchema])
     .meta({ id: "Pricing" })
-    .describe("Details about the cost of the resource.");
+    .describe("Details about the cost of the resource."));
 
-export const LanguageDomainSchema = z
+export const LanguageDomainSchema = registry.register("LanguageDomain", z
     .enum([
         "Web Development",
         "Data Science",
@@ -75,9 +82,9 @@ export const LanguageDomainSchema = z
         "DevOps",
     ])
     .meta({ id: "LanguageDomain" })
-    .describe("A domain that a programming language may be used in.");
+    .describe("A domain that a programming language may be used in."));
 
-export const ProgrammingParadigmSchema = z
+export const ProgrammingParadigmSchema = registry.register("ProgrammingParadigm", z
     .enum([
         "Object-Oriented Programming",
         "Functional Programming",
@@ -85,9 +92,9 @@ export const ProgrammingParadigmSchema = z
         "Logic Programming",
     ])
     .meta({ id: "ProgrammingParadigm" })
-    .describe("A programming paradigm.");
+    .describe("A programming paradigm."));
 
-export const ResourceCategorySchema = z
+export const ResourceCategorySchema = registry.register("ResourceCategory", z
     .discriminatedUnion("type", [
         z.object({
             type: z.literal("Language"),
@@ -107,13 +114,13 @@ export const ResourceCategorySchema = z
             type: z.literal("Tool"),
         }).meta({ id: "CategoryTool" }),
     ])
-    .meta({ id: "ResourceCategory", description: "The category of the resource" });
+    .meta({ id: "ResourceCategory" }));
 
-const ResourceTypeSchema = z
+const ResourceTypeSchema = registry.register("ResourceType", z
     .enum(["Video", "Article", "Interactive Tutorial", "Book", "Course"])
-    .describe("The type of the resource");
+    .describe("The type of the resource"));
 
-export const ResourceSchema = z
+export const ResourceSchema = registry.register("Resource", z
     .strictObject({
         name: z.string().describe("The official name of the resource"),
         description: z
@@ -146,9 +153,9 @@ export const ResourceSchema = z
                 "Array of cons for using the resource, e.g. 'only teaches the basics rather than more advanced concepts'",
             ),
     })
-    .meta({ id: "Resource" });
+    .meta({ id: "Resource" }));
 
-export const MetaSchema = z
+export const MetaSchema = registry.register("Meta", z
     .strictObject({
         name: z
             .string()
@@ -173,13 +180,13 @@ export const MetaSchema = z
             ),
         category: ResourceCategorySchema,
     })
-    .meta({ id: "Meta" });
+    .meta({ id: "Meta" }));
 
 export const CompiledMetaSchema = MetaSchema.extend({
-    id: EntityTagEnum.describe("The unique identifier of the entity"),
+    id: EntityTagEnum,
 }).meta({ id: "CompiledMeta" });
 
-export const DatabaseSchema = z
+export const DatabaseSchema = registry.register("Database", z
     .strictObject({
         metadata: z
             .array(CompiledMetaSchema)
@@ -188,7 +195,7 @@ export const DatabaseSchema = z
             .array(ResourceSchema)
             .describe("List of all learning resources"),
     })
-    .meta({ id: "Database" });
+    .meta({ id: "Database" }));
 
 export type Meta = z.infer<typeof MetaSchema>;
 export type Resource = z.infer<typeof ResourceSchema>;
@@ -210,22 +217,30 @@ function main() {
 
     const schemaArg = values.schema?.toLowerCase();
     if (schemaArg === "openapi") {
-        const jsonSchema = z.toJSONSchema(DatabaseSchema, {
-            target: "openapi-3.0",
-            reused: "inline",
+        registry.registerPath({
+            method: 'get',
+            path: '/resources',
+            summary: 'Get all learning resources',
+            responses: {
+                200: {
+                    description: 'Successful response',
+                    content: {
+                        'application/json': {
+                            schema: DatabaseSchema,
+                        },
+                    },
+                },
+            },
         });
-
-        const openApiDocument = {
+        const generator = new OpenApiGeneratorV3(registry.definitions);
+        const openApiDocument = generator.generateDocument({
             openapi: "3.0.0",
             info: {
                 title: "Learning Resources",
                 version: "1.0.0",
                 description: "// Generated by index.ts - DO NOT EDIT THIS FILE DIRECTLY"
             },
-            paths: {},
-
-            components: jsonSchema
-        };
+        });
         console.log(JSON.stringify(openApiDocument, null, 2));
         process.exit(0);
     }

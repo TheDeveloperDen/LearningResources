@@ -17,8 +17,17 @@
     "domains": {
       "type": "array",
       "items": {
-        "description": "A domain that a programming language may be used in.",
-        "$ref": "#/$defs/LanguageDomain"
+        "type": "string",
+        "enum": [
+          "Web Development",
+          "Data Science",
+          "Mobile Development",
+          "Game Development",
+          "Systems Programming",
+          "Scripting",
+          "General Purpose",
+          "DevOps"
+        ]
       },
       "description": "The domain(s) that the entity is commonly used in, or best suited for."
     },
@@ -71,8 +80,13 @@
         "paradigms": {
           "type": "array",
           "items": {
-            "description": "A programming paradigm.",
-            "$ref": "#/$defs/ProgrammingParadigm"
+            "type": "string",
+            "enum": [
+              "Object-Oriented Programming",
+              "Functional Programming",
+              "Procedural Programming",
+              "Logic Programming"
+            ]
           },
           "description": "The programming paradigms that this language focuses on, e.g. 'Object-Oriented Programming', 'Functional Programming', 'Procedural Programming', etc."
         }
@@ -82,15 +96,6 @@
         "paradigms"
       ],
       "additionalProperties": false
-    },
-    "ProgrammingParadigm": {
-      "type": "string",
-      "enum": [
-        "Object-Oriented Programming",
-        "Functional Programming",
-        "Procedural Programming",
-        "Logic Programming"
-      ]
     },
     "CategoryPlatform": {
       "type": "object",
