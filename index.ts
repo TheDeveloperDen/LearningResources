@@ -99,15 +99,15 @@ export const ResourceCategorySchema = z
         }).meta({ id: "CategoryLanguage" }),
         z.object({
             type: z.literal("Platform"),
-        }).meta({ id: "CategoryPlatform" }).describe(
-            "A platform used to learn programming, which may teach a variety of languages and concepts.",
-        ),
+        }).meta({
+            id: "CategoryPlatform",
+            description: "A platform used to learn programming, which may teach a variety of languages and concepts.",
+        }),
         z.object({
             type: z.literal("Tool"),
         }).meta({ id: "CategoryTool" }),
     ])
-    .meta({ id: "ResourceCategory" })
-    .describe("The category of the resource");
+    .meta({ id: "ResourceCategory", description: "The category of the resource" });
 
 const ResourceTypeSchema = z
     .enum(["Video", "Article", "Interactive Tutorial", "Book", "Course"])
