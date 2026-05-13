@@ -18,6 +18,7 @@
 		"lint": "bunx @biomejs/biome check --write"
 	},
 	"devDependencies": {
+		"@asteasolutions/zod-to-openapi": "^8.5.0",
 		"@types/bun": "latest",
 		"ajv-cli": "^5.0.0",
 		"ajv-formats": "^3.0.1",
