@@ -32,31 +32,6 @@
       "description": "The domain(s) that the entity is commonly used in, or best suited for."
     },
     "category": {
-      "$ref": "#/$defs/ResourceCategory"
-    }
-  },
-  "required": [
-    "name",
-    "description",
-    "domains",
-    "category"
-  ],
-  "additionalProperties": false,
-  "$defs": {
-    "LanguageDomain": {
-      "type": "string",
-      "enum": [
-        "Web Development",
-        "Data Science",
-        "Mobile Development",
-        "Game Development",
-        "Systems Programming",
-        "Scripting",
-        "General Purpose",
-        "DevOps"
-      ]
-    },
-    "ResourceCategory": {
       "oneOf": [
         {
           "$ref": "#/$defs/CategoryLanguage"
@@ -67,9 +42,17 @@
         {
           "$ref": "#/$defs/CategoryTool"
         }
-      ],
-      "description": "The category of the resource"
-    },
+      ]
+    }
+  },
+  "required": [
+    "name",
+    "description",
+    "domains",
+    "category"
+  ],
+  "additionalProperties": false,
+  "$defs": {
     "CategoryLanguage": {
       "type": "object",
       "properties": {
