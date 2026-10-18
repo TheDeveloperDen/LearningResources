@@ -1,6 +1,5 @@
 import { describe, expect, test } from "bun:test";
 import fs from "node:fs";
-import os from "node:os";
 import path from "node:path";
 import {
 	applyDarkFill,
@@ -8,19 +7,17 @@ import {
 	type IconManifest,
 	IconManifestSchema,
 	MAX_ICON_BYTES,
+	ROOT_TAG,
 	validateIconSvg,
 } from "./icons";
+import { svgWith, useTmpDirs, VALID_SVG } from "./test-helpers";
 import { ok } from "./validation";
 
-const VALID =
-	'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M0 0h1v1z"/></svg>';
-
-const svgWith = (inner: string) =>
-	`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">${inner}</svg>`;
+const tmp = useTmpDirs();
 
 describe("validateIconSvg", () => {
 	test("accepts a minimal valid svg", () => {
-		expect(validateIconSvg(VALID)).toEqual([]);
+		expect(validateIconSvg(VALID_SVG)).toEqual([]);
 	});
 
 	test("reports a missing viewBox", () => {
@@ -60,10 +57,10 @@ describe("validateIconSvg", () => {
 });
 
 describe("applyDarkFill", () => {
-	const rootTag = (svg: string) => svg.match(/<svg\b[^>]*>/)?.[0] ?? "";
+	const rootTag = (svg: string) => svg.match(ROOT_TAG)?.[0] ?? "";
 
 	test("sets fill on the root element", () => {
-		expect(rootTag(applyDarkFill(VALID, "#ffffff"))).toContain(
+		expect(rootTag(applyDarkFill(VALID_SVG, "#ffffff"))).toContain(
 			'fill="#ffffff"',
 		);
 	});
@@ -121,6 +118,26 @@ describe("ManifestSchema", () => {
 		expect(result.success).toBe(false);
 	});
 
+	test("accepts an iconify entry and rejects unsafe or extra keys", () => {
+		const iconify = { source: "iconify", set: "twemoji", name: "books" };
+		expect(IconManifestSchema.safeParse({ general: iconify }).success).toBe(
+			true,
+		);
+		expect(
+			IconManifestSchema.safeParse({ general: { ...iconify, name: "../x" } })
+				.success,
+		).toBe(false);
+		expect(
+			IconManifestSchema.safeParse({ general: { ...iconify, set: "a/b" } })
+				.success,
+		).toBe(false);
+		expect(
+			IconManifestSchema.safeParse({
+				general: { ...iconify, dark: { fill: "#ffffff" } },
+			}).success,
+		).toBe(false);
+	});
+
 	test("rejects a custom entry without a license", () => {
 		expect(
 			IconManifestSchema.safeParse({ general: { source: "custom" } }).success,
@@ -135,7 +152,7 @@ describe("discoverIcons", () => {
 	};
 
 	const iconsDirWith = (files: Record<string, string>) => {
-		const dir = fs.mkdtempSync(path.join(os.tmpdir(), "icons-"));
+		const dir = tmp("icons-");
 		for (const [name, content] of Object.entries(files)) {
 			fs.writeFileSync(path.join(dir, name), content);
 		}
@@ -143,7 +160,10 @@ describe("discoverIcons", () => {
 	};
 
 	test("maps default and dark files to repo-relative paths", () => {
-		const dir = iconsDirWith({ "rust.svg": VALID, "rust.dark.svg": VALID });
+		const dir = iconsDirWith({
+			"rust.svg": VALID_SVG,
+			"rust.dark.svg": VALID_SVG,
+		});
 		expect(discoverIcons(dir, ["rust", "cpp"], manifest)).toEqual(
 			ok({
 				rust: { default: "icons/rust.svg", dark: "icons/rust.dark.svg" },
@@ -152,7 +172,7 @@ describe("discoverIcons", () => {
 	});
 
 	test("reports every file whose name matches no entity", () => {
-		const dir = iconsDirWith({ "Rust.svg": VALID, "c++.svg": VALID });
+		const dir = iconsDirWith({ "Rust.svg": VALID_SVG, "c++.svg": VALID_SVG });
 		const result = discoverIcons(dir, ["rust", "cpp"], manifest);
 		expect(result.ok).toBe(false);
 		expect(result.diagnostics.map((d) => d.where).toSorted()).toEqual([
@@ -162,7 +182,7 @@ describe("discoverIcons", () => {
 	});
 
 	test("reports a dark variant with no default", () => {
-		const dir = iconsDirWith({ "rust.dark.svg": VALID });
+		const dir = iconsDirWith({ "rust.dark.svg": VALID_SVG });
 		const result = discoverIcons(dir, ["rust"], manifest);
 		expect(result.ok).toBe(false);
 		expect(result.diagnostics.some((d) => d.message.includes("default"))).toBe(
@@ -171,7 +191,7 @@ describe("discoverIcons", () => {
 	});
 
 	test("reports an icon with no manifest entry", () => {
-		const dir = iconsDirWith({ "rust.svg": VALID });
+		const dir = iconsDirWith({ "rust.svg": VALID_SVG });
 		const result = discoverIcons(dir, ["rust"], {});
 		expect(result.ok).toBe(false);
 		expect(result.diagnostics.some((d) => d.message.includes("manifest"))).toBe(
@@ -196,7 +216,7 @@ describe("discoverIcons", () => {
 	});
 
 	test("treats a missing icons directory as no icons", () => {
-		const missing = path.join(os.tmpdir(), "icons-does-not-exist-xyz");
+		const missing = path.join(tmp("icons-"), "does-not-exist");
 		expect(discoverIcons(missing, ["rust"], manifest)).toEqual(ok({}));
 	});
 
@@ -204,7 +224,7 @@ describe("discoverIcons", () => {
 		const dir = iconsDirWith({
 			"manifest.yaml": "",
 			"LICENSE.devicon": "MIT",
-			"rust.svg": VALID,
+			"rust.svg": VALID_SVG,
 		});
 		expect(discoverIcons(dir, ["rust"], manifest)).toEqual(
 			ok({ rust: { default: "icons/rust.svg" } }),

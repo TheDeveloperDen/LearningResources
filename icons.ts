@@ -12,7 +12,7 @@ import {
 
 export const MAX_ICON_BYTES = 50 * 1024;
 
-const ROOT_TAG = /<svg\b[^>]*>/i;
+export const ROOT_TAG = /<svg\b[^>]*>/i;
 
 /**
  * Checks an icon SVG against the dataset's rules. Returns a list of problems, with an empty list indicating success.
@@ -97,6 +97,14 @@ const DeviconSourceSchema = z.strictObject({
 		),
 });
 
+const IconifySourceSchema = z.strictObject({
+	source: z.literal("iconify"),
+	set: SafeName.describe(
+		"The icon set, i.e. the `@iconify-json/<set>` package, e.g. 'twemoji'.",
+	),
+	name: SafeName.describe("The icon's name within the set, e.g. 'books'."),
+});
+
 const CustomSourceSchema = z.strictObject({
 	source: z.literal("custom"),
 	license: z
@@ -107,7 +115,11 @@ const CustomSourceSchema = z.strictObject({
 /** Maps of icons to their source information. */
 export const IconManifestSchema = z.record(
 	SafeName,
-	z.discriminatedUnion("source", [DeviconSourceSchema, CustomSourceSchema]),
+	z.discriminatedUnion("source", [
+		DeviconSourceSchema,
+		IconifySourceSchema,
+		CustomSourceSchema,
+	]),
 );
 export type IconManifest = z.infer<typeof IconManifestSchema>;
 
@@ -131,8 +143,9 @@ export function discoverIcons(
 		.readdirSync(iconsDir)
 		.filter((f) => f.endsWith(".svg"))
 		.toSorted();
+	const fileNames = new Set(files);
 	const known = new Set(entityIds);
-	const icons: Record<string, EntityIcon> = {};
+	const found: Record<string, Partial<EntityIcon>> = {};
 	const diagnostics: Diagnostic[] = [];
 	const problem = (file: string, message: string) =>
 		diagnostics.push(error(`icons/${file}`, message));
@@ -155,15 +168,21 @@ export function discoverIcons(
 			problem(file, message);
 		}
 		if (problems.length === 0) {
-			icons[id] = {
-				...icons[id],
+			found[id] = {
+				...found[id],
 				[dark ? "dark" : "default"]: `icons/${file}`,
-			} as EntityIcon;
+			};
 		}
 	}
 
-	for (const [id, icon] of Object.entries(icons)) {
-		if (!icon.default && !files.includes(`${id}.svg`)) {
+	const icons: Record<string, EntityIcon> = {};
+	for (const [id, { default: defaultIcon, dark }] of Object.entries(found)) {
+		if (defaultIcon) {
+			icons[id] = dark
+				? { default: defaultIcon, dark }
+				: { default: defaultIcon };
+		} else if (!fileNames.has(`${id}.svg`)) {
+			// (a default file that exists but is invalid has already been reported)
 			problem(`${id}.dark.svg`, `entity "${id}" has no default icon`);
 		}
 	}
