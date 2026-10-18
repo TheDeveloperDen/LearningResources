@@ -5,11 +5,12 @@ import path from "node:path";
 import {
 	applyDarkFill,
 	discoverIcons,
-	MAX_ICON_BYTES,
 	type IconManifest,
 	IconManifestSchema,
+	MAX_ICON_BYTES,
 	validateIconSvg,
 } from "./icons";
+import { ok } from "./validation";
 
 const VALID =
 	'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128"><path d="M0 0h1v1z"/></svg>';
@@ -104,7 +105,8 @@ describe("ManifestSchema", () => {
 				.success,
 		).toBe(false);
 		expect(
-			IconManifestSchema.safeParse({ rust: { ...base, variant: "a/b" } }).success,
+			IconManifestSchema.safeParse({ rust: { ...base, variant: "a/b" } })
+				.success,
 		).toBe(false);
 	});
 
@@ -142,45 +144,60 @@ describe("discoverIcons", () => {
 
 	test("maps default and dark files to repo-relative paths", () => {
 		const dir = iconsDirWith({ "rust.svg": VALID, "rust.dark.svg": VALID });
-		const { icons, errors } = discoverIcons(dir, ["rust", "cpp"], manifest);
-		expect(errors).toEqual([]);
-		expect(icons).toEqual({
-			rust: { default: "icons/rust.svg", dark: "icons/rust.dark.svg" },
-		});
+		expect(discoverIcons(dir, ["rust", "cpp"], manifest)).toEqual(
+			ok({
+				rust: { default: "icons/rust.svg", dark: "icons/rust.dark.svg" },
+			}),
+		);
 	});
 
-	test("errors on files whose name matches no entity", () => {
+	test("reports every file whose name matches no entity", () => {
 		const dir = iconsDirWith({ "Rust.svg": VALID, "c++.svg": VALID });
-		const { icons, errors } = discoverIcons(dir, ["rust", "cpp"], manifest);
-		expect(icons).toEqual({});
-		expect(errors).toHaveLength(2);
+		const result = discoverIcons(dir, ["rust", "cpp"], manifest);
+		expect(result.ok).toBe(false);
+		expect(result.diagnostics.map((d) => d.where).toSorted()).toEqual([
+			"icons/Rust.svg",
+			"icons/c++.svg",
+		]);
 	});
 
-	test("errors on a dark variant with no default", () => {
+	test("reports a dark variant with no default", () => {
 		const dir = iconsDirWith({ "rust.dark.svg": VALID });
-		const { errors } = discoverIcons(dir, ["rust"], manifest);
-		expect(errors.some((e) => e.includes("default"))).toBe(true);
+		const result = discoverIcons(dir, ["rust"], manifest);
+		expect(result.ok).toBe(false);
+		expect(result.diagnostics.some((d) => d.message.includes("default"))).toBe(
+			true,
+		);
 	});
 
-	test("errors on an icon with no manifest entry", () => {
+	test("reports an icon with no manifest entry", () => {
 		const dir = iconsDirWith({ "rust.svg": VALID });
-		const { errors } = discoverIcons(dir, ["rust"], {});
-		expect(errors.some((e) => e.includes("manifest"))).toBe(true);
+		const result = discoverIcons(dir, ["rust"], {});
+		expect(result.ok).toBe(false);
+		expect(result.diagnostics.some((d) => d.message.includes("manifest"))).toBe(
+			true,
+		);
 	});
 
-	test("errors on an icon that fails svg validation", () => {
-		const dir = iconsDirWith({ "rust.svg": svgWith("<script>x()</script>") });
-		const { icons, errors } = discoverIcons(dir, ["rust"], manifest);
-		expect(icons).toEqual({});
-		expect(errors.some((e) => e.includes("rust.svg"))).toBe(true);
+	test("reports every problem in an invalid svg, and the errors from other files too", () => {
+		const dir = iconsDirWith({
+			"rust.svg": svgWith("<script>x()</script>"),
+			"cpp.svg": "<svg></svg>",
+		});
+		const result = discoverIcons(dir, ["rust", "cpp"], manifest);
+		expect(result.ok).toBe(false);
+		expect(
+			result.diagnostics.filter((d) => d.where === "icons/rust.svg"),
+		).toHaveLength(1);
+		expect(result.diagnostics.some((d) => d.where === "icons/cpp.svg")).toBe(
+			true,
+		);
+		expect(result.diagnostics.every((d) => d.level === "error")).toBe(true);
 	});
 
 	test("treats a missing icons directory as no icons", () => {
 		const missing = path.join(os.tmpdir(), "icons-does-not-exist-xyz");
-		expect(discoverIcons(missing, ["rust"], manifest)).toEqual({
-			icons: {},
-			errors: [],
-		});
+		expect(discoverIcons(missing, ["rust"], manifest)).toEqual(ok({}));
 	});
 
 	test("ignores non-svg files such as the manifest and licence", () => {
@@ -189,8 +206,8 @@ describe("discoverIcons", () => {
 			"LICENSE.devicon": "MIT",
 			"rust.svg": VALID,
 		});
-		const { icons, errors } = discoverIcons(dir, ["rust"], manifest);
-		expect(errors).toEqual([]);
-		expect(Object.keys(icons)).toEqual(["rust"]);
+		expect(discoverIcons(dir, ["rust"], manifest)).toEqual(
+			ok({ rust: { default: "icons/rust.svg" } }),
+		);
 	});
 });

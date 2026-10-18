@@ -2,6 +2,7 @@ import fs from "node:fs";
 import { readdir } from "node:fs/promises";
 import path from "node:path";
 import { YAML } from "bun";
+import type { z } from "zod";
 import {
 	type Database,
 	DatabaseSchema,
@@ -12,127 +13,136 @@ import {
 	type Resource,
 	ResourceSchema,
 } from ".";
-import { discoverIcons, type IconManifest, IconManifestSchema } from "./icons";
+import { discoverIcons, IconManifestSchema } from "./icons";
+import {
+	andThen,
+	type Diagnostic,
+	error,
+	fail,
+	fromZod,
+	hasErrors,
+	ok,
+	partition,
+	report,
+	type Validation,
+	warning,
+} from "./validation";
 
 type DatabaseMetadata = {
 	id: string;
 	icon?: EntityIcon;
 } & Meta;
 
+async function readYaml<T>(
+	filePath: string,
+	schema: z.ZodType<T>,
+	where: string,
+): Promise<Validation<T>> {
+	const content = await fs.promises.readFile(filePath, "utf-8");
+	return fromZod(schema.safeParse(YAML.parse(content)), where);
+}
+
+async function yamlFiles(dir: string) {
+	const files = await readdir(dir, { recursive: true });
+	return files.filter((f) => f.endsWith(".yaml")).toSorted();
+}
+
 async function buildDatabase() {
 	const metaDir = path.join(__dirname, "./metadata");
 	const resourcesDir = path.join(__dirname, "./resources");
-
-	const allMetaFiles = (await readdir(metaDir, { recursive: true })).toSorted();
-	const allResourceFiles = (
-		await readdir(resourcesDir, { recursive: true })
-	).toSorted();
-
-	const database = {
-		metadata: [] as DatabaseMetadata[],
-		resources: [] as Resource[],
-	} satisfies Database;
-	let hasErrors = false;
-
-	for (const file of allMetaFiles.filter((f) => f.endsWith(".yaml"))) {
-		const filePath = path.join(metaDir, file);
-		const fileContent = await fs.promises.readFile(filePath, "utf-8");
-
-		const entityId = fileNameToId(file);
-
-		const data = YAML.parse(fileContent);
-		const result = MetaSchema.safeParse(data);
-
-		if (!result.success) {
-			console.error(`Validation Error in Metadata: ${file}`);
-			console.error(result.error.issues);
-			hasErrors = true;
-		} else {
-			database.metadata.push({ id: entityId, ...result.data });
-		}
-	}
-
 	const iconsDir = path.join(__dirname, "./icons");
 	const manifestPath = path.join(iconsDir, "manifest.yaml");
-	let manifest: IconManifest = {};
-	if (fs.existsSync(manifestPath)) {
-		const parsed = IconManifestSchema.safeParse(
-			YAML.parse(await fs.promises.readFile(manifestPath, "utf-8")),
-		);
-		if (parsed.success) {
-			manifest = parsed.data;
-		} else {
-			console.error("Validation Error in icons/manifest.yaml");
-			console.error(parsed.error.issues);
-			hasErrors = true;
-		}
-	}
 
-	const { icons, errors: iconErrors } = discoverIcons(
-		iconsDir,
-		database.metadata.map((meta) => meta.id),
-		manifest,
-	);
-	for (const error of iconErrors) {
-		console.error(`Icon Error: ${error}`);
-		hasErrors = true;
-	}
-	for (const meta of database.metadata) {
-		if (icons[meta.id]) {
-			meta.icon = icons[meta.id];
-		} else if (meta.category.type === "Language") {
-			console.warn(`Warning: Language "${meta.id}" has no icon`);
-		}
-	}
-
-	const validTags = new Set(database.metadata.map((meta) => meta.id));
-
-	for (const file of allResourceFiles.filter((f) => f.endsWith(".yaml"))) {
-		const filePath = path.join(resourcesDir, file);
-		const fileContent = await fs.promises.readFile(filePath, "utf-8");
-
-		const data = YAML.parse(fileContent);
-		const result = ResourceSchema.safeParse(data);
-
-		if (!result.success) {
-			console.error(`Validation Error in Resource: ${file}`);
-			console.error(result.error.issues);
-			hasErrors = true;
-			continue;
-		}
-
-		const invalidTags = result.data.teaches.filter(
-			(tag) => !validTags.has(tag),
-		);
-		if (invalidTags.length > 0) {
-			console.error(`Relational Error in Resource: ${file}`);
-			console.error(`Unknown tags in 'teaches': [${invalidTags.join(", ")}]`);
-			console.error(`Ensure a corresponding metadata file exists.`);
-			hasErrors = true;
-			continue;
-		}
-
-		database.resources.push(result.data);
-	}
-
-	if (hasErrors) {
+	const diagnostics: Diagnostic[] = [];
+	const finish = (): never => {
+		report(diagnostics);
 		console.error("Build failed due to validation errors.");
 		process.exit(1);
+	};
+
+	const metaResults = await Promise.all(
+		(await yamlFiles(metaDir)).map(async (file) =>
+			andThen(
+				await readYaml(
+					path.join(metaDir, file),
+					MetaSchema,
+					`metadata/${file}`,
+				),
+				(meta) => ok({ id: fileNameToId(file), ...meta }),
+			),
+		),
+	);
+	const { values: metadata, diagnostics: metaDiagnostics } =
+		partition<DatabaseMetadata>(metaResults);
+	diagnostics.push(...metaDiagnostics);
+
+	const manifest = fs.existsSync(manifestPath)
+		? await readYaml(manifestPath, IconManifestSchema, "icons/manifest.yaml")
+		: ok({});
+	const icons = andThen(manifest, (m) =>
+		discoverIcons(
+			iconsDir,
+			metadata.map((meta) => meta.id),
+			m,
+		),
+	);
+	diagnostics.push(...icons.diagnostics);
+	if (icons.ok) {
+		for (const meta of metadata) {
+			const icon = icons.value[meta.id];
+			if (icon) {
+				meta.icon = icon;
+			} else if (meta.category.type === "Language") {
+				diagnostics.push(
+					warning(`metadata/${meta.id}`, "language has no icon"),
+				);
+			}
+		}
+	}
+
+	const validTags = new Set(metadata.map((meta) => meta.id));
+
+	const resourceResults = await Promise.all(
+		(await yamlFiles(resourcesDir)).map(async (file) => {
+			const where = `resources/${file}`;
+			return andThen(
+				await readYaml(path.join(resourcesDir, file), ResourceSchema, where),
+				(resource) => {
+					const unknown = resource.teaches.filter((tag) => !validTags.has(tag));
+					return unknown.length > 0
+						? fail<Resource>([
+								error(
+									where,
+									`unknown tags in 'teaches': [${unknown.join(", ")}]. Ensure a corresponding metadata file exists.`,
+								),
+							])
+						: ok(resource);
+				},
+			);
+		}),
+	);
+	const { values: resources, diagnostics: resourceDiagnostics } =
+		partition(resourceResults);
+	diagnostics.push(...resourceDiagnostics);
+
+	if (hasErrors(diagnostics)) {
+		return finish();
 	}
 
 	// verify the entire database against the schema before writing
-	const finalResult = DatabaseSchema.safeParse(database);
-	if (!finalResult.success) {
-		console.error("Final Database Validation Error:");
-		console.error(finalResult.error.issues);
-		process.exit(1);
+	const database = { metadata, resources } satisfies Database;
+	const final = fromZod(DatabaseSchema.safeParse(database), "database");
+	diagnostics.push(...final.diagnostics);
+	if (!final.ok) {
+		return finish();
 	}
 
+	report(diagnostics);
 	const outputPath = path.join(__dirname, "./database.json");
 	await fs.promises.writeFile(outputPath, JSON.stringify(database, null, 2));
 
 	console.log(
-		`Success! Compiled ${database.metadata.length} entities and ${database.resources.length} resources.`,
+		`Success! Compiled ${metadata.length} entities and ${resources.length} resources.`,
 	);
 }
 

@@ -2,6 +2,13 @@ import fs from "node:fs";
 import path from "node:path";
 import { z } from "zod";
 import type { EntityIcon } from "./index";
+import {
+	type Diagnostic,
+	error,
+	fail,
+	ok,
+	type Validation,
+} from "./validation";
 
 export const MAX_ICON_BYTES = 50 * 1024;
 
@@ -108,19 +115,16 @@ const ICON_FILE = /^(.+?)(\.dark)?\.svg$/;
 
 /**
  * Finds `<id>.svg` / `<id>.dark.svg` files in `iconsDir` and maps them to the
- * entities they belong to. 
- * @returns a map of successful icons and a list of errors.
+ * entities they belong to.
+ * @returns the icons by entity id, or every problem found if any file is bad.
  */
 export function discoverIcons(
 	iconsDir: string,
 	entityIds: string[],
 	manifest: IconManifest,
-): { icons: Record<string, EntityIcon>; errors: string[] } {
-	const icons: Record<string, EntityIcon> = {};
-	const errors: string[] = [];
-
+): Validation<Record<string, EntityIcon>> {
 	if (!fs.existsSync(iconsDir)) {
-		return { icons, errors };
+		return ok({});
 	}
 
 	const files = fs
@@ -128,50 +132,41 @@ export function discoverIcons(
 		.filter((f) => f.endsWith(".svg"))
 		.toSorted();
 	const known = new Set(entityIds);
-	const defaults = new Set<string>();
-	const invalid = new Set<string>();
+	const icons: Record<string, EntityIcon> = {};
+	const diagnostics: Diagnostic[] = [];
+	const problem = (file: string, message: string) =>
+		diagnostics.push(error(`icons/${file}`, message));
 
 	for (const file of files) {
 		const [, id, dark] = file.match(ICON_FILE) ?? [];
 		if (!id || !known.has(id)) {
-			errors.push(`icons/${file}: does not match any metadata entity`);
+			problem(file, "does not match any metadata entity");
 			continue;
 		}
 		if (!manifest[id]) {
-			errors.push(
-				`icons/${file}: entity "${id}" has no entry in icons/manifest.yaml`,
-			);
-			invalid.add(id);
+			problem(file, `entity "${id}" has no entry in icons/manifest.yaml`);
 			continue;
 		}
 
 		const problems = validateIconSvg(
 			fs.readFileSync(path.join(iconsDir, file), "utf-8"),
 		);
-		if (problems.length > 0) {
-			for (const problem of problems) {
-				errors.push(`icons/${file}: ${problem}`);
-			}
-			invalid.add(id);
-			continue;
+		for (const message of problems) {
+			problem(file, message);
 		}
-
-		if (dark) {
-			icons[id] = { ...icons[id], dark: `icons/${file}` } as EntityIcon;
-		} else {
-			defaults.add(id);
-			icons[id] = { ...icons[id], default: `icons/${file}` };
+		if (problems.length === 0) {
+			icons[id] = {
+				...icons[id],
+				[dark ? "dark" : "default"]: `icons/${file}`,
+			} as EntityIcon;
 		}
 	}
 
-	for (const id of Object.keys(icons)) {
-		if (!defaults.has(id) && !invalid.has(id)) {
-			errors.push(`icons/${id}.dark.svg: entity "${id}" has no default icon`);
-		}
-		if (!defaults.has(id) || invalid.has(id)) {
-			delete icons[id];
+	for (const [id, icon] of Object.entries(icons)) {
+		if (!icon.default && !files.includes(`${id}.svg`)) {
+			problem(`${id}.dark.svg`, `entity "${id}" has no default icon`);
 		}
 	}
 
-	return { icons, errors };
+	return diagnostics.length > 0 ? fail(diagnostics) : ok(icons);
 }
