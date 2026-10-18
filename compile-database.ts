@@ -92,10 +92,8 @@ async function buildDatabase() {
 			const icon = icons.value[meta.id];
 			if (icon) {
 				meta.icon = icon;
-			} else if (meta.category.type === "Language") {
-				diagnostics.push(
-					warning(`metadata/${meta.id}`, "language has no icon"),
-				);
+			} else {
+				diagnostics.push(warning(`metadata/${meta.id}`, "entity has no icon"));
 			}
 		}
 	}
