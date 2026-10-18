@@ -1,5 +1,6 @@
 name: Programming Language Design
 description: Resources on language design, parsers, compilers, and related concepts.
+emoji: 🧠
 domains: []
 category:
   type: "Platform"
