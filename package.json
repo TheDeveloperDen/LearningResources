@@ -16,6 +16,7 @@
 		"validate-database": "bun run gen-database && ajv validate -s database.schema.json -d database.json --spec=draft2020 -c ajv-formats",
 		"validate": "bun run gen-schemas && bun run validate-resources && bun run validate-metadata && bun run validate-database",
 		"test": "bun test",
+		"typecheck": "tsc --noEmit",
 		"sync-icons": "bun run sync-icons.ts",
 		"lint": "bunx @biomejs/biome check --write"
 	},
