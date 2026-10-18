@@ -1,0 +1,34 @@
+# Where each entity's icon comes from. This file is read by `bun run sync-icons`
+# to generate a fully "saturated" `icons/` folder
+clojure:
+  source: devicon
+  name: clojure
+cpp:
+  source: devicon
+  name: cplusplus
+git:
+  source: devicon
+  name: git
+haskell:
+  source: devicon
+  name: haskell
+java:
+  source: devicon
+  name: java
+kotlin:
+  source: devicon
+  name: kotlin
+php:
+  source: devicon
+  name: php
+python:
+  source: devicon
+  name: python
+rust:
+  source: devicon
+  name: rust
+  dark:
+    fill: "#ffffff"
+sql:
+  source: devicon
+  name: postgresql

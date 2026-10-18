@@ -11,6 +11,9 @@
         "paradigms": [
           "Functional Programming"
         ]
+      },
+      "icon": {
+        "default": "icons/clojure.svg"
       }
     },
     {
@@ -28,6 +31,9 @@
           "Object-Oriented Programming",
           "Procedural Programming"
         ]
+      },
+      "icon": {
+        "default": "icons/cpp.svg"
       }
     },
     {
@@ -41,6 +47,9 @@
         "paradigms": [
           "Functional Programming"
         ]
+      },
+      "icon": {
+        "default": "icons/haskell.svg"
       }
     },
     {
@@ -54,6 +63,9 @@
         "paradigms": [
           "Object-Oriented Programming"
         ]
+      },
+      "icon": {
+        "default": "icons/java.svg"
       }
     },
     {
@@ -71,6 +83,9 @@
           "Functional Programming",
           "Procedural Programming"
         ]
+      },
+      "icon": {
+        "default": "icons/kotlin.svg"
       }
     },
     {
@@ -87,6 +102,9 @@
           "Object-Oriented Programming",
           "Functional Programming"
         ]
+      },
+      "icon": {
+        "default": "icons/php.svg"
       }
     },
     {
@@ -105,6 +123,9 @@
           "Object-Oriented Programming",
           "Procedural Programming"
         ]
+      },
+      "icon": {
+        "default": "icons/python.svg"
       }
     },
     {
@@ -123,6 +144,10 @@
           "Procedural Programming",
           "Functional Programming"
         ]
+      },
+      "icon": {
+        "dark": "icons/rust.dark.svg",
+        "default": "icons/rust.svg"
       }
     },
     {
@@ -133,6 +158,9 @@
       "category": {
         "type": "Language",
         "paradigms": []
+      },
+      "icon": {
+        "default": "icons/sql.svg"
       }
     },
     {
@@ -154,6 +182,9 @@
       ],
       "category": {
         "type": "Tool"
+      },
+      "icon": {
+        "default": "icons/git.svg"
       }
     },
     {
