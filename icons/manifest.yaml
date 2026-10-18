@@ -32,3 +32,11 @@ rust:
 sql:
   source: devicon
   name: postgresql
+general:
+  source: iconify
+  set: twemoji
+  name: books # 📚
+programming-language-design:
+  source: iconify
+  set: twemoji
+  name: brain # 🧠
