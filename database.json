@@ -4,7 +4,6 @@
       "id": "clojure",
       "name": "Clojure",
       "description": "Clojure is a dynamic functional language from the Lisp family that runs on many different platforms",
-      "emoji": "821823652404265001",
       "domains": [],
       "category": {
         "type": "Language",
@@ -20,7 +19,6 @@
       "id": "cpp",
       "name": "C++",
       "description": "C++ is a statically typed general-purpose language designed by Bjarne Stroustrup in 1985",
-      "emoji": "821822658169536542",
       "domains": [
         "Systems Programming",
         "Game Development"
@@ -40,7 +38,6 @@
       "id": "haskell",
       "name": "Haskell",
       "description": "Haskell is a purely functional programming language commonly used in finance and academics",
-      "emoji": "821823367333675058",
       "domains": [],
       "category": {
         "type": "Language",
@@ -56,7 +53,6 @@
       "id": "java",
       "name": "Java",
       "description": "Java is an Object Oriented language designed by James Gosling in 1995",
-      "emoji": "821822045187866625",
       "domains": [],
       "category": {
         "type": "Language",
@@ -72,7 +68,6 @@
       "id": "kotlin",
       "name": "Kotlin",
       "description": "Kotlin is a multi-paradigm programming language created by JetBrains that runs on the JVM, JS, and Native Platforms",
-      "emoji": "888496555529744395",
       "domains": [
         "Mobile Development"
       ],
@@ -111,7 +106,6 @@
       "id": "python",
       "name": "Python",
       "description": "Python is a powerful, high-level, dynamically typed, interpreted programming language. It is used in a wide range of fields, including web development, data analysis, and artificial intelligence.",
-      "emoji": "821824146270715936",
       "domains": [
         "Web Development",
         "Data Science",
@@ -132,7 +126,6 @@
       "id": "rust",
       "name": "Rust",
       "description": "Rust is a multi-paradigm systems language designed by Graydon Hoare in 2010",
-      "emoji": "821824283965128774",
       "domains": [
         "Systems Programming",
         "Web Development",
@@ -146,8 +139,8 @@
         ]
       },
       "icon": {
-        "dark": "icons/rust.dark.svg",
-        "default": "icons/rust.svg"
+        "default": "icons/rust.svg",
+        "dark": "icons/rust.dark.svg"
       }
     },
     {
@@ -167,9 +160,13 @@
       "id": "general",
       "name": "General",
       "description": "Resources that are broadly useful for learning programming, regardless of language.",
+      "emoji": "📚",
       "domains": [],
       "category": {
         "type": "Platform"
+      },
+      "icon": {
+        "default": "icons/general.svg"
       }
     },
     {
@@ -191,9 +188,13 @@
       "id": "programming-language-design",
       "name": "Programming Language Design",
       "description": "Resources on language design, parsers, compilers, and related concepts.",
+      "emoji": "🧠",
       "domains": [],
       "category": {
         "type": "Platform"
+      },
+      "icon": {
+        "default": "icons/programming-language-design.svg"
       }
     }
   ],
