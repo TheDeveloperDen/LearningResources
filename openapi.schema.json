@@ -286,6 +286,24 @@
         ],
         "additionalProperties": false
       },
+      "EntityIcon": {
+        "type": "object",
+        "properties": {
+          "default": {
+            "type": "string",
+            "description": "Relative path to the entity's SVG icon, e.g. 'icons/rust.svg'. Where possible, this should be suitable for a light background."
+          },
+          "dark": {
+            "type": "string",
+            "description": "Relative path to a variant of the icon intended for dark backgrounds, if one exists."
+          }
+        },
+        "required": [
+          "default"
+        ],
+        "additionalProperties": false,
+        "description": "The SVG icon(s) representing an entity."
+      },
       "Database": {
         "type": "object",
         "properties": {
@@ -320,6 +338,9 @@
             "properties": {
               "id": {
                 "$ref": "#/components/schemas/EntityTag"
+              },
+              "icon": {
+                "$ref": "#/components/schemas/EntityIcon"
               }
             },
             "required": [

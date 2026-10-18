@@ -203,6 +203,23 @@
             "rust",
             "sql"
           ]
+        },
+        "icon": {
+          "type": "object",
+          "properties": {
+            "default": {
+              "type": "string",
+              "description": "Relative path to the entity's SVG icon, e.g. 'icons/rust.svg'. Where possible, this should be suitable for a light background."
+            },
+            "dark": {
+              "description": "Relative path to a variant of the icon intended for dark backgrounds, if one exists.",
+              "type": "string"
+            }
+          },
+          "required": [
+            "default"
+          ],
+          "additionalProperties": false
         }
       },
       "required": [
