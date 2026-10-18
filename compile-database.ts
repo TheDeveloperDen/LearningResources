@@ -5,15 +5,18 @@ import { YAML } from "bun";
 import {
 	type Database,
 	DatabaseSchema,
+	type EntityIcon,
 	fileNameToId,
 	type Meta,
 	MetaSchema,
 	type Resource,
 	ResourceSchema,
 } from ".";
+import { discoverIcons, type IconManifest, IconManifestSchema } from "./icons";
 
 type DatabaseMetadata = {
 	id: string;
+	icon?: EntityIcon;
 } & Meta;
 
 async function buildDatabase() {
@@ -46,6 +49,39 @@ async function buildDatabase() {
 			hasErrors = true;
 		} else {
 			database.metadata.push({ id: entityId, ...result.data });
+		}
+	}
+
+	const iconsDir = path.join(__dirname, "./icons");
+	const manifestPath = path.join(iconsDir, "manifest.yaml");
+	let manifest: IconManifest = {};
+	if (fs.existsSync(manifestPath)) {
+		const parsed = IconManifestSchema.safeParse(
+			YAML.parse(await fs.promises.readFile(manifestPath, "utf-8")),
+		);
+		if (parsed.success) {
+			manifest = parsed.data;
+		} else {
+			console.error("Validation Error in icons/manifest.yaml");
+			console.error(parsed.error.issues);
+			hasErrors = true;
+		}
+	}
+
+	const { icons, errors: iconErrors } = discoverIcons(
+		iconsDir,
+		database.metadata.map((meta) => meta.id),
+		manifest,
+	);
+	for (const error of iconErrors) {
+		console.error(`Icon Error: ${error}`);
+		hasErrors = true;
+	}
+	for (const meta of database.metadata) {
+		if (icons[meta.id]) {
+			meta.icon = icons[meta.id];
+		} else if (meta.category.type === "Language") {
+			console.warn(`Warning: Language "${meta.id}" has no icon`);
 		}
 	}
 
