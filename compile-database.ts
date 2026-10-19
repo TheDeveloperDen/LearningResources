@@ -39,7 +39,14 @@ async function readYaml<T>(
 	where: string,
 ): Promise<Validation<T>> {
 	const content = await fs.promises.readFile(filePath, "utf-8");
-	return fromZod(schema.safeParse(YAML.parse(content)), where);
+	let parsed: unknown;
+	try {
+		parsed = YAML.parse(content);
+	} catch (cause) {
+		const reason = cause instanceof Error ? cause.message : String(cause);
+		return fail([error(where, `invalid YAML: ${reason}`)]);
+	}
+	return fromZod(schema.safeParse(parsed), where);
 }
 
 async function yamlFiles(dir: string) {
