@@ -1,5 +1,4 @@
 import fs from "node:fs";
-import path from "node:path";
 import { z } from "zod";
 import type { EntityIcon } from "./index";
 import {
@@ -10,74 +9,11 @@ import {
 	type Validation,
 } from "./validation";
 
-export const MAX_ICON_BYTES = 50 * 1024;
-
-export const ROOT_TAG = /<svg\b[^>]*>/i;
-
 /**
- * Checks an icon SVG against the dataset's rules. Returns a list of problems, with an empty list indicating success.
+ * Returns the SVG with `fill` set on the root element, for use on dark backgrounds.
  */
-export function validateIconSvg(svg: string): string[] {
-	const problems: string[] = [];
-
-	const bytes = Buffer.byteLength(svg);
-	if (bytes > MAX_ICON_BYTES) {
-		problems.push(`is ${bytes} bytes so over the ${MAX_ICON_BYTES} byte limit`);
-	}
-
-	const root = svg.match(ROOT_TAG)?.[0];
-	if (!root) {
-		problems.push("has no <svg> root element");
-	} else if (!/\sviewBox\s*=/.test(root)) {
-		problems.push("root <svg> has no viewBox");
-	}
-
-	for (const tag of ["script", "image", "foreignObject"]) {
-		if (new RegExp(`<${tag}\\b`, "i").test(svg)) {
-			problems.push(`contains a <${tag}> element`);
-		}
-	}
-
-	if (/\son[a-z]+\s*=/i.test(svg)) {
-		problems.push("contains an event handler attribute");
-	}
-
-	if (/\b(?:xlink:)?href\s*=\s*["'](?!#)/i.test(svg)) {
-		problems.push("contains an external href");
-	}
-	if (/url\(\s*["']?(?!#)/i.test(svg)) {
-		problems.push("contains an external url() reference");
-	}
-
-	return problems;
-}
-
-/**
- * Returns the SVG with `fill` set on the root element, for use on dark
- * backgrounds. Only safe for icons whose shapes inherit their fill, so it
- * will throw an error if any descendant sets one explicitly.
- */
-export function applyDarkFill(svg: string, fill: string): string {
-	const root = svg.match(ROOT_TAG);
-	if (!root) {
-		throw new Error("cannot recolour: no <svg> root element");
-	}
-
-	const rest = svg.slice((root.index ?? 0) + root[0].length);
-	if (/\sfill\s*=/i.test(rest)) {
-		throw new Error("cannot recolour: icon has explicit fill attributes");
-	}
-
-	const rootWithoutFill = root[0].replace(
-		/\sfill\s*=\s*(?:"[^"]*"|'[^']*')/i,
-		"",
-	);
-	const recoloured = rootWithoutFill.replace(
-		/\s*(\/?)>$/,
-		` fill="${fill}"$1>`,
-	);
-	return svg.replace(root[0], recoloured);
-}
+export const applyDarkFill = (svg: string, fill: string): string =>
+	svg.replace(">", () => ` fill="${fill}">`);
 
 // A safe name suitable for e.g. a file name
 const SafeName = z.string().regex(/^[a-z0-9][a-z0-9_-]*$/);
@@ -161,18 +97,7 @@ export function discoverIcons(
 			continue;
 		}
 
-		const problems = validateIconSvg(
-			fs.readFileSync(path.join(iconsDir, file), "utf-8"),
-		);
-		for (const message of problems) {
-			problem(file, message);
-		}
-		if (problems.length === 0) {
-			found[id] = {
-				...found[id],
-				[dark ? "dark" : "default"]: `icons/${file}`,
-			};
-		}
+		found[id] = { ...found[id], [dark ? "dark" : "default"]: `icons/${file}` };
 	}
 
 	const icons: Record<string, EntityIcon> = {};

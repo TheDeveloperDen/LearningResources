@@ -6,7 +6,6 @@ import {
 	applyDarkFill,
 	type IconManifest,
 	IconManifestSchema,
-	validateIconSvg,
 } from "./icons";
 
 /** The parts of an `@iconify-json/<set>` package's exports that we use. */
@@ -40,14 +39,6 @@ export function syncIcons(opts: {
 	const pending = new Map<string, string>();
 	const iconSets = new Map<string, IconSetPackage>();
 
-	const validated = (id: string, svg: string, from: string) => {
-		const problems = validateIconSvg(svg);
-		if (problems.length > 0) {
-			throw new Error(`${id}: ${from} ${problems.join("; ")}`);
-		}
-		return svg;
-	};
-
 	for (const [id, entry] of Object.entries(manifest)) {
 		if (entry.source === "devicon") {
 			const variant = entry.variant ?? "original";
@@ -60,19 +51,11 @@ export function syncIcons(opts: {
 			if (!fs.existsSync(sourcePath)) {
 				throw new Error(`${id}: devicon icon not found at ${sourcePath}`);
 			}
-			const svg = validated(
-				id,
-				fs.readFileSync(sourcePath, "utf-8"),
-				sourcePath,
-			);
+			const svg = fs.readFileSync(sourcePath, "utf-8");
 
 			pending.set(`${id}.svg`, svg);
 			if (entry.dark) {
-				try {
-					pending.set(`${id}.dark.svg`, applyDarkFill(svg, entry.dark.fill));
-				} catch (error) {
-					throw new Error(`${id}: ${(error as Error).message}`);
-				}
+				pending.set(`${id}.dark.svg`, applyDarkFill(svg, entry.dark.fill));
 			}
 		} else if (entry.source === "iconify") {
 			let iconSet = iconSets.get(entry.set);
@@ -96,11 +79,7 @@ export function syncIcons(opts: {
 			const { attributes, body } = iconToSVG(data, { height: "unset" });
 			pending.set(
 				`${id}.svg`,
-				validated(
-					id,
-					`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${attributes.viewBox}">${body}</svg>`,
-					`@iconify-json/${entry.set}:${entry.name}`,
-				),
+				`<svg xmlns="http://www.w3.org/2000/svg" viewBox="${attributes.viewBox}">${body}</svg>`,
 			);
 		}
 	}

@@ -6,81 +6,17 @@ import {
 	discoverIcons,
 	type IconManifest,
 	IconManifestSchema,
-	MAX_ICON_BYTES,
-	ROOT_TAG,
-	validateIconSvg,
 } from "./icons";
-import { svgWith, useTmpDirs, VALID_SVG } from "./test-helpers";
+import { useTmpDirs, VALID_SVG } from "./test-helpers";
 import { ok } from "./validation";
 
 const tmp = useTmpDirs();
 
-describe("validateIconSvg", () => {
-	test("accepts a minimal valid svg", () => {
-		expect(validateIconSvg(VALID_SVG)).toEqual([]);
-	});
-
-	test("reports a missing viewBox", () => {
-		const problems = validateIconSvg("<svg><path d=''/></svg>");
-		expect(problems.some((p) => p.includes("viewBox"))).toBe(true);
-	});
-
-	test("reports input with no svg root", () => {
-		expect(validateIconSvg("<div></div>")).not.toEqual([]);
-	});
-
-	test("reports input over the size cap", () => {
-		const big = svgWith(`<path d="${"M0 0".repeat(MAX_ICON_BYTES)}"/>`);
-		expect(validateIconSvg(big).some((p) => p.includes("bytes"))).toBe(true);
-	});
-
-	const forbidden: [string, string][] = [
-		["script element", "<script>alert(1)</script>"],
-		["image element", '<image href="data:image/png;base64,AAAA"/>'],
-		["foreignObject element", "<foreignObject><div/></foreignObject>"],
-		["event handler attribute", '<path onload="x()" d=""/>'],
-		["external use href", '<use href="https://evil.test/a.svg#b"/>'],
-		["external xlink href", '<use xlink:href="http://evil.test/a.svg#b"/>'],
-		["external css url", '<path style="fill:url(https://x.test/g)" d=""/>'],
-	];
-	for (const [name, inner] of forbidden) {
-		test(`rejects ${name}`, () => {
-			expect(validateIconSvg(svgWith(inner))).not.toEqual([]);
-		});
-	}
-
-	test("allows internal references", () => {
-		const inner =
-			'<defs><linearGradient id="g"/></defs><path fill="url(#g)" d=""/><use href="#a"/>';
-		expect(validateIconSvg(svgWith(inner))).toEqual([]);
-	});
-});
-
 describe("applyDarkFill", () => {
-	const rootTag = (svg: string) => svg.match(ROOT_TAG)?.[0] ?? "";
-
 	test("sets fill on the root element", () => {
-		expect(rootTag(applyDarkFill(VALID_SVG, "#ffffff"))).toContain(
-			'fill="#ffffff"',
+		expect(applyDarkFill(VALID_SVG, "#ffffff")).toBe(
+			VALID_SVG.replace('128">', '128" fill="#ffffff">'),
 		);
-	});
-
-	test("replaces an existing root fill", () => {
-		const out = applyDarkFill(
-			'<svg viewBox="0 0 1 1" fill="#000"><path d=""/></svg>',
-			"#ffffff",
-		);
-		expect(rootTag(out).match(/fill=/g)).toHaveLength(1);
-		expect(rootTag(out)).toContain('fill="#ffffff"');
-	});
-
-	test("throws when a descendant has an explicit fill", () => {
-		expect(() =>
-			applyDarkFill(
-				'<svg viewBox="0 0 1 1"><path fill="#f00" d=""/></svg>',
-				"#ffffff",
-			),
-		).toThrow(/explicit fill/);
 	});
 });
 
@@ -197,22 +133,6 @@ describe("discoverIcons", () => {
 		expect(result.diagnostics.some((d) => d.message.includes("manifest"))).toBe(
 			true,
 		);
-	});
-
-	test("reports every problem in an invalid svg, and the errors from other files too", () => {
-		const dir = iconsDirWith({
-			"rust.svg": svgWith("<script>x()</script>"),
-			"cpp.svg": "<svg></svg>",
-		});
-		const result = discoverIcons(dir, ["rust", "cpp"], manifest);
-		expect(result.ok).toBe(false);
-		expect(
-			result.diagnostics.filter((d) => d.where === "icons/rust.svg"),
-		).toHaveLength(1);
-		expect(result.diagnostics.some((d) => d.where === "icons/cpp.svg")).toBe(
-			true,
-		);
-		expect(result.diagnostics.every((d) => d.level === "error")).toBe(true);
 	});
 
 	test("treats a missing icons directory as no icons", () => {

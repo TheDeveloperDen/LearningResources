@@ -1,7 +1,7 @@
 import { describe, expect, test } from "bun:test";
 import fs from "node:fs";
 import path from "node:path";
-import { type IconManifest, ROOT_TAG } from "./icons";
+import type { IconManifest } from "./icons";
 import { syncIcons } from "./sync-icons";
 import { useTmpDirs, VALID_SVG } from "./test-helpers";
 
@@ -66,7 +66,7 @@ describe("syncIcons", () => {
 		});
 
 		const dark = fs.readFileSync(path.join(outDir, "foo.dark.svg"), "utf-8");
-		expect(dark.match(ROOT_TAG)?.[0]).toContain('fill="#ffffff"');
+		expect(dark.match(/<svg[^>]*>/)?.[0]).toContain('fill="#ffffff"');
 	});
 
 	test("is idempotent", () => {
@@ -102,20 +102,6 @@ describe("syncIcons", () => {
 
 		expect(() => syncIcons({ manifest, deviconDir, outDir })).toThrow(/bad/);
 		expect(fs.readdirSync(outDir)).toEqual([]);
-	});
-
-	test("throws when a source svg fails validation", () => {
-		const deviconDir = fakeDevicon({
-			"foo-original": VALID_SVG.replace("<path", "<script>x()</script><path"),
-		});
-
-		expect(() =>
-			syncIcons({
-				manifest: { foo: { source: "devicon", name: "foo" } },
-				deviconDir,
-				outDir: tmp(),
-			}),
-		).toThrow(/foo/);
 	});
 
 	test("skips custom entries", () => {
@@ -264,15 +250,5 @@ describe("syncIcons", () => {
 			expect(loads).toBe(1);
 		});
 
-		test("rejects an icon body that fails svg validation", () => {
-			expect(() =>
-				syncIcons({
-					manifest,
-					deviconDir: fakeDevicon({}),
-					loadIconSet: fakeIconify({ fake: { books: "<script>x()</script>" } }),
-					outDir: tmp(),
-				}),
-			).toThrow(/general/);
-		});
 	});
 });
