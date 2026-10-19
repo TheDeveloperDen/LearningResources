@@ -1,3 +1,4 @@
+import { closest, distance } from "fastest-levenshtein";
 import type { z } from "zod";
 
 export type Diagnostic = {
@@ -13,7 +14,6 @@ export type Diagnostic = {
 export type Validation<A> =
 	| { ok: true; value: A; diagnostics: Diagnostic[] }
 	| { ok: false; diagnostics: Diagnostic[] };
-
 
 export const error = (where: string, message: string): Diagnostic => ({
 	level: "error",
@@ -99,4 +99,21 @@ export function report(
 		const line = `${d.level}: ${d.where}: ${d.message}`;
 		(d.level === "error" ? out.error : out.warn)(line);
 	}
+}
+
+/**
+ * A ` (did you mean "x"?)` suffix naming the candidate closest to `name`, or an
+ * empty string if none is close enough to be a plausible typo.
+ */
+export function suggest(name: string, candidates: Iterable<string>): string {
+	const list = [...candidates];
+	if (list.length === 0) {
+		return "";
+	}
+	const lower = name.toLowerCase();
+	const best = closest(lower, list);
+	// (a swapped pair such as "rsut" counts as two edits, hence the rounding up)
+	return distance(lower, best) <= Math.ceil(name.length / 3)
+		? ` (did you mean "${best}"?)`
+		: "";
 }

@@ -9,6 +9,7 @@ import {
 	ok,
 	partition,
 	report,
+	suggest,
 	type Validation,
 	warning,
 } from "./validation";
@@ -116,5 +117,22 @@ describe("report", () => {
 
 		expect(out.error).toEqual(["error: a.yaml: broken"]);
 		expect(out.warn).toEqual(["warning: b: meh"]);
+	});
+});
+
+describe("suggest", () => {
+	test("offers the closest candidate for a typo", () => {
+		expect(suggest("pyhton", ["rust", "python"])).toBe(
+			' (did you mean "python"?)',
+		);
+	});
+
+	test("ignores case", () => {
+		expect(suggest("Rust", ["rust"])).toBe(' (did you mean "rust"?)');
+	});
+
+	test("offers nothing when no candidate is close", () => {
+		expect(suggest("zzzzzz", ["rust", "python"])).toBe("");
+		expect(suggest("x", [])).toBe("");
 	});
 });
