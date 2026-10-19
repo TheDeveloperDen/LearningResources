@@ -82,7 +82,7 @@ async function buildDatabase() {
 	const icons = andThen(manifest, (m) =>
 		discoverIcons(
 			iconsDir,
-			metadata.map((meta) => meta.id),
+			metaFiles.map(fileNameToId),
 			m,
 		),
 	);

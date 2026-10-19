@@ -6,6 +6,7 @@ import {
 	error,
 	fail,
 	ok,
+	suggest,
 	type Validation,
 } from "./validation";
 
@@ -83,21 +84,67 @@ export function discoverIcons(
 	const known = new Set(entityIds);
 	const found: Record<string, Partial<EntityIcon>> = {};
 	const diagnostics: Diagnostic[] = [];
-	const problem = (file: string, message: string) =>
-		diagnostics.push(error(`icons/${file}`, message));
+	const problem = (where: string, message: string) =>
+		diagnostics.push(error(where, message));
+	const fix = (entry: IconManifest[string]) =>
+		entry.source === "custom"
+			? "Add the file by hand"
+			: "Run `bun run sync-icons` to generate it";
 
 	for (const file of files) {
 		const [, id, dark] = file.match(ICON_FILE) ?? [];
 		if (!id || !known.has(id)) {
-			problem(file, "does not match any metadata entity");
+			problem(
+				`icons/${file}`,
+				`does not match any metadata entity${suggest(id ?? file, known)}`,
+			);
 			continue;
 		}
-		if (!manifest[id]) {
-			problem(file, `entity "${id}" has no entry in icons/manifest.yaml`);
+		const entry = manifest[id];
+		if (!entry) {
+			problem(
+				`icons/${file}`,
+				`entity "${id}" has no entry in icons/manifest.yaml`,
+			);
+			continue;
+		}
+		const allowsDark =
+			entry.source === "custom" || (entry.source === "devicon" && entry.dark);
+		if (dark && !allowsDark) {
+			problem(
+				`icons/${file}`,
+				`manifest entry "${id}" doesn't ask for a dark variant, so this file is stale: delete it or run \`bun run sync-icons\``,
+			);
 			continue;
 		}
 
 		found[id] = { ...found[id], [dark ? "dark" : "default"]: `icons/${file}` };
+	}
+
+	for (const [id, entry] of Object.entries(manifest)) {
+		if (!known.has(id)) {
+			problem(
+				"icons/manifest.yaml",
+				`"${id}" is not a metadata entity${suggest(id, known)}`,
+			);
+			continue;
+		}
+		if (!fileNames.has(`${id}.svg`)) {
+			problem(
+				"icons/manifest.yaml",
+				`"${id}" has no default icon: icons/${id}.svg is missing. ${fix(entry)}`,
+			);
+		}
+		if (
+			entry.source === "devicon" &&
+			entry.dark &&
+			!fileNames.has(`${id}.dark.svg`)
+		) {
+			problem(
+				"icons/manifest.yaml",
+				`"${id}" asks for a dark variant but icons/${id}.dark.svg is missing. ${fix(entry)}`,
+			);
+		}
 	}
 
 	const icons: Record<string, EntityIcon> = {};
@@ -106,9 +153,6 @@ export function discoverIcons(
 			icons[id] = dark
 				? { default: defaultIcon, dark }
 				: { default: defaultIcon };
-		} else if (!fileNames.has(`${id}.svg`)) {
-			// (a default file that exists but is invalid has already been reported)
-			problem(`${id}.dark.svg`, `entity "${id}" has no default icon`);
 		}
 	}
 
