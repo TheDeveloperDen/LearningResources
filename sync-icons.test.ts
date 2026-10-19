@@ -118,6 +118,106 @@ describe("syncIcons", () => {
 		);
 	});
 
+	describe("stale files", () => {
+		const devicon = (dark = false): IconManifest => ({
+			foo: {
+				source: "devicon",
+				name: "foo",
+				...(dark ? { dark: { fill: "#ffffff" } } : {}),
+			},
+		});
+		const ls = (dir: string) => fs.readdirSync(dir).toSorted();
+
+		test("removes a dark variant the manifest no longer asks for", () => {
+			const deviconDir = fakeDevicon({ "foo-original": VALID_SVG });
+			const outDir = tmp();
+			syncIcons({ manifest: devicon(true), deviconDir, outDir });
+
+			const removed = syncIcons({ manifest: devicon(), deviconDir, outDir });
+
+			expect(ls(outDir)).toEqual(["LICENSE.devicon", "foo.svg"]);
+			expect(removed).toEqual(["foo.dark.svg"]);
+		});
+
+		test("removes icons for entries deleted from the manifest", () => {
+			const deviconDir = fakeDevicon({
+				"foo-original": VALID_SVG,
+				"bar-original": VALID_SVG,
+			});
+			const outDir = tmp();
+			const both: IconManifest = {
+				...devicon(),
+				bar: { source: "devicon", name: "bar" },
+			};
+			syncIcons({ manifest: both, deviconDir, outDir });
+
+			syncIcons({ manifest: devicon(), deviconDir, outDir });
+
+			expect(ls(outDir)).toEqual(["LICENSE.devicon", "foo.svg"]);
+		});
+
+		test("removes the licence and notice once nothing needs them", () => {
+			const deviconDir = fakeDevicon({ "foo-original": VALID_SVG });
+			const outDir = tmp();
+			fs.writeFileSync(path.join(outDir, "NOTICE.md"), "old");
+
+			syncIcons({ manifest: devicon(), deviconDir, outDir });
+			expect(ls(outDir)).toEqual(["LICENSE.devicon", "foo.svg"]);
+
+			syncIcons({
+				manifest: { foo: { source: "custom", license: "MIT" } },
+				deviconDir,
+				outDir,
+			});
+			expect(ls(outDir)).toEqual(["foo.svg"]);
+		});
+
+		test("keeps hand-made icons of custom entries, and files it doesn't manage", () => {
+			const outDir = tmp();
+			for (const f of ["foo.svg", "foo.dark.svg", "manifest.yaml"]) {
+				fs.writeFileSync(path.join(outDir, f), "mine");
+			}
+
+			const removed = syncIcons({
+				manifest: { foo: { source: "custom", license: "MIT" } },
+				deviconDir: fakeDevicon({}),
+				outDir,
+			});
+
+			expect(ls(outDir)).toEqual(["foo.dark.svg", "foo.svg", "manifest.yaml"]);
+			expect(removed).toEqual([]);
+		});
+
+		test("removes an svg that belongs to no manifest entry", () => {
+			const outDir = tmp();
+			fs.writeFileSync(path.join(outDir, "ghost.svg"), VALID_SVG);
+
+			const removed = syncIcons({
+				manifest: {},
+				deviconDir: fakeDevicon({}),
+				outDir,
+			});
+
+			expect(ls(outDir)).toEqual([]);
+			expect(removed).toEqual(["ghost.svg"]);
+		});
+
+		test("removes nothing when the sync fails", () => {
+			const outDir = tmp();
+			fs.writeFileSync(path.join(outDir, "ghost.svg"), VALID_SVG);
+
+			expect(() =>
+				syncIcons({
+					manifest: devicon(),
+					deviconDir: fakeDevicon({}),
+					outDir,
+				}),
+			).toThrow();
+
+			expect(ls(outDir)).toEqual(["ghost.svg"]);
+		});
+	});
+
 	describe("iconify", () => {
 		/** A fake loader serving the given sets, as `@iconify-json/<set>` would. */
 		const fakeIconify =
@@ -249,6 +349,5 @@ describe("syncIcons", () => {
 
 			expect(loads).toBe(1);
 		});
-
 	});
 });
