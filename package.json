@@ -28,6 +28,7 @@
 		"ajv-cli": "^5.0.0",
 		"ajv-formats": "^3.0.1",
 		"devicon": "2.17.0",
+		"fastest-levenshtein": "1.0.16",
 		"zod-openapi": "^5.4.6"
 	},
 	"peerDependencies": {
