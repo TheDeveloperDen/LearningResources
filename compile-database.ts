@@ -10,7 +10,6 @@ import {
 	fileNameToId,
 	type Meta,
 	MetaSchema,
-	type Resource,
 	ResourceSchema,
 } from ".";
 import { discoverIcons, IconManifestSchema } from "./icons";
@@ -67,8 +66,9 @@ async function buildDatabase() {
 		process.exit(1);
 	};
 
+	const metaFiles = await yamlFiles(metaDir);
 	const metaResults = await Promise.all(
-		(await yamlFiles(metaDir)).map(async (file) =>
+		metaFiles.map(async (file) =>
 			andThen(
 				await readYaml(
 					path.join(metaDir, file),
@@ -105,26 +105,14 @@ async function buildDatabase() {
 		}
 	}
 
-	const validTags = new Set(metadata.map((meta) => meta.id));
-
 	const resourceResults = await Promise.all(
-		(await yamlFiles(resourcesDir)).map(async (file) => {
-			const where = `resources/${file}`;
-			return andThen(
-				await readYaml(path.join(resourcesDir, file), ResourceSchema, where),
-				(resource) => {
-					const unknown = resource.teaches.filter((tag) => !validTags.has(tag));
-					return unknown.length > 0
-						? fail<Resource>([
-								error(
-									where,
-									`unknown tags in 'teaches': [${unknown.join(", ")}]. Ensure a corresponding metadata file exists.`,
-								),
-							])
-						: ok(resource);
-				},
-			);
-		}),
+		(await yamlFiles(resourcesDir)).map(async (file) =>
+			readYaml(
+				path.join(resourcesDir, file),
+				ResourceSchema,
+				`resources/${file}`,
+			),
+		),
 	);
 	const { values: resources, diagnostics: resourceDiagnostics } =
 		partition(resourceResults);
