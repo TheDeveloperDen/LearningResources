@@ -17,17 +17,13 @@ const languagesDir = path.join(__dirname, "./metadata/languages");
 export const fileNameToId = (fileName: string) =>
     path.basename(fileName, ".yaml");
 
-const validTopics = fs
-    .readdirSync(topicsDir, { recursive: true })
-    .filter((f) => typeof f === "string" && f.endsWith(".yaml"))
-    .map((f) => fileNameToId(f as string));
+const idsIn = (dir: string) =>
+    fs
+        .readdirSync(dir, { recursive: true })
+        .filter((f) => typeof f === "string" && f.endsWith(".yaml"))
+        .map((f) => fileNameToId(f as string));
 
-const validLanguages = fs
-    .readdirSync(languagesDir, { recursive: true })
-    .filter((f) => typeof f === "string" && f.endsWith(".yaml"))
-    .map((f) => fileNameToId(f as string));
-
-const allValidTags = [...validTopics, ...validLanguages].toSorted();
+const allValidTags = [...idsIn(topicsDir), ...idsIn(languagesDir)].toSorted();
 
 if (allValidTags.length === 0) {
     throw new Error("No metadata entities found!");

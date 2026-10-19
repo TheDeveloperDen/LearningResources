@@ -6,7 +6,7 @@ const rust = {
 	name: "Rust",
 	description:
 		"Rust is a multi-paradigm systems language designed by Graydon Hoare in 2010",
-	emoji: "821824283965128774",
+	emoji: "🦀",
 	domains: ["Systems Programming", "Web Development", "Game Development"],
 	category: {
 		type: "Language",
