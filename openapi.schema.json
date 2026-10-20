@@ -95,7 +95,8 @@
           "Systems Programming",
           "Scripting",
           "General Purpose",
-          "DevOps"
+          "DevOps",
+          "Research"
         ],
         "description": "A domain that a programming language may be used in."
       },

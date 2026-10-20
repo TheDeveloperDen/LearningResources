@@ -76,6 +76,7 @@ export const LanguageDomainSchema = registry.register("LanguageDomain", z
         "Scripting",
         "General Purpose",
         "DevOps",
+        "Research"
     ])
     .meta({ id: "LanguageDomain" })
     .describe("A domain that a programming language may be used in."));
