@@ -1,6 +1,8 @@
 name: Haskell
-description: Haskell is a purely functional programming language commonly used in finance and academics
-domains: []
+description: A purely functional, lazily evaluated language popular in academia and finance
+domains: 
+  - General Purpose
+  - Research
 category:
   type: "Language"
   paradigms:
