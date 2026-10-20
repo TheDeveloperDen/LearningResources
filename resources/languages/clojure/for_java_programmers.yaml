@@ -6,7 +6,7 @@ pricing:
 teaches:
   - clojure
 pros:
-  - Video series
+  - Single-video walkthrough
   - Explains the ideas behind Clojure
 cons:
   - Mostly aimed at people from an OOP background
