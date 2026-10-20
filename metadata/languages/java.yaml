@@ -2,7 +2,7 @@ name: Java
 description: A statically typed, Object Oriented language that runs on the JVM
 domains:
   - General Purpose
-  - Web Development
+  - Backend Web
   - Mobile Development
 category:
   type: "Language"

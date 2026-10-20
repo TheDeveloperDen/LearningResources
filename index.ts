@@ -68,7 +68,8 @@ const PricingSchema = registry.register("Pricing", z
 
 export const LanguageDomainSchema = registry.register("LanguageDomain", z
     .enum([
-        "Web Development",
+        "Frontend Web",
+        "Backend Web",
         "Data Science",
         "Mobile Development",
         "Game Development",

@@ -88,7 +88,8 @@
       "LanguageDomain": {
         "type": "string",
         "enum": [
-          "Web Development",
+          "Frontend Web",
+          "Backend Web",
           "Data Science",
           "Mobile Development",
           "Game Development",

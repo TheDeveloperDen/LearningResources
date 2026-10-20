@@ -2,7 +2,7 @@ name: Rust
 description: Rust is a multi-paradigm systems language designed by Graydon Hoare in 2010
 domains:
   - "Systems Programming"
-  - "Web Development"
+  - "Backend Web"
   - "Game Development"
 category:
   type: "Language"

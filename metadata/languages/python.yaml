@@ -1,7 +1,7 @@
 name: Python
 description: Python is a powerful, high-level, dynamically typed, interpreted programming language. It is used in a wide range of fields, including web development, data analysis, and artificial intelligence.
 domains:
-  - "Web Development"
+  - "Backend Web"
   - "Data Science"
   - "Scripting"
 category:

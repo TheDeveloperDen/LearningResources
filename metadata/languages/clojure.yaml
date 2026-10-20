@@ -1,6 +1,6 @@
 name: Clojure
 description: A dynamic functional language in the Lisp family that runs on the JVM, Web, and .NET
-domains: [General Purpose, Web Development, ]
+domains: [General Purpose, Frontend Web, Backend Web ]
 category:
   type: "Language"
   paradigms:
