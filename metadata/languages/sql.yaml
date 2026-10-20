@@ -1,5 +1,5 @@
 name: SQL
-description: SQL (Structured Query Language) is a standard programming language for managing and manipulating databases.
+description: Declarative programming language for querying and managing relational databases
 domains: []
 category:
   type: "Language"
