@@ -1,6 +1,9 @@
 name: Java
-description: Java is an Object Oriented language designed by James Gosling in 1995
-domains: []
+description: A statically typed, Object Oriented language that runs on the JVM
+domains:
+  - General Purpose
+  - Web Development
+  - Mobile Development
 category:
   type: "Language"
   paradigms:
