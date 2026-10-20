@@ -1,6 +1,6 @@
 name: Learn You a Haskell
 type: [Book]
-url: http://learnyouahaskell.com/
+url: https://learnyouahaskell.github.io/
 pricing:
   model: Free
 teaches:
