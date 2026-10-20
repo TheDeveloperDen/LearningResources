@@ -1,8 +1,9 @@
 name: C++
-description: C++ is a statically typed general-purpose language designed by Bjarne Stroustrup in 1985
+description: A statically typed, general-purpose language giving fine control over memory and performance
 domains:
   - "Systems Programming"
   - "Game Development"
+  - General Purpose
 category:
   type: "Language"
   paradigms:
