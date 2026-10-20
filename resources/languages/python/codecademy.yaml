@@ -2,7 +2,7 @@ name: Codecademy
 type: [Interactive Tutorial]
 url: https://www.codecademy.com/learn/learn-python
 pricing:
-  model: Free
+  model: Freemium
 teaches:
   - python
 pros:

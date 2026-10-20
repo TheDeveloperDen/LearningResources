@@ -2,7 +2,7 @@ name: "Functional Programming in Haskell: Supercharge Your Coding"
 type: [Course]
 url: https://www.futurelearn.com/courses/functional-programming-haskell
 pricing:
-  model: Free
+  model: Freemium
 teaches:
   - haskell
 pros: []
