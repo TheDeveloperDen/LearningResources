@@ -3,8 +3,12 @@
     {
       "id": "clojure",
       "name": "Clojure",
-      "description": "Clojure is a dynamic functional language from the Lisp family that runs on many different platforms",
-      "domains": [],
+      "description": "A dynamic functional language in the Lisp family that runs on the JVM, Web, and .NET",
+      "domains": [
+        "General Purpose",
+        "Frontend Web",
+        "Backend Web"
+      ],
       "category": {
         "type": "Language",
         "paradigms": [
@@ -18,10 +22,11 @@
     {
       "id": "cpp",
       "name": "C++",
-      "description": "C++ is a statically typed general-purpose language designed by Bjarne Stroustrup in 1985",
+      "description": "A statically typed, general-purpose language giving fine control over memory and performance",
       "domains": [
         "Systems Programming",
-        "Game Development"
+        "Game Development",
+        "General Purpose"
       ],
       "category": {
         "type": "Language",
@@ -37,8 +42,11 @@
     {
       "id": "haskell",
       "name": "Haskell",
-      "description": "Haskell is a purely functional programming language commonly used in finance and academics",
-      "domains": [],
+      "description": "A purely functional, lazily evaluated language popular in academia and finance",
+      "domains": [
+        "General Purpose",
+        "Research"
+      ],
       "category": {
         "type": "Language",
         "paradigms": [
@@ -52,8 +60,12 @@
     {
       "id": "java",
       "name": "Java",
-      "description": "Java is an Object Oriented language designed by James Gosling in 1995",
-      "domains": [],
+      "description": "A statically typed, Object Oriented language that runs on the JVM",
+      "domains": [
+        "General Purpose",
+        "Backend Web",
+        "Mobile Development"
+      ],
       "category": {
         "type": "Language",
         "paradigms": [
@@ -67,9 +79,11 @@
     {
       "id": "kotlin",
       "name": "Kotlin",
-      "description": "Kotlin is a multi-paradigm programming language created by JetBrains that runs on the JVM, JS, and Native Platforms",
+      "description": "A concise multi-paradigm language for the JVM, JavaScript, and Native. The standard choice for Android development.",
       "domains": [
-        "Mobile Development"
+        "Mobile Development",
+        "Backend Web",
+        "General Purpose"
       ],
       "category": {
         "type": "Language",
@@ -86,9 +100,9 @@
     {
       "id": "php",
       "name": "PHP",
-      "description": "PHP is a widely-used, open-source, server-side scripting language designed for web development. It is particularly suitable for creating dynamic and interactive websites.",
+      "description": "A server-side scripting language that powers much of the dynamic web",
       "domains": [
-        "Web Development"
+        "Backend Web"
       ],
       "category": {
         "type": "Language",
@@ -105,9 +119,9 @@
     {
       "id": "python",
       "name": "Python",
-      "description": "Python is a powerful, high-level, dynamically typed, interpreted programming language. It is used in a wide range of fields, including web development, data analysis, and artificial intelligence.",
+      "description": "Simple, dynamically typed language used for scripting, web backends, and data science",
       "domains": [
-        "Web Development",
+        "Backend Web",
         "Data Science",
         "Scripting"
       ],
@@ -125,10 +139,11 @@
     {
       "id": "rust",
       "name": "Rust",
-      "description": "Rust is a multi-paradigm systems language designed by Graydon Hoare in 2010",
+      "description": "Modern systems language with memory safety guaranteed at compile time",
       "domains": [
         "Systems Programming",
-        "Web Development",
+        "Backend Web",
+        "General Purpose",
         "Game Development"
       ],
       "category": {
@@ -146,7 +161,7 @@
     {
       "id": "sql",
       "name": "SQL",
-      "description": "SQL (Structured Query Language) is a standard programming language for managing and manipulating databases.",
+      "description": "Declarative programming language for querying and managing relational databases",
       "domains": [],
       "category": {
         "type": "Language",
@@ -201,7 +216,7 @@
   "resources": [
     {
       "name": "Learn You a Haskell",
-      "url": "http://learnyouahaskell.com/",
+      "url": "https://learnyouahaskell.github.io/",
       "type": [
         "Book"
       ],
@@ -285,7 +300,7 @@
         "model": "Free"
       },
       "pros": [
-        "Video series",
+        "Single-video walkthrough",
         "Explains the ideas behind Clojure"
       ],
       "cons": [
@@ -331,7 +346,7 @@
     },
     {
       "name": "Functions Explained Through Patterns",
-      "url": "http://blog.josephwilk.net/clojure/functions-explained-through-patterns.html",
+      "url": "https://blog.josephwilk.net/clojure/functions-explained-through-patterns.html",
       "type": [
         "Article"
       ],
@@ -452,7 +467,7 @@
         "haskell"
       ],
       "pricing": {
-        "model": "Free"
+        "model": "Freemium"
       },
       "pros": [],
       "cons": [
@@ -604,7 +619,7 @@
       ]
     },
     {
-      "name": "Tutorial Spot",
+      "name": "Tutorialspoint",
       "url": "https://www.tutorialspoint.com/java/index.htm",
       "type": [
         "Article"
@@ -803,7 +818,7 @@
         "python"
       ],
       "pricing": {
-        "model": "Free"
+        "model": "Freemium"
       },
       "pros": [
         "Interactive lessons and quizzes",
@@ -970,7 +985,7 @@
         "model": "Free"
       },
       "pros": [
-        "Video series"
+        "Single-video walkthrough"
       ],
       "cons": []
     },
